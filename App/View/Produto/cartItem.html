@@ -1,0 +1,27 @@
+<tr>
+    <td data-th="Produto">
+        <div class="row">
+            <div class="col-sm-2 hidden-xs"><img src="{product_img}" alt="..." class="img-responsive"/></div>
+            <div class="col-sm-10">
+                <h4 class="nomargin">{product_title}</h4>
+                <!--<p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>-->
+            </div>
+        </div>
+    </td>
+    <td data-th="cartela">
+        <select>
+            <option>2 und.</option>
+            <option>4 und.</option>
+            <option>10 und.</option>
+        </select>
+    </td>
+    <td data-th="Preço">{product_price}</td>
+    <td data-th="Quantidade">
+        <input type="number" class="form-control text-center" value="{quantity}">
+    </td>
+    <td data-th="Subtotal" class="text-center">{product_subtotal}</td>
+    <td class="actions" data-th="">
+        <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+        <button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+    </td>
+</tr>
