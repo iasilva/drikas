@@ -31,14 +31,9 @@ $cat = new Thirday\Classes\Categoria();
                     <label for="categoria">Categoria</label>
                     <select class="form-control" id="category_id" name="category_id">
                         <option value="" selected="selected"> Escolha uma categoria</option>    
-                        <?php
-                        //Código usa a classe Categoria e chama o metodo que retorna
-                        // um array de objetos com as categorias
-                        $categorias = $cat->getCategories();
-                        foreach ($categorias as $cat) {
-                            echo "<option value=\"{$cat->id}\">{$cat->nome}</option>\n";
-                        }
-                        ?>
+                        <?php foreach ($categories as $categoria) { ?>
+                        <option value="<?php echo $categoria->getId()?>"> <?php echo $categoria->getName() ?></option>    
+                        <?php }?>   
                     </select>
                 </div>
                 <div class="form-group">

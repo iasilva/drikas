@@ -1,0 +1,33 @@
+/*MENU ADMIN*/
+.barra{
+  text-align:center;
+/*  background: #DDD;*/
+}
+.nav-tabs{
+   border-bottom:none;
+   display: inline-block;
+}
+
+.nav-tabs a{
+   color:#b35796;
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+    /*background-color: #DDD;*/
+}
+
+.nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
+    background-color: #FCFCFC;
+    border-color: #01c0dc;
+}
+
+.nav-tabs>li>a:hover {
+    border-color: #01c0dc #01c0dc #01c0dc;
+}
+ 
+.nav-tabs .dropdown-menu {
+    background: #FCFCFC;
+}
+.dropdown-menu>li>a {
+    color: #AAA;
+}

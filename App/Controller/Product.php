@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Mvc\Controller;
 use App\Model\Product\IProductRepository;
 use App\Model\Image\IImageRepository;
+use App\Model\Category\iProductCategoryRepository;
 
 /**
  * Classe Controller de Product
@@ -41,10 +42,11 @@ class Product extends Controller {
     /**
      * Exibe o formulário de cadastro de produtos
      */
-    public function cadastrar(){
+    public function cadastrar(iProductCategoryRepository $categories,$masterCat){
         $this->view->setTitle("Formulário de cadastro de produtos");
+        $this->view->set('categories',$categories->getSubCategories($masterCat));
         $this->view->render('admin/form-cad-product');
-    }
+        }
 
     
 

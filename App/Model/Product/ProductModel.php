@@ -94,4 +94,7 @@ class ProductModel {
     public function getDeleted() {
         return $this->deleted;
     }
+    public function save(){
+        
+    }
 }

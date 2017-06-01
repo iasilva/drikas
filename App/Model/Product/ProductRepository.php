@@ -19,7 +19,7 @@ class ProductRepository implements IProductRepository {
 
     public function getProducts() {
         $stmt = $this->pdo->prepare("SELECT * FROM product ORDER BY id DESC");
-        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Product\ProductModel');
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Product\ProductCategoryModel');
         $stmt->execute();
         return $stmt->fetchAll();
     }
