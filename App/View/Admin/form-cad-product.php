@@ -22,7 +22,7 @@ $cat = new Thirday\Classes\Categoria();
                         
                     }
                     ?>
-            <form enctype="multipart/form-data" method="POST" action="processa.php?action=uploadImagem">
+            <form enctype="multipart/form-data" method="POST" action="./?page=product&action=insert">
                 <div class="form-group">
                     <label for="descricao">Descrição</label>
                     <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descreva">

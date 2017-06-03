@@ -15,7 +15,17 @@ class ProductModel {
     private $created_at;
     private $updated_at;
     private $deleted;
-    private $images=[];
+    private $images = [];
+    private $table = 'product';
+
+    /**
+     * Método responsável por inserir objeto no banco de dados
+     * retorna o id do produto salvo
+     */
+    public function save(\PDO $pdo) {
+        $produto = new CreationProduct($pdo);
+        return $produto->save($this);
+    }
 
     public function setId($id) {
         if (!is_int($id)) {
@@ -44,6 +54,7 @@ class ProductModel {
     public function setUpdated_at($updated_at) {
         $this->updated_at = $updated_at;
     }
+
     /**
      * Seta para marcar se determinado produto está deletado no banco de dados
      * Aceitando apenas parâmetro inteiro 0(zero) ou 1(um). Cuidando que sempre 
@@ -55,13 +66,14 @@ class ProductModel {
         if (!is_int($deleted)) {
             throw new \InvalidArgumentException("Deleted precisa ser um número inteiro");
         } else {
-            if (int($deleted) !== 1) {
+            if ($deleted !== 1) {
                 $this->deleted = 0;
-            }else{
-            $this->deleted = $deleted;                
+            } else {
+                $this->deleted = $deleted;
             }
         }
     }
+
     public function getImages() {
         return $this->images;
     }
@@ -71,7 +83,7 @@ class ProductModel {
         return $this;
     }
 
-        public function getId() {
+    public function getId() {
         return $this->id;
     }
 
@@ -94,7 +106,9 @@ class ProductModel {
     public function getDeleted() {
         return $this->deleted;
     }
-    public function save(){
-        
+
+    public function getTable() {
+        return $this->table;
     }
+
 }

@@ -74,7 +74,7 @@ class ProductTagModel {
     public function save() {
         $stmt = $this->pdo->prepare("INSERT INTO $this->table VALUES (?,?)");
         $count = $stmt->execute(array($this->tag_id, $this->product_id));
-        print 'Linhas afetadas= ' . $count;
+        
     }
 
     /**
