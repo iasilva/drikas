@@ -41,6 +41,6 @@ class CreationProduct implements ICreationProduct {
         $stmt->bindParam(":price", $this->price, \PDO::PARAM_STR);
         $stmt->execute();
         $this->id= $this->pdo->lastInsertId();
-    }
+    }    
 
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * verifica a existência de uma variável GET com o nome de <em>page</em>
  * Essa variável define a classe a ser instanciada
@@ -19,7 +18,7 @@ $cat = isset($_GET['cat']) ? filter_input(INPUT_GET, "cat", FILTER_VALIDATE_INT)
 /**
  * Repositório de categorias
  */
-$catRepos= new \App\Model\Category\ProductCategoryRepository($pdo);
+$catRepos = new \App\Model\Category\ProductCategoryRepository($pdo);
 
 
 /**
@@ -27,28 +26,36 @@ $catRepos= new \App\Model\Category\ProductCategoryRepository($pdo);
  * Aqui eu defino o Controller e o método a ser chamado.
  */
 switch ($page) {
-   
+
     /**
      * Página product ta vinculado a tudo em relação ao produto
      */
     case 'product':
         $product = new \App\Controller\Product($produtoRep);
-        
+
         /**
          * A ação principal de produto é exibir todos os produtos a venda e para 
          * isso precisa na ação index que seja enviado o objeto derepositório de
          * imagens
          */
-        switch ($action) {            
-            case "cadastrar":                
-                call_user_func_array(array($product, $action), array($catRepos,$cat));
+        switch ($action) {
+            case "cadastrar":
+                call_user_func_array(array($product, $action), array($catRepos, $cat));
                 break;
             default:
                 call_user_func_array(array($product, $action), array());
                 break;
         }
-        
+
         break;
+    case 'teste':
+        $teste= new \App\Controller\Teste;
+        call_user_func_array(array($teste, $action), array());
+
+        break;
+
+
+
 
     default:
         $home = new \App\Controller\Home();
