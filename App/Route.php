@@ -35,7 +35,7 @@ switch ($page) {
          * imagens
          */
         switch ($action) {            
-            case "index":                
+            case "index":     
                 call_user_func_array(array($product, $action), array($imageRep));
                 break;
             default:

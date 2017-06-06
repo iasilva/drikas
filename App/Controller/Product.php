@@ -64,7 +64,8 @@ class Product extends Controller {
      * @param IImageRepository $images
      */
     private function configProductWithPrimaryImage(IImageRepository $images) {
-        foreach ($this->products as $key => $product) {
+        
+        foreach ($this->products as $key => $product) {            
             $imagens = $images->getPrimaryImage($product->getId());
             $this->products[$key]->setImages($imagens);
         }
