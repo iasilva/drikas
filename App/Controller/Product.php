@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Mvc\Controller;
+use App\Model\Product\ProductModel;
 use App\Model\Product\IProductRepository;
 use App\Model\Image\IImageRepository;
 use App\Model\Category\iProductCategoryRepository;
@@ -55,8 +56,12 @@ class Product extends Controller {
      * Processa o formulário para a real criação de um produto
      */
     public function insert() {
-        $msg = new \Thirday\Messages\MensagemFactory();
-        $msg->exibeMensagem(new \Thirday\Messages\AlertMessage, "Obrigado por tentar inserir o produto");
+        $produto= new ProductModel;
+//        Criar uma classe Dados- passando o método post, nome do campo, pra que 
+//                ele capture e trate os dados e retorne pronto para salvar
+              
+        $produto->setDescription(               );
+        
     }
 
     /**
