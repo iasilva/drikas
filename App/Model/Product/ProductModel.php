@@ -40,6 +40,7 @@ class ProductModel {
     }
 
     public function setPrice($price) {
+        $price= (float) $price;
         if (!is_float($price)) {
             throw new \InvalidArgumentException("Preço precisa ser um número ponto flutuante");
         } else {

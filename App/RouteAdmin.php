@@ -42,6 +42,9 @@ switch ($page) {
             case "cadastrar":
                 call_user_func_array(array($product, $action), array($catRepos, $cat));
                 break;
+            case "insert":
+                call_user_func_array(array($product, $action), array($pdo));
+                break;
             default:
                 call_user_func_array(array($product, $action), array());
                 break;

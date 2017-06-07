@@ -8,6 +8,7 @@ use App\Model\Product\IProductRepository;
 use App\Model\Image\IImageRepository;
 use App\Model\Category\iProductCategoryRepository;
 
+
 /**
  * Classe Controller de Product
  *
@@ -55,12 +56,17 @@ class Product extends Controller {
     /**
      * Processa o formulário para a real criação de um produto
      */
-    public function insert() {
+    public function insert(\PDO $pdo) {
         $produto= new ProductModel;
-//        Criar uma classe Dados- passando o método post, nome do campo, pra que 
-//                ele capture e trate os dados e retorne pronto para salvar
+        $rq=new \Thirday\Request\RequestFactory('post');
+        $produto->setDescription($rq->captura('description'));        
+        $produto->setPrice($rq->captura('price'));
+        $idProduto= $produto->save($pdo);
+            
+       
+        
               
-        $produto->setDescription(               );
+        
         
     }
 

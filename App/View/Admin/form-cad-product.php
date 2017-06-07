@@ -22,11 +22,15 @@
             ?>
             <form enctype="multipart/form-data" method="POST" action="./?page=product&action=insert">
                 <div class="form-group">
-                    <label for="descricao">Descrição</label>
-                    <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descreva">
+                    <label for="description">Descrição</label>
+                    <input type="text" class="form-control" name="description" id="description" placeholder="Descreva" autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="categoria">Categoria</label>
+                    <label for="price">Preço</label>
+                    <input type="number" value="2.49" class="form-control" name="price" id="price">
+                </div>
+                <div class="form-group">
+                    <label for="category">Categoria</label>
                     <div class="checkbox">
                             <?php foreach ($categories as $categoria) { ?>
                         <label>
@@ -37,18 +41,10 @@
                     </div>
 
 
-<!--
-
-                    <select class="form-control" id="category_id" name="category_id">
-                        <option value="" selected="selected"> Escolha uma categoria</option>    
-                        <?php foreach ($categories as $categoria) { ?>
-                            <option value="<?php echo $categoria->getId() ?>"> <?php echo $categoria->getName() ?></option>    
-                        <?php } ?>   
-                    </select>-->
                 </div>
                 <div class="form-group">
-                    <label for="imagem">Escolha a imagem</label>
-                    <input type="file" class="form-control" name="imagem" id="imagem">
+                    <label for="image">Escolha a imagem</label>
+                    <input type="file" class="form-control" name="image" id="image">
                 </div>
                 <div class="form-group">
                     <input class="btn btn-success btn-lg" type="submit" value="Cadastrar película">
