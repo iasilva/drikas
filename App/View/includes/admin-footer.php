@@ -30,4 +30,3 @@
 
 <script src="../script/jquery/jquery-3.2.1.js"></script>
 <script src="../bootstrap/js/bootstrap.min.js"></script>
-<script src="../script/base-script.js"></script>

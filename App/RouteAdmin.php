@@ -51,8 +51,12 @@ switch ($page) {
         }
 
         break;
+    case 'image':
+        $image= new \App\Controller\Image;
+         call_user_func_array(array($image, $action), array());
+        break;
     case 'teste':
-        $teste= new \App\Controller\Teste;
+        $teste = new \App\Controller\Teste;
         call_user_func_array(array($teste, $action), array());
 
         break;

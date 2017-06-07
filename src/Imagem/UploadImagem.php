@@ -55,7 +55,7 @@ class UploadImagem {
             case 1:
                 throw new \Exception("O arquivo no upload é maior do que o limite do PHP.", E_USER_ERROR);
             case 2:
-                throw new \Exception("O arquivo ultrapassa o limite de tamanho especifiado no HTML.", E_USER_ERROR);
+                throw new \Exception("O arquivo ultrapassa o limite de tamanho especificado no HTML.", E_USER_ERROR);
             case 3:
                 throw new \Exception("O upload do arquivo foi feito parcialmente.", E_USER_ERROR);
             case 4:

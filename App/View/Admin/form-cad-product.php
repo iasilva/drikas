@@ -45,12 +45,20 @@
                 <div class="form-group">
                     <label for="image">Escolha a imagem</label>
                     <input type="file" class="form-control" name="image" id="image">
+                    <span class="help-block alert-warning">Tamanho máximo permitido é 1Mb.</span>
                 </div>
                 <div class="form-group">
                     <input class="btn btn-success btn-lg" type="submit" value="Cadastrar película">
+                  
                 </div>
             </form>
-
+            <button class="btn" id="botao">Teste</button>
+        </div>
+        <div class="col-sm-12 col-md-4 col-md-offset-2">
+            <h5><strong>Prévia da imagem</strong></h5>
+            <image>
+            <img class="img-responsive img-thumbnail" height="190px" width="130px" src="../images/peliculas/5917141e3e9aa.png">
+            </image>
         </div>
     </div>  
 
