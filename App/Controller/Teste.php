@@ -16,4 +16,9 @@ class Teste {
        $excImg= new CleaningImageArquivo;
        $excImg->delete($img);
     }
+    public function teste(){
+        $rq=new \Thirday\Request\RequestFactory('post');
+        $a=$rq->captura('categories');
+        var_dump($a);
+    }
 }

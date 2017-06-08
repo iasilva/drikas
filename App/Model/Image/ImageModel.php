@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Model\Image;
+use App\Model\Image\CreationImage;
 
 /**
  * Description of ImageModel
@@ -42,6 +43,10 @@ class ImageModel {
 
     public function getProduct_id() {
         return $this->product_id;
+    }
+    public function save(\PDO $pdo){
+        $img= new CreationImage;
+        $img->save($this);
     }
 
     public function setId($id) {

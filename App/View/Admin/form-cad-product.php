@@ -20,7 +20,7 @@
                 $msg->exibeMensagem(new Thirday\Messages\SuccessMessage(), " Cadastro realizado com sucesso ");
             }
             ?>
-            <form enctype="multipart/form-data" method="POST" action="./?page=product&action=insert">
+            <form enctype="multipart/form-data" method="POST" action="./?page=teste&action=teste">
                 <div class="form-group">
                     <label for="description">Descrição</label>
                     <input type="text" class="form-control" name="description" id="description" placeholder="Descreva" autofocus>
@@ -34,7 +34,7 @@
                     <div class="checkbox">
                             <?php foreach ($categories as $categoria) { ?>
                         <label>
-                                <input name="category[]" value="<?php echo $categoria->getId() ?>" type="checkbox"> 
+                                <input name="categories[]" value="<?php echo $categoria->getId() ?>" type="checkbox"> 
                                 <?php echo $categoria->getName() ?></option>    
                         </label>
                             <?php } ?>   
@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group">
                     <label for="image">Escolha a imagem</label>
-                    <input type="file" class="form-control" name="image" id="image">
+                    <input type="file" class="form-control" name="product_image" id="product_image">
                     <span class="help-block alert-warning">Tamanho máximo permitido é 1Mb.</span>
                 </div>
                 <div class="form-group">
