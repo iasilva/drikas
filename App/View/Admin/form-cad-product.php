@@ -32,12 +32,12 @@
                 <div class="form-group">
                     <label for="category">Categoria</label>
                     <div class="checkbox">
-                            <?php foreach ($categories as $categoria) { ?>
-                        <label>
+                        <?php foreach ($categories as $categoria) { ?>
+                            <label>
                                 <input name="categories[]" value="<?php echo $categoria->getId() ?>" type="checkbox"> 
                                 <?php echo $categoria->getName() ?></option>    
-                        </label>
-                            <?php } ?>   
+                            </label>
+                        <?php } ?>   
                     </div>
 
 
@@ -45,20 +45,24 @@
                 <div class="form-group">
                     <label for="image">Escolha a imagem</label>
                     <input type="file" class="form-control" name="product_image" id="product_image">
+
+                    
+
                     <span class="help-block alert-warning">Tamanho máximo permitido é 1Mb.</span>
                 </div>
                 <div class="form-group">
                     <input class="btn btn-success btn-lg" type="submit" value="Cadastrar película">
-                  
+
                 </div>
             </form>
-            <button class="btn" id="botao">Teste</button>
+
         </div>
         <div class="col-sm-12 col-md-4 col-md-offset-2">
             <h5><strong>Prévia da imagem</strong></h5>
-            <image>
-            <img class="img-responsive img-thumbnail" height="190px" width="130px" src="../images/peliculas/5917141e3e9aa.png">
-            </image>
+            <div id="previa-imagem">
+                
+            </div>
+           
         </div>
     </div>  
 

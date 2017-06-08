@@ -11,6 +11,6 @@
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/base-style.css">        
         <link rel="stylesheet" href="../css/admin.css">  
-        <script src="../script/base-script.js"></script>
+        
     </head>
     <body>
