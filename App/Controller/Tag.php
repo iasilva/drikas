@@ -3,6 +3,7 @@
 
 
 namespace App\Controller;
+use App\Mvc\Controller;
 use App\Model\Relationship\ProductTagModel;
 
 /**
@@ -10,7 +11,7 @@ use App\Model\Relationship\ProductTagModel;
  *
  * @author ivana
  */
-class Tag {
+class Tag extends Controller {
     public function __construct() {
         parent::__construct;
     }
