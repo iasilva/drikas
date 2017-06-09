@@ -30,6 +30,13 @@ class ProductCategoryRepository implements iProductCategoryRepository {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+    public function getCategory($id){
+        $stmt = $this->pdo->prepare("SELECT * FROM $this->table WHERE id = :id");
+        $stmt->bindValue(":id", $id, \PDO::PARAM_INT);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Category\ProductCategoryModel');
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 
     /**
      * Retorna as subCategorias de primeiro nível relacionadas a uma categoria

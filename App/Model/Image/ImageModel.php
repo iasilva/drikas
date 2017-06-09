@@ -45,7 +45,7 @@ class ImageModel {
         return $this->product_id;
     }
     public function save(\PDO $pdo){
-        $img= new CreationImage;
+        $img= new CreationImage($pdo);
         $img->save($this);
     }
 
@@ -81,10 +81,10 @@ class ImageModel {
         if (!is_int($is_primary)) {
             throw new \InvalidArgumentException("Valor 1 ou 0 para definir se a imagem é principal");
         } else {
-            if (int($is_primary) !== 1) {
+            if (($is_primary) !== 1) {
                 $this->is_primary = 0;
             } else {
-                $this->is_primary = $primary;
+                $this->is_primary = $is_primary;
             }
         }
     }
@@ -100,7 +100,7 @@ class ImageModel {
     public function setProduct_id($product_id) {
         $product = new \App\Model\Product\ProductRepository(\Database::conexao());
         if ($product->getProduct($product_id)) {
-            if (!is_int($product_id)) {
+            if (!is_int($product_id)) {                
                 throw new \InvalidArgumentException("Id precisa ser um número inteiro");
             } else {
                 $this->product_id = $product_id;

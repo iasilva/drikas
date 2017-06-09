@@ -9,6 +9,7 @@ use App\Model\Image\ImageModel;
 use App\Model\Image\IImageRepository;
 use App\Model\Category\iProductCategoryRepository;
 use App\Controller\Image;
+use App\Controller\Category;
 
 
 /**
@@ -62,20 +63,17 @@ class Product extends Controller {
         $produto= new ProductModel;
         $imgModel=new ImageModel;
         $img= new Image;  
+        $category= new Category;
         $rq=new \Thirday\Request\RequestFactory('post');
         $produto->setDescription($rq->captura('description'));        
         $produto->setPrice($rq->captura('price'));      
-        $idProduto= $produto->save($pdo);
+        $idProduto= (int) $produto->save($pdo);
         $imgModel->setName($img->upload());
         $imgModel->setIs_Primary(1);
         $imgModel->setProduct_id($idProduto);
         $imgModel->save($pdo);
-        
-            
-       
-        
-              
-        
+        $category->relationshipWithProduct($idProduto, $rq->captura("categories")); 
+        header("Location: ./?page=product&action=cadastrar&success");
         
     }
 

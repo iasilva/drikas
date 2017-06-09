@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Mvc\Controller;
+use Thirday\Imagem\UploadImagem;
 
 /**
  * Description of Image
@@ -20,7 +21,7 @@ class Image extends Controller {
      * Inicialmente, sempre salvando no caminho Imagem/Peliculas
      */
     public function upload() {
-        $imgUpload = new Thirday\Imagem\UploadImagem();     // Instancia a que faz o upload
+        $imgUpload = new UploadImagem();     // Instancia a que faz o upload
         //Executa o upload 
         return $imgUpload->exec("product_image");
     }

@@ -20,7 +20,7 @@
                 $msg->exibeMensagem(new Thirday\Messages\SuccessMessage(), " Cadastro realizado com sucesso ");
             }
             ?>
-            <form enctype="multipart/form-data" method="POST" action="./?page=teste&action=teste">
+            <form enctype="multipart/form-data" method="POST" action="./?page=product&action=insert">
                 <div class="form-group">
                     <label for="description">Descrição</label>
                     <input type="text" class="form-control" name="description" id="description" placeholder="Descreva" autofocus>
