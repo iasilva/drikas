@@ -72,9 +72,10 @@ class ProductTagModel {
      * Salva o objeto no banco de dados
      */
     public function save() {
-        $stmt = $this->pdo->prepare("INSERT INTO $this->table VALUES (?,?)");
-        $count = $stmt->execute(array($this->tag_id, $this->product_id));
-        
+        if (!$this->exists()) {
+            $stmt = $this->pdo->prepare("INSERT INTO $this->table VALUES (?,?)");
+            $stmt->execute(array($this->tag_id, $this->product_id));
+        }
     }
 
     /**
@@ -114,6 +115,20 @@ class ProductTagModel {
         $stmt->bindParam(":tag_id", $tag_id, \PDO::PARAM_INT);
         $count = $stmt->execute();
         return $count;
+    }
+    
+    /**
+     * Verifica se já existe o relacionamento no banco de dados
+     * @return bool
+     */
+    private function exists() {
+        $stmt = $this->pdo->prepare("SELECT * FROM $this->table WHERE tag_id = "
+                . ":tag_id and product_id =:product_id");
+        $stmt->bindValue(":tag_id", $this->tag_id, \PDO::PARAM_INT);
+        $stmt->bindValue(":product_id", $this->product_id, \PDO::PARAM_INT);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Category\ProductCategoryModel');
+        $stmt->execute();
+        return $stmt->fetch();
     }
 
 }

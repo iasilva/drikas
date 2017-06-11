@@ -3,6 +3,7 @@
     Author     : Ivan Alves da Silva
 */
 
+
 /* CSS do Header */
 
 #principal-header{
@@ -51,6 +52,7 @@ main header h4{
 
 #home img{
     width: 100%;
+   
 }
 
 #home div{
@@ -68,7 +70,18 @@ main header h4{
 #produtos article{
     margin-top: 24px;
 
+
 }
+img.primary-home{
+    min-height: 190px;
+    min-width: 130px;
+    cursor: pointer;
+
+}
+.product-home{
+    cursor: pointer;
+}
+
 
 
 

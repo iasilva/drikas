@@ -20,8 +20,38 @@ jQuery(function () {
             alert("Este navegador nao suporta FileReader.");
         }
     });
-    
-    
-    
-    
+
+    /**
+     * Captação do produto e adição ao carrinho
+     */
+
+    produto = $("#produtos article input[type=checkbox]");
+
+
+    produto.change(function () {
+        product_id = $(this).val();
+        img_prod = $(this).parent().parent().children('img');
+        formatImageProduct(img_prod); 
+        updateCart(product_id);        
+        
+    });
+    function updateCart(product_id) {
+        action='./?page=teste&action=updateCart';
+        $.ajax({
+            type: 'POST',
+            url: action,
+            data: {'product_id':product_id},
+            success:function (dados) {
+                $("#retorno").hide().fadeIn(1500).html(dados);
+            }
+            
+        });
+    }
+    function formatImageProduct(img_prod) {
+         altura = $(img_prod).css('height');        
+        $(img_prod).css({border:'4px solid green','height':altura});
+    }
+
+
+
 });

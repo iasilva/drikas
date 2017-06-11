@@ -1,5 +1,3 @@
-
-
 <footer class="container-fluid" id="principal-footer">
 
     <div class="row">
@@ -8,7 +6,7 @@
             <address>
                 sac@peliculasdrikas.com.br<br>
                 (27) 9 9649 4935<br>
-                (27) 3727 4534
+                (27) &nbsp;&nbsp;&nbsp;3727 4534
             </address>
         </div>
         <div class="col-md-4">
@@ -28,6 +26,6 @@
 </footer>
 
 
-<script src="./script/jquery/jquery-3.2.1.js"></script>
-<script src="./bootstrap/js/bootstrap.min.js"></script>
-<script src="./script/base-script.js"></script>
+<script type="text/javascript"  src="./script/jquery/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./script/base-script.js"></script>

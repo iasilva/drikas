@@ -30,4 +30,31 @@ class Teste {
         $proCat->deleteAllByCategory(5);
     }
 
+    public function tag() {
+        $tag = new \App\Controller\Tag;
+        $var = "Amor;Saúde-Doença PUREZA";
+
+        $tag->separeTags($var);
+    }
+
+    public function updateCart() {
+        /** Se no carrinho não tiver adiciona */
+        /** Se tiver exclui do carrinho */
+        if (!in_array($_POST['product_id'], $_SESSION['cart'])) {
+            $_SESSION['cart'][] = $_POST['product_id'];
+             var_dump($_SESSION['cart']);
+            return true;
+        } else {
+            foreach ($_SESSION['cart'] as $key => $value) {
+                if ($value == $_POST['product_id']) {
+                    unset($_SESSION['cart'][$key]);
+                     var_dump($_SESSION['cart']);
+                    return FALSE;
+                }
+            }
+        }
+
+       
+    }
+
 }

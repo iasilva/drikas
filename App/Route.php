@@ -34,15 +34,19 @@ switch ($page) {
          * isso precisa na ação index que seja enviado o objeto derepositório de
          * imagens
          */
-        switch ($action) {            
-            case "index":     
+        switch ($action) {
+            case "index":
                 call_user_func_array(array($product, $action), array($imageRep));
                 break;
             default:
                 call_user_func_array(array($product, $action), array());
                 break;
         }
-        
+
+        break;
+    case 'teste':
+        $teste= new \App\Controller\Teste;
+        call_user_func_array(array($teste,$action), array());
         break;
 
     default:

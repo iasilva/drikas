@@ -27,6 +27,13 @@ class TagRepository implements ITagRepository {
         $stmt->execute();
         return $stmt->fetch();
     }
+    public function getTagByName($name) {
+        $stmt = $this->pdo->prepare("SELECT * FROM $this->table WHERE name = :name");
+        $stmt->bindValue(":name", $name, \PDO::PARAM_STR);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Tag\TagModel');
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 
     public function getTags() {
         $stmt = $this->pdo->prepare("SELECT * FROM $this->table ORDER BY name ASC");

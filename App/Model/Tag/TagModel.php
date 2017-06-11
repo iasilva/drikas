@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Model\Tag;
+use App\Model\Tag\CreationTag;
+use App\Model\Tag\TagRepository;
 
 /**
  * Description of TagModel
@@ -12,6 +14,7 @@ class TagModel {
     private $id;
     private $name;
     private $table="tag";
+    private $pdo;    
 
     public function getId() {
         return $this->id;
@@ -35,6 +38,15 @@ class TagModel {
 
     public function setName($name) {
         $this->name = $name;
+    }
+    
+    public function save(ITagRepository $repTag, ICreationTag $creationTag){
+        $tag=$repTag->getTagByName($this->name);
+        if (!$tag) {
+            return $creationTag->save($this);
+        } else {
+            return $tag->getId();
+        }
     }
 
 }

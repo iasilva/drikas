@@ -2,7 +2,8 @@
             <div class="row menu-float-topo-right">
                 <div class="pull-right" >
                      <ul class="list-inline">
-                         <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho"><span class="glyphicon glyphicon-shopping-cart"></span><span class="badge">42</span></a></li>
+                         <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho"><span class="glyphicon glyphicon-shopping-cart">                             
+                                 </span><span class="badge"><?php echo count($_SESSION['cart'])?></span></a></li>
                          <li><a href="#">Cadastrar</a></li>
                         <li><a href="#">Entrar</a></li>
                     </ul>

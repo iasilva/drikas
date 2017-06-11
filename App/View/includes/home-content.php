@@ -27,7 +27,7 @@
                 <a href="./produtos.php?view=byCategory&id=4#produtos"><img src="./images/categories/bichinhos.png"></a>
             </div>   
             <div class="col-xs-12 col-md-3 col-md-offset-1">
-                <a href="./produtos.php?view=all#produtos"><img src="./images/categories/catalogo.png"></a>                        
+                <a href="./?page=product"><img src="./images/categories/catalogo.png"></a>                        
             </div>   
         </div>
     </section>

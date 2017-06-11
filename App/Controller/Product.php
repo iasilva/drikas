@@ -10,6 +10,7 @@ use App\Model\Image\IImageRepository;
 use App\Model\Category\iProductCategoryRepository;
 use App\Controller\Image;
 use App\Controller\Category;
+use App\Controller\Tag;
 
 
 /**
@@ -43,6 +44,7 @@ class Product extends Controller {
     public function index(IImageRepository $images) {
         $this->products = $this->product->getProducts();
         $this->configProductWithPrimaryImage($images);
+        $this->view->set('h1',"Películas de unha Drika's");
         $this->view->set('products', $this->products);
         $this->view->setTitle("Escolha entre os melhores produtos");
         $this->view->render('produto/home');
@@ -64,6 +66,7 @@ class Product extends Controller {
         $imgModel=new ImageModel;
         $img= new Image;  
         $category= new Category;
+        $tag= new Tag;
         $rq=new \Thirday\Request\RequestFactory('post');
         $produto->setDescription($rq->captura('description'));        
         $produto->setPrice($rq->captura('price'));      
@@ -72,7 +75,8 @@ class Product extends Controller {
         $imgModel->setIs_Primary(1);
         $imgModel->setProduct_id($idProduto);
         $imgModel->save($pdo);
-        $category->relationshipWithProduct($idProduto, $rq->captura("categories")); 
+        $category->relationshipWithProduct($idProduto, $rq->captura("categories"));
+        $tag->insert($rq->captura('tags'), $idProduto);
         header("Location: ./?page=product&action=cadastrar&success");
         
     }
