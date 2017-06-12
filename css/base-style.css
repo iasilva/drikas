@@ -69,8 +69,10 @@ main header h4{
 
 #produtos article{
     margin-top: 24px;
-
-
+     color: #b35796;
+}
+#produtos article header{
+   
 }
 img.primary-home{
     min-height: 190px;

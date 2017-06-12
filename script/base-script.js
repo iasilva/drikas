@@ -24,32 +24,91 @@ jQuery(function () {
     /**
      * Captação do produto e adição ao carrinho
      */
-
+    /*Captura o checkbox*/
     produto = $("#produtos article input[type=checkbox]");
-
+    /** percorre cada item de produto verificando se o mesmo esta na sacola*/
+    $.each(produto, function (key, value) {
+        prod_id = $(value).val();
+        img_this=$(value).parent().parent().children('img');
+        existeItemInCart(prod_id,img_this,value);        
+    });
 
     produto.change(function () {
         product_id = $(this).val();
         img_prod = $(this).parent().parent().children('img');
-        formatImageProduct(img_prod); 
-        updateCart(product_id);        
+        updateCart(product_id, img_prod);         
         
     });
-    function updateCart(product_id) {
-        action='./?page=teste&action=updateCart';
+    /**
+     * Veerifica se aquele produto esta no carrinho
+     * @param {type} product_id id dor produto atual que vai verificar
+     * @param {type} img_this referencia a imagem principal do produto no DOM
+     * @param {type} item referencia ao checkBox atual do produto
+     * @returns retorna imagem formatada e o checkbox marcado, caso o produto
+     *  esteja no carrinho
+     */
+    function existeItemInCart(product_id,img_this,item) {
+        action = './?page=teste&action=verifyCart';
         $.ajax({
             type: 'POST',
             url: action,
-            data: {'product_id':product_id},
-            success:function (dados) {
-                $("#retorno").hide().fadeIn(1500).html(dados);
+            data: {'product_id': product_id},
+            success: function (dados) {
+                if (dados === '1') {
+                    formatImageProduct(img_this);
+                    $(item).attr('checked',true);
+                } else {
+                    $(img_this).css({border: 'none'});
+                     $(item).attr('checked',false);
+                }
+
             }
-            
+
+        });
+
+    }
+    /**
+     * Insere e exclui produto no carrinho
+     * @param {type} product_id Produto a ser atualizado
+     * @param {type} img_prod referencia a imagem do produto no DOM
+     * @returns retorna a imagem formatada
+     */
+    function updateCart(product_id, img_prod) {
+        action = './?page=teste&action=updateCart';
+        $.ajax({
+            type: 'POST',
+            url: action,
+            data: {'product_id': product_id},
+            success: function (dados) {
+                if (dados === '1') {
+                     formatImageProduct(img_prod);
+                } else {
+                    $(img_prod).css({border: 'none'});
+                }
+                updateIcon();
+            }
+
         });
     }
+    function updateIcon() {
+        action = './?page=teste&action=updateIcon';
+        $.ajax({
+            type: 'POST',
+            url: action,            
+            success: function (dados) {  
+                $("#item-in-cart").html(dados);
+            }
+
+        });
+    }
+    /**
+     * 
+     * @param {type} img_prod referência a uma imagem do DOM
+     * @returns retorna uma imagem formatada com uma borda verde;
+     */
     function formatImageProduct(img_prod) {
-         altura = $(img_prod).css('height');        
-        $(img_prod).css({border:'4px solid green','height':altura});
+        altura = $(img_prod).css('height');
+        $(img_prod).css({border: '4px solid green', 'height': altura});
     }
 
 

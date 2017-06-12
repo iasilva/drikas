@@ -11,8 +11,10 @@
             ?>
             <article class="col-xs-6 col-sm-3 col-md-2 product-home">
                 <header>Cód.: <?php echo $produto->getId() ?> </header>
-                <label class="zueira">
-                    <img class="img-responsive img-rounded primary-home" src="images/peliculas/<?php echo $produto->getImages()->getName() ?>">
+                <label>
+                    <img class="img-responsive img-rounded primary-home" title="<?php echo $produto->getDescription() ?>"
+                         alt="Imagem - <?php echo $produto->getDescription() ?> - Drika's"
+                         src="images/peliculas/<?php echo $produto->getImages()->getName() ?>">
                     <div class="checkbox text-center">
                         <input type="checkbox" value="<?php echo $produto->getId() ?>">Eu quero
                     </div>

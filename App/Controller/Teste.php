@@ -42,19 +42,27 @@ class Teste {
         /** Se tiver exclui do carrinho */
         if (!in_array($_POST['product_id'], $_SESSION['cart'])) {
             $_SESSION['cart'][] = $_POST['product_id'];
-             var_dump($_SESSION['cart']);
-            return true;
+            echo '1';
         } else {
             foreach ($_SESSION['cart'] as $key => $value) {
                 if ($value == $_POST['product_id']) {
                     unset($_SESSION['cart'][$key]);
-                     var_dump($_SESSION['cart']);
-                    return FALSE;
+                    echo '0';
                 }
             }
         }
+    }
 
-       
+    public function updateIcon() {       
+        echo count($_SESSION['cart']);
+    }
+
+    public function verifyCart() {
+        if (in_array($_POST['product_id'], $_SESSION['cart'])) {
+            echo '1';
+        } else {
+            echo '0';
+        }
     }
 
 }
