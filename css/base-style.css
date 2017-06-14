@@ -52,7 +52,7 @@ main header h4{
 
 #home img{
     width: 100%;
-   
+
 }
 
 #home div{
@@ -69,10 +69,10 @@ main header h4{
 
 #produtos article{
     margin-top: 24px;
-     color: #b35796;
+    color: #b35796;
 }
 #produtos article header{
-   
+
 }
 img.primary-home{
     min-height: 190px;
@@ -83,6 +83,33 @@ img.primary-home{
 .product-home{
     cursor: pointer;
 }
+
+/** Carrinho de compras*/
+.cart-icon-pink{
+    color:#9e3f81;
+    
+    display: block;
+    width: 48px;
+    height: 48px;
+    position: fixed;
+    bottom: 150px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 100;
+    opacity: .8;
+    background: url(../images/layout/cartrosa.jpg) no-repeat;
+}
+.cart-icon-pink:hover{
+    color: grey;
+    opacity: .9;
+}
+.cart-icon-pink span{
+    display: block;
+    font-weight: bolder;
+    margin-top: 18%;
+    margin-left: 15px;
+}
+
 
 
 

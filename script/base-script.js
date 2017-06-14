@@ -1,10 +1,13 @@
 jQuery(function () {
+    /**Sempre quando carregar a página ele insere quantidade de produtos constantes no carrinho*/
+    updateIcon();
+
+
 //    Procedimento para exibição da prévia da imagem da películaF
     $("#product_image").on('change', function () {
         if (typeof (FileReader) != "undefined") {
             var image_holder = $("#previa-imagem");
             image_holder.empty();
-
             var reader = new FileReader();
             reader.onload = function (e) {
                 $("<img />", {
@@ -29,15 +32,15 @@ jQuery(function () {
     /** percorre cada item de produto verificando se o mesmo esta na sacola*/
     $.each(produto, function (key, value) {
         prod_id = $(value).val();
-        img_this=$(value).parent().parent().children('img');
-        existeItemInCart(prod_id,img_this,value);        
+        img_this = $(value).parent().parent().children('img');
+        existeItemInCart(prod_id, img_this, value);
     });
 
     produto.change(function () {
         product_id = $(this).val();
         img_prod = $(this).parent().parent().children('img');
-        updateCart(product_id, img_prod);         
-        
+        updateCart(product_id, img_prod);
+
     });
     /**
      * Veerifica se aquele produto esta no carrinho
@@ -47,7 +50,7 @@ jQuery(function () {
      * @returns retorna imagem formatada e o checkbox marcado, caso o produto
      *  esteja no carrinho
      */
-    function existeItemInCart(product_id,img_this,item) {
+    function existeItemInCart(product_id, img_this, item) {
         action = './?page=teste&action=verifyCart';
         $.ajax({
             type: 'POST',
@@ -56,10 +59,10 @@ jQuery(function () {
             success: function (dados) {
                 if (dados === '1') {
                     formatImageProduct(img_this);
-                    $(item).attr('checked',true);
+                    $(item).attr('checked', true);
                 } else {
                     $(img_this).css({border: 'none'});
-                     $(item).attr('checked',false);
+                    $(item).attr('checked', false);
                 }
 
             }
@@ -74,14 +77,15 @@ jQuery(function () {
      * @returns retorna a imagem formatada
      */
     function updateCart(product_id, img_prod) {
-        action = './?page=teste&action=updateCart';
+        action = './?page=cart&action=ajaxUpdateCart';       
         $.ajax({
             type: 'POST',
             url: action,
             data: {'product_id': product_id},
             success: function (dados) {
+                alert(dados);
                 if (dados === '1') {
-                     formatImageProduct(img_prod);
+                    formatImageProduct(img_prod);
                 } else {
                     $(img_prod).css({border: 'none'});
                 }
@@ -90,13 +94,25 @@ jQuery(function () {
 
         });
     }
+    /**
+     * Conta e atualiza o icone do carrinho de compras com a quantidade atual 
+     * de produtos no carrinho
+     * @returns {undefined}
+     */
     function updateIcon() {
         action = './?page=teste&action=updateIcon';
         $.ajax({
             type: 'POST',
-            url: action,            
-            success: function (dados) {  
-                $("#item-in-cart").html(dados);
+            url: action,
+            success: function (dados) {
+                var valor;
+                if (dados < 10) {
+                    valor = '0' + dados;
+                } else {
+                    valor = dados
+                }
+                $("#item-in-cart").html(valor);
+                $("#cart-flutuante").html(valor);
             }
 
         });

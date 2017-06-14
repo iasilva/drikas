@@ -36,7 +36,12 @@ class Teste {
 
         $tag->separeTags($var);
     }
+    
+    public function rep(){
+        var_dump($_SESSION['cart']);
+    }
 
+    
     public function updateCart() {
         /** Se no carrinho não tiver adiciona */
         /** Se tiver exclui do carrinho */

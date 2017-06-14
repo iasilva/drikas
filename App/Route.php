@@ -21,7 +21,7 @@ switch ($page) {
      * A classe Cart é repon~ável das ações do carrinho de compra
      */
     case 'cart':
-        $cart = new \App\Controller\Cart();
+        $cart = new \App\Controller\Cart($produtoRep,$cart);
         call_user_func_array(array($cart, $action), array());
         break;
     /**

@@ -22,9 +22,7 @@
             </article>
         <?php } ?>
     </div>
-    <div class="row" id='retorno'>
-        
-    </div>
+    <span class="cart-icon-pink" title="Ir para o caixa"><span id="cart-flutuante"><strong ></strong></span></span>
 </main>
 <?php require_once VIEW_DIR . '/includes/footer.php'; ?> <!--Inclui o FOOTER - ainda básico e estático--> 
 </body>

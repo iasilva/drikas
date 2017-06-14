@@ -36,3 +36,6 @@ $produtoRep = new \App\Model\Product\ProductRepository($pdo);
 
 /** Repositório de imagens*/
 $imageRep= new \App\Model\Image\ImageRepository($pdo);
+
+/**Session cart*/
+$cart= new \App\Model\Shopping\CartSession();
