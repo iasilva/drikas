@@ -1,9 +1,9 @@
 jQuery(function () {
-    /**Sempre quando carregar a página ele insere quantidade de produtos constantes no carrinho*/
+    /**Sempre quando carregar a pÃ¡gina ele insere quantidade de produtos constantes no carrinho*/
     updateIcon();
+    
 
-
-//    Procedimento para exibição da prévia da imagem da películaF
+//    Procedimento para exibiÃ§Ã£o da prÃ©via da imagem da pelÃ­culaF
     $("#product_image").on('change', function () {
         if (typeof (FileReader) != "undefined") {
             var image_holder = $("#previa-imagem");
@@ -25,7 +25,7 @@ jQuery(function () {
     });
 
     /**
-     * Captação do produto e adição ao carrinho
+     * CaptaÃ§Ã£o do produto e adiÃ§Ã£o ao carrinho
      */
     /*Captura o checkbox*/
     produto = $("#produtos article input[type=checkbox]");
@@ -51,7 +51,7 @@ jQuery(function () {
      *  esteja no carrinho
      */
     function existeItemInCart(product_id, img_this, item) {
-        action = './?page=teste&action=verifyCart';
+        action = './?page=cart&action=has';
         $.ajax({
             type: 'POST',
             url: action,
@@ -82,8 +82,7 @@ jQuery(function () {
             type: 'POST',
             url: action,
             data: {'product_id': product_id},
-            success: function (dados) {
-                alert(dados);
+            success: function (dados) {                
                 if (dados === '1') {
                     formatImageProduct(img_prod);
                 } else {
@@ -100,12 +99,12 @@ jQuery(function () {
      * @returns {undefined}
      */
     function updateIcon() {
-        action = './?page=teste&action=updateIcon';
+        action = './?page=cart&action=ajaxCountItens';
         $.ajax({
             type: 'POST',
             url: action,
             success: function (dados) {
-                var valor;
+                var valor;                
                 if (dados < 10) {
                     valor = '0' + dados;
                 } else {
@@ -119,7 +118,7 @@ jQuery(function () {
     }
     /**
      * 
-     * @param {type} img_prod referência a uma imagem do DOM
+     * @param {type} img_prod referÃªncia a uma imagem do DOM
      * @returns retorna uma imagem formatada com uma borda verde;
      */
     function formatImageProduct(img_prod) {

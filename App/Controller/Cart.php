@@ -28,6 +28,7 @@ class Cart extends Controller {
         parent::__construct();
         $this->product = $product;
         $this->cart = $cart;
+     
     }
 
     public function index() {
@@ -54,11 +55,28 @@ class Cart extends Controller {
     private function add($id) {
         $product = $this->product->getProduct($id);       
         $item = new CartItem($product, 1);        
-        $this->cart->add($item);        
+        $this->cart->add($item);   
+        
     }
 
     private function delete($id) {
         $this->cart->delete($id);
+    }
+    /**
+     * 
+     * @return String através de echo para alimentar ajax
+     */
+    public function ajaxCountItens(){
+        echo count($this->cart->getCartItems());
+    }
+    public function has(){
+        $post = new RequestFactory('post');
+        $id = $post->captura('product_id');
+        if($this->cart->has($id)){
+            echo '1';
+        }else{
+            echo '0';
+        }
     }
 
 }

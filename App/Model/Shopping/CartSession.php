@@ -12,11 +12,11 @@ class CartSession extends ICart {
     private $items = [];
 
     public function __construct() {
-        $this->restore();
+        $this->restore();        
     }
 
     private function restore() {
-        return isset($_SESSION['cart']) ? unserialize($_SESSION['cart']) : array();
+        $this->items= isset($_SESSION['cart']) ? unserialize($_SESSION['cart']) : array();
     }
 
     public function add(CartItem $item) {
@@ -60,8 +60,7 @@ class CartSession extends ICart {
     }
 
     public function __destruct() {
-        $_SESSION['cart'] = serialize($this->items);
-       
+        $_SESSION['cart'] = serialize($this->items);       
     }
 
 }

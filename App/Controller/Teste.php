@@ -11,7 +11,8 @@ use App\Model\Image\CleaningImageArquivo;
  * @author ivana
  */
 class Teste {
-
+    
+   
     public function delete() {
         $img = new ImageModel;
         $img->setName("59171270be994.png");
@@ -20,9 +21,13 @@ class Teste {
     }
 
     public function teste() {
-        $rq = new \Thirday\Request\RequestFactory('post');
-        $a = $rq->captura('categories');
-        var_dump($a);
+        $cartSession = new \App\Model\Shopping\CartSession;
+        $prod_rep = new \App\Model\Product\ProductRepository(\Database::conexao());
+        $product = $prod_rep->getProduct(6);
+        $item = new \App\Model\Shopping\CartItem($product, 1);
+//        $cart=$cartSession->add($item);
+        
+
     }
 
     public function cat() {
@@ -36,12 +41,11 @@ class Teste {
 
         $tag->separeTags($var);
     }
-    
-    public function rep(){
+
+    public function rep() {
         var_dump($_SESSION['cart']);
     }
 
-    
     public function updateCart() {
         /** Se no carrinho não tiver adiciona */
         /** Se tiver exclui do carrinho */
@@ -58,7 +62,7 @@ class Teste {
         }
     }
 
-    public function updateIcon() {       
+    public function updateIcon() {
         echo count($_SESSION['cart']);
     }
 
@@ -69,5 +73,5 @@ class Teste {
             echo '0';
         }
     }
-
+    
 }

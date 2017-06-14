@@ -1,17 +1,17 @@
 <?php
+session_start();
+
 require './vendor/autoload.php';
 
+$sess = new \App\Model\Shopping\CartSession();
+$prod = new \App\Model\Product\ProductRepository(\Database::conexao());
+$produto=$prod->getProduct(8);
+$produto2=$prod->getProduct(9);
+$item = new \App\Model\Shopping\CartItem($produto, 1);
+$item2 = new \App\Model\Shopping\CartItem($produto2, 5);
+$sess->delete(6);
 
-$pdo= Database::conexao();
 
-$prod= new \App\Model\Product\ProductRepository($pdo);
-$p=$prod->getProducts();
-var_dump($p);
-?>
+$itens=$sess->getCartItems();
 
-
-
-<form action="" method="POST" enctype="multipart/form-data">
-    <input type="file" name="foo" value=""/>
-    <input type="submit" value="Upload File"/>
-</form>
+var_dump($itens);

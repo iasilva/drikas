@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 /**
  * Constante <em>DIR</em> sempre remete ao diretório root
  */
