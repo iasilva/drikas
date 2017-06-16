@@ -35,11 +35,7 @@ class CartSession extends ICart {
     public function update(CartItem $item) {
         $id = $item->getProduct()->getId();
         if ($this->has($id)) {
-            if (!$this->items->getQuantity()) {
-                $this->delete($id);
-                return;
-            }
-            $this->items[$id] = $item;
+           $this->items[$id] = $item;
         }
     }
 

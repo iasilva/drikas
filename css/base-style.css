@@ -102,7 +102,9 @@ img.primary-home{
 .cart-icon-pink:hover{
     color: grey;
     opacity: .9;
+   
 }
+a.cart-icon-pink:hover{text-decoration: none;}
 .cart-icon-pink span{
     display: block;
     font-weight: bolder;

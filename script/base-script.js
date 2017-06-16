@@ -1,7 +1,7 @@
 jQuery(function () {
     /**Sempre quando carregar a pÃ¡gina ele insere quantidade de produtos constantes no carrinho*/
     updateIcon();
-    
+
 
 //    Procedimento para exibiÃ§Ã£o da prÃ©via da imagem da pelÃ­culaF
     $("#product_image").on('change', function () {
@@ -55,6 +55,7 @@ jQuery(function () {
         $.ajax({
             type: 'POST',
             url: action,
+            cache: false,
             data: {'product_id': product_id},
             success: function (dados) {
                 if (dados === '1') {
@@ -77,12 +78,13 @@ jQuery(function () {
      * @returns retorna a imagem formatada
      */
     function updateCart(product_id, img_prod) {
-        action = './?page=cart&action=ajaxUpdateCart';       
+        action = './?page=cart&action=ajaxUpdateCart';
         $.ajax({
             type: 'POST',
             url: action,
+            cache: false,
             data: {'product_id': product_id},
-            success: function (dados) {                
+            success: function (dados) {
                 if (dados === '1') {
                     formatImageProduct(img_prod);
                 } else {
@@ -103,8 +105,9 @@ jQuery(function () {
         $.ajax({
             type: 'POST',
             url: action,
+            cache: false,
             success: function (dados) {
-                var valor;                
+                var valor;
                 if (dados < 10) {
                     valor = '0' + dados;
                 } else {
@@ -125,6 +128,74 @@ jQuery(function () {
         altura = $(img_prod).css('height');
         $(img_prod).css({border: '4px solid green', 'height': altura});
     }
+
+
+
+    /** Jquery responsável pela atualização e manutenção do carrinho de compras*/
+
+
+    /**      
+     *Ação disparada quando se altera a quantidade pedida na cartela.
+     */
+    /**     
+     * @Object $unds  - Representa o select de unidades
+     */
+    var unds = $("select[name='cart-und']");  //select [cartela]  
+    $(unds).change(function () {
+        celulaAtual = $(this).parent();// célula que envolve a cartela
+        linhaAtual = $(celulaAtual).parent(); //Linha que envolve a película      
+        qtdAtualNaCartela = $(this).val(); // Quantidade selecionada de unidades na cartela        
+        product_id = $(linhaAtual).children("[name='product_id']").val();
+        quantidadeAtualDeCartelas = $(celulaAtual).next().next().children('input').val();
+        /** Substitui o preço com base na quantidade de películas informadas*/
+
+        ajaxUpdateCart(product_id, qtdAtualNaCartela, quantidadeAtualDeCartelas);
+    });
+
+    /** Quando altera a quantidade de cartelas - clique em atualizar*/
+
+    $(".btn-update-item").click(function(){
+        linhaAtual = $(this).parent().parent(); //Linha que envolve a película  
+        quantidadeAtualDeCartelas= $(linhaAtual).children().children("input[name='cart-quantity']").val(); // Quantidade de cartelas informadas 
+        qtdAtualNaCartela=$(linhaAtual).children().children("select[name='cart-und']").val();
+        product_id = $(linhaAtual).children("[name='product_id']").val();             
+        ajaxUpdateCart(product_id, qtdAtualNaCartela, quantidadeAtualDeCartelas);
+    });
+    
+   
+    /**
+     * 
+     * @param {type} product_id
+     * @param {type} qtdNaCartela
+     * @param {type} quantidadeAtualDeCartelas
+     * @returns {undefined}
+     */
+
+    function ajaxUpdateCart(product_id, qtdNaCartela, quantidadeAtualDeCartelas) {
+
+        /**Atualização do carrinho na página carrinho*/
+        action = './?page=cart&action=ajaxUpdateItemInTheCart';
+        $.ajax({
+            type: 'POST',
+            url: action,
+            cache: false,
+            data: {'product_id': product_id,
+                'qtdNaCartela': qtdNaCartela,
+                'quantidadeAtualDeCartelas': quantidadeAtualDeCartelas
+            },
+            success: function (dados) {
+                window.location.reload();
+            }
+
+        });
+
+    }
+
+
+
+
+
+
 
 
 

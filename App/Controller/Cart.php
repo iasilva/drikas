@@ -23,15 +23,24 @@ class Cart extends Controller {
 
     private $product;
     private $cart;
+    private $images;
+    private $items;
+    
+    private $pricePelicula= array(2=>0.99,4=>1.79,10=>2.49);
 
     public function __construct(IProductRepository $product, ICart $cart) {
         parent::__construct();
         $this->product = $product;
+
         $this->cart = $cart;
-     
     }
 
-    public function index() {
+    public function index(\App\Model\Image\IImageRepository $images) {
+        $this->images = $images;
+        $this->items = $this->cart->getCartItems();
+        $this->configProductWithPrimaryImage($images);
+        $this->view->set('products', $this->items);
+        $this->view->set('total', $this->cart->getTotal());
         $this->view->setTitle("Carrinho de compras Drika's");
         $this->view->render('cart');
     }
@@ -53,29 +62,53 @@ class Cart extends Controller {
     }
 
     private function add($id) {
-        $product = $this->product->getProduct($id);       
-        $item = new CartItem($product, 1);        
-        $this->cart->add($item);   
-        
+        $product = $this->product->getProduct($id);
+        $item = new CartItem($product, 1);
+        $this->cart->add($item);
     }
 
     private function delete($id) {
         $this->cart->delete($id);
     }
+
     /**
      * 
      * @return String através de echo para alimentar ajax
      */
-    public function ajaxCountItens(){
+    public function ajaxCountItens() {
         echo count($this->cart->getCartItems());
     }
-    public function has(){
+
+    public function has() {
         $post = new RequestFactory('post');
         $id = $post->captura('product_id');
-        if($this->cart->has($id)){
+        if ($this->cart->has($id)) {
             echo '1';
-        }else{
+        } else {
             echo '0';
+        }
+    }
+
+    public function ajaxUpdateItemInTheCart() {
+        $post = new RequestFactory('post');
+        $id=
+        $product = $this->product->getProduct($post->captura('product_id'));
+        $product->setPrice($this->pricePelicula[$post->captura('qtdNaCartela')]);        
+        $item = new CartItem($product,$post->captura('quantidadeAtualDeCartelas'));
+        $item->setQuantityInCarton($post->captura('qtdNaCartela'));         
+        $this->cart->update($item);
+        var_dump($this->cart);
+    }
+
+    /**
+     * Configura todos os produtos com suas todas imasgens vinculadas 
+     * @param IImageRepository $images
+     */
+    private function configProductWithPrimaryImage() {
+        foreach ($this->items as $key => $item) {
+            $image = $this->images->getPrimaryImage($key);
+            $produto = $item->getProduct();
+            $produto->setImages($image);
         }
     }
 

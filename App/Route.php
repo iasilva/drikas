@@ -21,8 +21,16 @@ switch ($page) {
      * A classe Cart é repon~ável das ações do carrinho de compra
      */
     case 'cart':
-        $cart = new \App\Controller\Cart($produtoRep,$cart);
-        call_user_func_array(array($cart, $action), array());
+        $cart = new \App\Controller\Cart($produtoRep, $cart);
+        switch ($action) {
+            case "index":
+                 call_user_func_array(array($cart, $action), array($imageRep));
+                break;
+            default :
+                call_user_func_array(array($cart, $action), array());
+                break;
+        }
+
         break;
     /**
      * Página product ta vinculado a tudo em relação ao produto
@@ -45,8 +53,8 @@ switch ($page) {
 
         break;
     case 'teste':
-        $teste= new \App\Controller\Teste;
-        call_user_func_array(array($teste,$action), array());
+        $teste = new \App\Controller\Teste;
+        call_user_func_array(array($teste, $action), array());
         break;
 
     default:
