@@ -6,8 +6,6 @@
         <div class="col-lg-12">
             <h3>Carrinho de compras</h3>
 
-
-
             <table id="cart" class="table table-hover table-condensed">
                 <thead>
                     <tr>
@@ -42,14 +40,14 @@
                                     <option value="10" <?php echo $check = ($qtd == 10) ? "selected" : '' ?>>10 und.</option>
                                 </select>
                             </td>
-                            <td data-th="Price" class="cart-price"><?php echo "R$ " . number_format($item->getProduct()->getPrice(), 2, ',', '.'); ?></td>
+                            <td data-th="Preço" class="cart-price"><?php echo "R$ " . number_format($item->getProduct()->getPrice(), 2, ',', '.'); ?></td>
                             <td data-th="Quantidade">
                                 <input type="number" name="cart-quantity" class="form-control text-center cart-quantity" min="0" value="<?php echo $item->getQuantity(); ?>">
                             </td>
                             <td data-th="Subtotal" class="text-center cart-subtotal"><?php echo "R$ " . number_format($item->getSubTotal(), 2, ',', '.'); ?></td>
                             <td class="actions" data-th="">
                                 <button class="btn btn-info btn-sm btn-update-item" title="Atualizar Carrinho"><i class="fa fa-refresh"></i></button>
-                                <button class="btn btn-danger btn-sm btn-delete-item" title="Excluir item do carrinho"><i class="fa fa-trash-o"></i></button>	
+                                <a href="./?page=cart&action=delete&id=<?php echo $item->getProduct()->getId(); ?>"><button class="btn btn-danger btn-sm btn-delete-item" title="Excluir item do carrinho"><i class="fa fa-trash-o"></i></button></a>	
 
                             </td>
                     <input type="hidden" name="product_id" value="<?php echo $item->getProduct()->getId(); ?>">  

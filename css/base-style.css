@@ -35,7 +35,19 @@
 #principal-header .row.menu-float-topo-right ul li a:hover{
     color: #333;
 }
-
+@media screen and (max-width: 600px) {
+    #principal-header .row.menu-float-topo-right{
+        margin-right: 20%;
+    }
+    #principal-header .row.menu {
+        max-width: 94%;
+        margin-left: 2%;
+    }
+    main{
+        max-width: 98%;
+    }
+    
+}
 
 /** PÁGINA HOME - PRINCIPAL*/
 main{

@@ -56,7 +56,7 @@ class Cart extends Controller {
             $this->add($id);
             echo '1'; /* Retorno necessário exclusivo ao ajax */
         } else {
-            $this->delete($id);
+            $this->ajaxDelete($id);
             echo '0';
         }
     }
@@ -66,9 +66,22 @@ class Cart extends Controller {
         $item = new CartItem($product, 1);
         $this->cart->add($item);
     }
-
-    private function delete($id) {
+    /**
+     * Ação para deleção interna
+     * Quem decide se usa ou não é o método ajaxUpdateCart()
+     * @param type $id
+     */
+    private function ajaxDelete($id) {
         $this->cart->delete($id);
+    }
+    /**
+     * Ação para deleção externa
+     * @param type $id
+     */
+    public function delete() {
+        $get= new RequestFactory('get');
+        $this->cart->delete($get->captura('id'));
+        header("location: ./?page=cart");
     }
 
     /**
@@ -88,16 +101,18 @@ class Cart extends Controller {
             echo '0';
         }
     }
-
+    
+    /**
+     * As atualizações que são feitas no carrinho seja pela quantidade de películas 
+     * na cartela ou a quantidade de cartelas são encaminhadas a esse método
+     */
     public function ajaxUpdateItemInTheCart() {
-        $post = new RequestFactory('post');
-        $id=
+        $post = new RequestFactory('post');        
         $product = $this->product->getProduct($post->captura('product_id'));
         $product->setPrice($this->pricePelicula[$post->captura('qtdNaCartela')]);        
         $item = new CartItem($product,$post->captura('quantidadeAtualDeCartelas'));
         $item->setQuantityInCarton($post->captura('qtdNaCartela'));         
-        $this->cart->update($item);
-        var_dump($this->cart);
+        $this->cart->update($item);       
     }
 
     /**
