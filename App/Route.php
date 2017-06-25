@@ -24,7 +24,7 @@ switch ($page) {
         $cart = new \App\Controller\Cart($produtoRep, $cart);
         switch ($action) {
             case "index":
-                 call_user_func_array(array($cart, $action), array($imageRep));
+                call_user_func_array(array($cart, $action), array($imageRep));
                 break;
             default :
                 call_user_func_array(array($cart, $action), array());
@@ -55,6 +55,23 @@ switch ($page) {
     case 'teste':
         $teste = new \App\Controller\Teste;
         call_user_func_array(array($teste, $action), array());
+        break;
+    case 'user':
+        $user = new \App\Controller\User;
+        switch ($action) {
+            case 'cadastro':
+                $est_repository = new \App\Model\Endereco\EstadoRepository($pdo);
+                call_user_func_array(array($user, $action), array($est_repository));
+                break;
+
+            default:
+                call_user_func_array(array($user, $action), array());
+                break;
+        }
+        break;
+    case 'endereco':
+        $endereco = new \App\Controller\Endereco($pdo);
+        call_user_func_array(array($endereco, $action), array());
         break;
 
     default:

@@ -4,11 +4,6 @@
 namespace App\Controller;
 use App\Model\Relationship\ProductCategoryProductModel;
 
-/**
- * Controler responsável pelos procedimetos relacionado as categorias
- *
- * @author Ivan Alves da Silva
- */
 class Category extends \App\Mvc\Controller{
     public function __construct() {
         parent::__construct();

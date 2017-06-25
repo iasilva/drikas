@@ -4,7 +4,7 @@
     ?>
     <section id="home">
         <div class="row">
-            <header>
+            <header class="header-page">
                 <h4 class="bg-primary text-center">Escolha fácil drika's</h4>
             </header>
         </div>
