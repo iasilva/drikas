@@ -16,6 +16,7 @@ class ValidaEmail extends \Thirday\Valida\iValida {
         $this->campo = $email;
         $this->validaComprimento();
         $this->validaForma();
+        
     }
 
     protected function validaComprimento() {
@@ -23,7 +24,7 @@ class ValidaEmail extends \Thirday\Valida\iValida {
             $this->erro = true;
             throw new \Exception(" Email avaliado não passou na"
             . " validação de comprimento. Emails precisam de ao "
-            . "menos 10 caracteres ", E_USER_ERROR);
+            . "menos 10 caracteres. ", E_USER_ERROR);
         }
     }
 
@@ -41,7 +42,7 @@ class ValidaEmail extends \Thirday\Valida\iValida {
         } else {
             $this->erro = true;
             throw new \Exception(" Email avaliado não passou na"
-            . " validação. ", E_USER_ERROR);
+            . " validação. Formato incompatível.", E_USER_ERROR);
         }
     }
 

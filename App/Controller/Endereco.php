@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\Endereco\MunicipioRepositoryJson;
+use App\Model\Endereco\MunicipioRepository;
 use Thirday\Request\RequestFactory;
 
 class Endereco extends \App\Mvc\Controller {
@@ -31,6 +32,19 @@ class Endereco extends \App\Mvc\Controller {
         $req = new RequestFactory('post');
         $json = new MunicipioRepositoryJson($this->pdo);
         echo $json->getNomeMunicipiosByEstadoId($req->captura('estado_id'));
+    }
+
+    /**
+     * Recebe requisição via ajax e devolve um conjunto de opções para um select de municípios
+     */
+    public function ajaxSelectMunicipios() {
+        $req = new RequestFactory('post');
+        $Repository = new MunicipioRepository($this->pdo);
+        $municipios= $Repository->getMunicipiosByEstadoId($req->captura('estado_id'));
+        echo "<option value=\"\">Selecione um município</option>";
+        foreach ($municipios as $municipio) {
+            echo "<option value=\"{$municipio->getId()}\">". $municipio->getNome() . "</option>";
+        }
     }
 
 }

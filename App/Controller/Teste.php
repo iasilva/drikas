@@ -2,76 +2,39 @@
 
 namespace App\Controller;
 
-use App\Model\Image\ImageModel;
-use App\Model\Image\CleaningImageArquivo;
+use Thirday\Request\RequestFactory;
+use Thirday\Valida\Validacao;
+use Thirday\Messages\Mensagem;
 
 /**
  * Controller de teste
  *
  * @author ivana
  */
-class Teste {
-    
-   
-    public function delete() {
-        $img = new ImageModel;
-        $img->setName("59171270be994.png");
-        $excImg = new CleaningImageArquivo;
-        $excImg->delete($img);
+class Teste extends \App\Mvc\Controller {
+
+    private $post;
+    private $get;
+    private $valida;
+    private $msg;
+
+    public function __construct() {
+        parent::__construct();
+        $this->post = new RequestFactory('post');
+        $this->get = new RequestFactory('get');
+        $this->valida = new Validacao();
+        $this->msg = new \Thirday\Messages\MensagemFactory();
     }
 
-    public function teste() {
-        $cartSession = new \App\Model\Shopping\CartSession;
-        $prod_rep = new \App\Model\Product\ProductRepository(\Database::conexao());
-        $product = $prod_rep->getProduct(6);
-        $item = new \App\Model\Shopping\CartItem($product, 1);
-//        $cart=$cartSession->add($item);
-        
+    public function validaEmailAjax() {
+        $email = $this->post->captura('email');
 
-    }
-
-    public function cat() {
-        $proCat = new \App\Model\Relationship\ProductCategoryProductModel;
-        $proCat->deleteAllByCategory(5);
-    }
-
-    public function tag() {
-        $tag = new \App\Controller\Tag;
-        $var = "Amor;Saúde-Doença PUREZA";
-
-        $tag->separeTags($var);
-    }
-
-    public function rep() {
-        var_dump($_SESSION['cart']);
-    }
-
-    public function updateCart() {
-        /** Se no carrinho não tiver adiciona */
-        /** Se tiver exclui do carrinho */
-        if (!in_array($_POST['product_id'], $_SESSION['cart'])) {
-            $_SESSION['cart'][] = $_POST['product_id'];
-            echo '1';
-        } else {
-            foreach ($_SESSION['cart'] as $key => $value) {
-                if ($value == $_POST['product_id']) {
-                    unset($_SESSION['cart'][$key]);
-                    echo '0';
-                }
-            }
+        try {
+            $this->valida->validar('email', $email);
+            $this->msg->exibeMensagem(new \Thirday\Messages\SuccessMessage, "Email válido.");
+        } catch (\Exception $exc) {            
+            $this->msg->exibeMensagem(new \Thirday\Messages\ErrorMessage(), $exc->getMessage());
         }
     }
 
-    public function updateIcon() {
-        echo count($_SESSION['cart']);
-    }
-
-    public function verifyCart() {
-        if (in_array($_POST['product_id'], $_SESSION['cart'])) {
-            echo '1';
-        } else {
-            echo '0';
-        }
-    }
-    
 }

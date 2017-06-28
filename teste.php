@@ -3,20 +3,32 @@
 session_start();
 
 require './vendor/autoload.php';
-$a = new \Thirday\Json\JsonFormater();
-$a->startObject("Homem");
-$a->bind("amor","adrieli");
-$a->bind("carro", "i30");
-$a->startObject("preferências");
-$a->bind("sexo", "masculino");
-$a->bind("Comida", "parmesão");
-$a->endObject();
-$a->bind("corrida","Fórmula1");
-$a->endObject();
+/*
+//Chamada para validação de item individualmente
+$valida= new \App\Model\User\ValidaUser;
+list($erros,$alerts)=$valida->valida('birth', 'Ivan');
+ */
+//Validação individual campos do usuário
 
-$a->around();
 
-$b= json_decode(file_get_contents('config.json'));
-var_dump($b);
+/* Validação de todos os campos do objeto
+ 
+$valida= new \App\Model\User\ValidaUser;
+$user= new \App\Model\User\UserModel;
+$user->setBairro("Populares");
+$user->setBirth("23/12/2014");
+$user->setCpf("10417436700");
+$user->setEmail("Ivan.alves@outlook.com");
+$user->setLogradouro("Argentina Bussular");
+$user->setMunicipio_id(125);
+$user->setName("Ivan Alves");
+$user->setNumero(298);
+$user->setSenha("123456");
+$user->setSexo('M');
+
+
+list($erros,$alerts)=$valida->validaAll($user);
+*/
+//Validação do objeto User - Todos os campos
 
 

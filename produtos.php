@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php require_once './vendor/autoload.php';?>
+<?php require_once './vendor/autoload.php'; ?>
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
@@ -9,16 +9,81 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/base-style.css">
+        <style>
+            .custom-combobox {
+                position: relative;
+                display: inline-block;
+            }
+
+            .custom-combobox-input {
+                margin: 0;
+                padding: 5px 10px;
+            }
+        </style>
     </head>
     <body>
-        <?php require_once './html/header.php'; ?> <!--Inclui o header da página - ainda básico e estático-->
-        <?php require_once './html/home-produtos.php'; ?> <!--Inclui os produtos para escolha-->
-        <?php require_once './html/footer.php'; ?> <!--Inclui o FOOTER - ainda básico e estático--> 
+
+        <div class="form-group">
+            <label class="control-label" for="email">Email</label>
+            <input type="email" name="email" class="form-control"  aria-describedby="helpBlock2">
+            <span id="helpEmail" class="help-block"></span>
+        </div>
+        
+<!--        <div class="form-group">
+            <label class="control-label" for="name">Nome</label>
+            <input type="text" name="cpf" class="form-control"  aria-describedby="helpBlock2">
+            <span id="helpNome" class="help-block"></span>
+        </div>-->
+
+
+
+
+
+
+
+
+
 
     </body>
 
 
 
-    <script src="script/jquery/jquery-3.2.1.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="script/jquery/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="script/jquery/jquery-ui.min.js"></script>
+    <script type="text/javascript"  src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            $("input").change(function () {
+                form_group_pai = $(this).parent();
+                campo = $(this).prop('name');
+                valor = $(this).val();
+                
+                action = './?page=user&action=validaUserAjax';
+                $.ajax({
+                    type: 'POST',
+                    url: action,
+                    cache: false,
+                    data: {
+                        campo: campo,
+                        valor: valor
+                    },
+                    success: function (data) {
+                        if (data !== '1') {
+                            $(form_group_pai).addClass('has-error');
+                            $(form_group_pai).removeClass('has-success');
+                            $(form_group_pai).children(".help-block").html(data);
+                        } else {
+                            $(form_group_pai).children(".help-block").html('');
+                            $(form_group_pai).removeClass('has-error');
+                            $(form_group_pai).addClass('has-success');
+                        }
+                    }
+                });
+            });
+        });
+
+
+
+    </script>
 </html>

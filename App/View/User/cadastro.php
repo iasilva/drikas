@@ -8,17 +8,45 @@
         </header>
     </div>
 
-    <div class="row cad-user">
+    <div class="row cad-user" style="margin-bottom:120px;">
         <form method="POST" action="./?page=user&action=insert">
             <div class="row">
 
+                <!--PAINEL Usuário-->
+                <div class="col-xs-12 col-md-5 col-lg-4">
+                    <div class="panel panel-default"><!--Dados Básicos-->
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Conta</h2>
+                        </div>
+                        <div class="panel-body">
+
+                            <div class="form-group">
+                                <label class="control-label" for="email">Email</label>                   
+                                <input type="email" class="form-control" name="email" value="" required/>
+                                <span class="help-block"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="senha">Senha</label>                   
+                                <input type="password" class="form-control" name="senha" value="" required/>
+                                <span class="help-block"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="Repita a senha">Repita a senha</label>                   
+                                <input type="password" class="form-control" name="senha-confirm" value="" required/>
+                                <span class="help-block"></span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
                 <div class="col-xs-12 col-md-5 col-lg-4">
 
                     <div class="panel panel-default"><!--Dados Básicos-->
                         <div class="panel-heading">
                             <h2 class="panel-title">Básico</h2>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body">                           
 
                             <div class="form-group" style="margin-bottom: 12px;">
                                 <label for="sexo">Sexo </label>
@@ -32,42 +60,25 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="name">Nome </label>                   
+                                <label class="control-label" for="name">Nome </label>                   
                                 <input type="text" class="form-control" name="name" value="" required/>
+                                <span class="help-block"></span>
                             </div>
 
                             <div class="form-group">
-                                <label for="name">CPF</label>                   
+                                <label class="control-label" for="name">CPF</label>                   
                                 <input type="text" class="form-control" name="cpf" pattern="\d{11}"
                                        title="Digite apenas número" value="" required/>
+                                <span class="help-block"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="birth">Data de nascimento</label>                   
+                                <input type="date" style="width:160px;"  class="form-control text-center" name="birth"
+                                       required/>
+                                <span class="help-block"></span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--PAINEL Usuário-->
-                <div class="col-xs-12 col-md-5 col-lg-4">
-                    <div class="panel panel-default"><!--Dados Básicos-->
-                        <div class="panel-heading">
-                            <h2 class="panel-title">Conta</h2>
-                        </div>
-                        <div class="panel-body">
-
-                            <div class="form-group">
-                                <label for="email">Email</label>                   
-                                <input type="email" class="form-control" name="email" value="" required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="senha">Senha</label>                   
-                                <input type="password" class="form-control" name="senha" value="" required/>
-                            </div>
-                            <div class="form-group">
-                                <label for="Repita a senha">Repita a senha</label>                   
-                                <input type="password" class="form-control" name="senha-confirm" value="" required/>
-                            </div>
-
-                        </div>
-                    </div>
-
                 </div>
 
 
@@ -82,16 +93,19 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label for="Logradouro">Logradouro</label>                   
+                                <label  class="control-label" for="Logradouro">Logradouro</label>                   
                                 <input type="text" class="form-control" name="logradouro" value="" required/>
+                                <span class="help-block"></span>
                             </div>
                             <div class="form-group">
-                                <label for="numero">Número</label>                   
-                                <input type="text" class="form-control input-sm" name="numero" value="" required/>
+                                <label  class="control-label" for="numero">Número</label>                   
+                                <input type="text" style="width:80px; " class="form-control input-sm" name="numero" value="" required/>
+                                <span class="help-block"></span>
                             </div>
                             <div class="form-group">
-                                <label for="Bairro">Bairro</label>                   
+                                <label  class="control-label" for="Bairro">Bairro</label>                   
                                 <input type="text" class="form-control" name="bairro" value="" required/>
+                                <span class="help-block"></span>
                             </div>
                             <div class="form-group">
                                 <label for="Estado">Estado</label>     
@@ -103,10 +117,11 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="Cidade">Cidade</label>     
-                                <input type="text" class="form-control" title="Para preencher, selecione o estado acima "
-                                       name="cidade"  id="cidade" value="" disabled required/>
-                                <input type="hidden" name="cidade_id" id="cidade_id" value="">
+                                <label for="Cidade">Cidade</label>  
+
+                                <select name="cidade" id="cidade" class="form-control" disabled>
+
+                                </select>
 
                             </div>
 
@@ -123,7 +138,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
-
                 </div>
             </div>
         </form>         
