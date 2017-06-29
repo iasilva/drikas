@@ -32,3 +32,7 @@ list($erros,$alerts)=$valida->validaAll($user);
 //Validação do objeto User - Todos os campos
 
 
+$cpf= new \Thirday\Valida\ValidaCpf;
+
+$my="10417736700";
+$cpf->efetivarValidacao($my);

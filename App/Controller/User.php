@@ -8,9 +8,10 @@ use App\Model\User\UserModel;
 use App\Model\User\ValidaUser;
 
 class User extends Controller {
-
+    private $post;
     public function __construct() {
         parent::__construct();
+        $this->post = new \Thirday\Request\RequestFactory('post');
     }
 
     /**
@@ -28,18 +29,19 @@ class User extends Controller {
      * relacionadas a validar dados do usuário;
      */
     public function validaUserAjax() {
-        $post= new \Thirday\Request\RequestFactory('post');
         $valida = new \App\Model\User\ValidaUser;
-        list($erros, $alerts) = $valida->valida($post->captura('campo'), $post->captura('valor'));
+        list($erros, $alerts) = $valida->valida($this->post->captura('campo'), $this->post->captura('valor'));
         if ($erros) {
-           echo $erros[0];
-        }else{
+            echo $erros[0];
+            unset($alerts);
+        } else {
             echo '1';
         }
     }
 
     public function insert() {
-        
+        $birth = new \DateTime($_POST['birth']);
+        var_dump($birth);
     }
 
 }

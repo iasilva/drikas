@@ -23,7 +23,7 @@ $(function () {
                     $("#cidade").html(data);
                 }
             });
-            
+
         } else {//Caso seja um valor inválido
             $("#cidade").prop('title', "Para preencher, selecione o estado acima");
             $("#cidade").prop('disabled', true); // Desabilita o campo município para preenchimento
@@ -32,15 +32,15 @@ $(function () {
 
 
     $("select").change(function () {//Após a primeira alteração no select passa a marcar como válido ou inválido
-        valor = $(this).val();        
-         if (valor !== "" && valor > 0) {
-             $(this).parent().addClass('has-success');
-             $(this).parent().removeClass('has-error');
-         }else{
-             $(this).parent().addClass('has-error');
-             $(this).parent().removeClass('has-success');
-         }
-        
+        valor = $(this).val();
+        if (valor !== "" && valor > 0) {
+            $(this).parent().addClass('has-success');
+            $(this).parent().removeClass('has-error');
+        } else {
+            $(this).parent().addClass('has-error');
+            $(this).parent().removeClass('has-success');
+        }
+
     });
 
 
@@ -74,6 +74,35 @@ $(function () {
                 }
             }
         });
+    });
+
+    $("input").mouseout(function () {
+        form_group_pai = $(this).parent();
+        campo = $(this).prop('name');
+        valor = $(this).val();
+
+        action = './?page=user&action=validaUserAjax';
+        $.ajax({
+            type: 'POST',
+            url: action,
+            cache: false,
+            data: {
+                campo: campo,
+                valor: valor
+            },
+            success: function (data) {
+                if (data !== '1') {
+                    $(form_group_pai).addClass('has-error');
+                    $(form_group_pai).removeClass('has-success');
+                    $(form_group_pai).children(".help-block").html(data);
+                } else {
+                    $(form_group_pai).children(".help-block").html('');
+                    $(form_group_pai).removeClass('has-error');
+                    $(form_group_pai).addClass('has-success');
+                }
+            }
+        });
+
     });
 
 

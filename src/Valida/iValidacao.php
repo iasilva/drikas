@@ -42,6 +42,9 @@ abstract class iValidacao {
             case "nome":
                 $this->classe = "\Thirday\Valida\ValidaNome";
                 break;
+            case "cpf":
+                $this->classe = "\Thirday\Valida\ValidaCpf";
+                break;
             default:
                 return false;
         }

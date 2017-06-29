@@ -9,7 +9,7 @@
     </div>
 
     <div class="row cad-user" style="margin-bottom:120px;">
-        <form method="POST" action="./?page=user&action=insert">
+        <form method="POST" action="./?page=user&action=insert" autocomplete="off">
             <div class="row">
 
                 <!--PAINEL Usuário-->
@@ -22,17 +22,17 @@
 
                             <div class="form-group">
                                 <label class="control-label" for="email">Email</label>                   
-                                <input type="email" class="form-control" name="email" value="" required/>
+                                <input type="email" class="form-control" name="email" value="" />
                                 <span class="help-block"></span>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="senha">Senha</label>                   
-                                <input type="password" class="form-control" name="senha" value="" required/>
+                                <input type="password" class="form-control" name="senha" value="" />
                                 <span class="help-block"></span>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="Repita a senha">Repita a senha</label>                   
-                                <input type="password" class="form-control" name="senha-confirm" value="" required/>
+                                <input type="password" class="form-control" name="senha-confirm" value="" />
                                 <span class="help-block"></span>
                             </div>
 
@@ -61,20 +61,20 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="name">Nome </label>                   
-                                <input type="text" class="form-control" name="name" value="" required/>
+                                <input type="text" class="form-control" name="name" value="" />
                                 <span class="help-block"></span>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label" for="name">CPF</label>                   
                                 <input type="text" class="form-control" name="cpf" pattern="\d{11}"
-                                       title="Digite apenas número" value="" required/>
+                                       title="Digite apenas número" value="" />
                                 <span class="help-block"></span>
                             </div>
                             <div class="form-group">
                                 <label class="control-label" for="birth">Data de nascimento</label>                   
                                 <input type="date" style="width:160px;"  class="form-control text-center" name="birth"
-                                       required/>
+                                       />
                                 <span class="help-block"></span>
                             </div>
                         </div>
@@ -94,17 +94,17 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <label  class="control-label" for="Logradouro">Logradouro</label>                   
-                                <input type="text" class="form-control" name="logradouro" value="" required/>
+                                <input type="text" class="form-control" name="logradouro" value="" />
                                 <span class="help-block"></span>
                             </div>
                             <div class="form-group">
                                 <label  class="control-label" for="numero">Número</label>                   
-                                <input type="text" style="width:80px; " class="form-control input-sm" name="numero" value="" required/>
+                                <input type="text" style="width:80px; " class="form-control input-sm" name="numero" value="" />
                                 <span class="help-block"></span>
                             </div>
                             <div class="form-group">
                                 <label  class="control-label" for="Bairro">Bairro</label>                   
-                                <input type="text" class="form-control" name="bairro" value="" required/>
+                                <input type="text" class="form-control" name="bairro" value="" />
                                 <span class="help-block"></span>
                             </div>
                             <div class="form-group">

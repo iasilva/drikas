@@ -82,7 +82,7 @@ class ValidaUser {
     }
 
     private function validaCpf($cpf) {
-         $this->errors[] = "Classe de validação ainda não desenvolvida.";
+         $this->realValida('cpf', $cpf);
     }
 
     private function validaSexo($sexo) {
