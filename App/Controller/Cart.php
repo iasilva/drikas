@@ -126,5 +126,11 @@ class Cart extends Controller {
             $produto->setImages($image);
         }
     }
+    /**
+     * Limpa o carrinho
+     */
+    public function clearCartSession(){
+        unset($_SESSION['cart']);
+    }
 
 }

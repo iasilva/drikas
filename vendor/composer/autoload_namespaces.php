@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Upload' => array($vendorDir . '/codeguy/upload/src'),
+    'Filipac\\Ip' => array($vendorDir . '/filipac/ip/src'),
 );

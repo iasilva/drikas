@@ -8,6 +8,7 @@
 
 #principal-header{
     min-height: 112px;
+    background: #fff;
 }
 #principal-header .row a:hover{
     text-decoration: none;   
@@ -128,6 +129,17 @@ a.cart-icon-pink:hover{text-decoration: none;}
 
 .cad-user{
     margin-top: 24px;
+}
+
+/* LOGIN */
+
+#login-page .panel.entrar-drikas{
+    border-color: #9e3f81;
+    opacity: 0.9;
+}
+#login-page .panel.entrar-drikas .panel-heading{
+    background: #9e3f81;
+    color: #fff;
 }
 
 

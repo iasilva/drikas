@@ -8,7 +8,9 @@ use App\Model\User\UserModel;
 use App\Model\User\ValidaUser;
 
 class User extends Controller {
+
     private $post;
+
     public function __construct() {
         parent::__construct();
         $this->post = new \Thirday\Request\RequestFactory('post');
@@ -40,8 +42,49 @@ class User extends Controller {
     }
 
     public function insert() {
-        $birth = new \DateTime($_POST['birth']);
-        var_dump($birth);
+        $newUser = new UserModel;
+        $newUser->setEmail($this->post->captura('email'));
+        $newUser->setPhone($this->post->captura('phone'));
+        $newUser->setSenha($this->post->captura('senha'));
+        $newUser->setSexo($this->post->captura('sexo'));
+        $newUser->setName($this->post->captura('name'));
+        $newUser->setCpf($this->post->captura('cpf'));
+        $newUser->setBirth(new \DateTime($this->post->captura('birth'), new \DateTimeZone("UTC")));
+        $newUser->setLogradouro($this->post->captura('logradouro'));
+        $newUser->setNumero($this->post->captura('numero'));
+        $newUser->setBairro($this->post->captura('bairro'));
+        $newUser->setMunicipio_id($this->post->captura('cidade'));
+        $valida = new \App\Model\User\ValidaUser;
+        list($erros, $alerts) = $valida->validaAll($newUser);
+        if ($erros) {
+            foreach ($erros as $erro) {
+                if (strpos($erro, 'login')) {
+                    /* Caso a pessoa já possua cadastro cadastrado (cpf ou email) */
+                    header('Location:./?page=user&action=login&error=doubleInsert');
+                } else {
+                    /* Caso seja outro tipo de dado inválido, chama ação que re-apresentaré o formulário de cadastro */
+                    $this->registerByError($erros, $alerts, $newUser);
+                }
+            }
+        } elseif ($newUser->save()) {             
+            header("Location:./?page=user&action=login&success=true");  
+        }
+    }
+
+    /**
+     * Método que rechama o formulário de cadastro preeenchido em caso de erros
+     * @param type $erros
+     * @param type $alerts
+     * @param UserModel $user
+     */
+    private function registerByError($erros, $alerts, UserModel $user) {      
+              header("Location:./?page=user&action=cadastro&error");    
+            
+    }
+
+    public function login() {
+        $this->view->setTitle("Registre-se na loja da beleza feminina, encontre as mais lindas joinhas e películas de unha - ");
+        $this->view->render('User/login');
     }
 
 }

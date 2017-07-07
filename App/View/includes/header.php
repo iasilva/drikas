@@ -5,11 +5,10 @@
                          <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho"><span class="glyphicon glyphicon-shopping-cart">                             
                                  </span><span id="item-in-cart" class="badge"></span></a></li>
                          <li><a href="./?page=user&action=cadastro">Cadastrar</a></li>
-                        <li><a href="#">Entrar</a></li>
+                        <li><a href="./?page=user&action=login">Entrar</a></li>
                     </ul>
                     <!--//Nessa linha deve entrar ícones das redes sociais--> 
-                </div>
-                
+                </div>                
                
             </div>
             <div class="row">
@@ -29,6 +28,4 @@
                     
                 </div>
             </div>
-
-
         </header><!-- #principal-header -->

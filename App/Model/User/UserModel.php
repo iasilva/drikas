@@ -1,10 +1,16 @@
 <?php
+
 namespace App\Model\User;
 
+use App\Model\User\CreationUser;
+use Thirday\Password\Password;
+
 class UserModel {
+
     private $id;
     private $name;
     private $cpf;
+    private $phone;
     private $sexo;
     private $email;
     private $senha;
@@ -15,8 +21,8 @@ class UserModel {
     private $birth;
     private $updated_at;
     private $municipio_id;
-    private $table="user";
-    
+    private $table = "user";
+
     function getId() {
         return $this->id;
     }
@@ -69,6 +75,14 @@ class UserModel {
         return $this->municipio_id;
     }
 
+    function getPhone() {
+        return $this->phone;
+    }
+
+    function setPhone($phone) {
+        $this->phone = $phone;
+    }
+
     function setId($id) {
         $this->id = $id;
     }
@@ -78,6 +92,7 @@ class UserModel {
     }
 
     function setCpf($cpf) {
+        $cpf = preg_replace('/[^0-9]/', '', $cpf);
         $this->cpf = $cpf;
     }
 
@@ -121,6 +136,15 @@ class UserModel {
         $this->municipio_id = $municipio_id;
     }
 
+    function getTable() {
+        return $this->table;
+    }
 
-    
+    public function save() {
+        $senha = new Password($this->senha);
+        $this->senha = $senha->getPass();
+        $creation = new CreationUser();
+        return $creation->save($this);
+    }
+
 }

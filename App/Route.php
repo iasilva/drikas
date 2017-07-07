@@ -73,6 +73,10 @@ switch ($page) {
         $endereco = new \App\Controller\Endereco($pdo);
         call_user_func_array(array($endereco, $action), array());
         break;
+    case 'session':
+        $session= new App\Controller\Session($pdo);
+        call_user_func_array(array($session, $action), array());
+        break;
 
     default:
         $home = new \App\Controller\Home();

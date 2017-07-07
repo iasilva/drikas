@@ -48,6 +48,17 @@ class ComposerStaticInit42542e0d72ae0c4eb6c374473573bbde
                 0 => __DIR__ . '/..' . '/codeguy/upload/src',
             ),
         ),
+        'F' => 
+        array (
+            'Filipac\\Ip' => 
+            array (
+                0 => __DIR__ . '/..' . '/filipac/ip/src',
+            ),
+        ),
+    );
+
+    public static $classMap = array (
+        'parseUserAgentStringClass' => __DIR__ . '/..' . '/phpclasses/parseuseragentstring/parseUserAgentString.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -56,6 +67,7 @@ class ComposerStaticInit42542e0d72ae0c4eb6c374473573bbde
             $loader->prefixLengthsPsr4 = ComposerStaticInit42542e0d72ae0c4eb6c374473573bbde::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit42542e0d72ae0c4eb6c374473573bbde::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit42542e0d72ae0c4eb6c374473573bbde::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit42542e0d72ae0c4eb6c374473573bbde::$classMap;
 
         }, null, ClassLoader::class);
     }

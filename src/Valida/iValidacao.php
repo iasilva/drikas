@@ -45,6 +45,24 @@ abstract class iValidacao {
             case "cpf":
                 $this->classe = "\Thirday\Valida\ValidaCpf";
                 break;
+            case "birth":
+                $this->classe = "\Thirday\Valida\ValidaDataNascimento";
+                break;
+            case "phone":
+                $this->classe = "\Thirday\Valida\ValidaPhone";
+                break;
+            case "senha":
+                $this->classe = "\Thirday\Valida\ValidaSenha";
+                break;
+            case "logradouro":
+                $this->classe = "\Thirday\Valida\ValidaLogradouro";
+                break;
+            case "enderecoNumero":
+                $this->classe = "\Thirday\Valida\ValidaEnderecoNumero";
+                break;
+            case "bairro":
+                $this->classe = "\Thirday\Valida\ValidaBairro";
+                break;
             default:
                 return false;
         }
