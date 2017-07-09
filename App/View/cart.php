@@ -19,8 +19,13 @@
                 </thead>
 
                 <tbody>
+                    <?php 
+                    if((count($products))===0){
+                        $msg = new Thirday\Messages\MensagemFactory();
+                        $msg->exibeMensagem(new \Thirday\Messages\InfoMessage(), "Seu carrinho esta vazio.");
+                    } ?>
                     <?php foreach ($products as $item): ?> 
-
+                        
                         <tr>
                             <td data-th="Produto">
                                 <div class="row">

@@ -91,7 +91,7 @@ class Session extends Controller {
             //Deve comparar o tempo de sessão nesse caso 2Dias.
             echo "Morrendo aqui.";
         } else {
-            $this->sessionClose($session);
+            $this->sessionClose();
         }
     }
 
@@ -100,10 +100,9 @@ class Session extends Controller {
         if (!$sessaoAtual = $sesRep->getSessionById($this->sessionId)) {
             unset($_SESSION['user']);
         } else {
-            $this->sessionClose($sessaoAtual);
-        }
-          $dir=DIR;            
-        header("Location:$dir");
+            $this->sessionClose();
+        }        
+        header("Location:./ ");
     }
     
     public function processaLogin(){
@@ -119,8 +118,10 @@ class Session extends Controller {
             if($login->logar()){
                SessaoLocal::register($userInBd);
                $this->register();
+               header("Location:./?page=cart");
             }else{
-                echo 'Senha não confere';
+                $this->sessionClose();
+                header("Location:./?page=user&action=login&error=senha");
             }
         }
             
@@ -131,8 +132,11 @@ class Session extends Controller {
      * Encerra sessão no BD e a sessão user no $__SESSION e regenera o sessionId 
      * após o procedimento
      */
-    private function sessionClose(ses $session) {
-        $session->close($this->pdo); //Falta desenvolver esse método em SessionModel
+    private function sessionClose() {
+         $sesRep = new sesRep($this->pdo);
+        if ($sessaoAtual = $sesRep->getSessionById($this->sessionId)) {           
+        $sessaoAtual->close($this->pdo); 
+        }
         unset($_SESSION['user']);
         session_regenerate_id();
     }

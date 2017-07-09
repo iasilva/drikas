@@ -14,6 +14,12 @@
             if (isset($_GET['success'])) {
                 $msg->exibeMensagem(new \Thirday\Messages\SuccessMessage(), "Cadastro realizado com sucesso. Entre com seu <b>email</b> e <b> senha</b>. ");
             }
+            if (isset($_GET['error'])) {
+                if($_GET['error']==='senha'){
+                $msg->exibeMensagem(new \Thirday\Messages\ErrorMessage(), "Senha incorreta. Tente novamente.");
+                    
+                }
+            }
             ?> 
 
             <div class="panel panel-info entrar-drikas">

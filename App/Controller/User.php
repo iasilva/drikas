@@ -83,8 +83,12 @@ class User extends Controller {
     }
 
     public function login() {
+        if(!isset($_SESSION['user'])){
         $this->view->setTitle("Registre-se na loja da beleza feminina, encontre as mais lindas joinhas e películas de unha - ");
         $this->view->render('User/login');
+        }else{
+            header("Location: ./");
+        }
     }
     
 
