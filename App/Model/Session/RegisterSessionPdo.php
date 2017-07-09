@@ -26,22 +26,26 @@ class RegisterSessionPdo {
         $device = $this->session->getDevice();
         $so = $this->session->getSo();
         $browser = $this->session->getBrowser();
-        return $this->insert($table, $id, $ip, $user_id, $device, $so, $browser);
+        $now = new \DateTime('now', new \DateTimeZone('utc'));
+        $created_at = $now->format('Y-m-d H:i:s');
+
+        return $this->insert($table, $id, $ip, $user_id, $created_at, $device, $so, $browser);
     }
 
-    private function insert($table, $id, $ip, $user_id, $device, $so, $browser) {
-        $stmt = $this->pdo->prepare("INSERT INTO $table (id, ip, user_id, device, so, browser)"
-                . "VALUES (:id, :ip, :user_id, :device, :so, :browser)");
+    private function insert($table, $id, $ip, $user_id, $created_at, $device, $so, $browser) {
+        $stmt = $this->pdo->prepare("INSERT INTO $table (id, ip, user_id, created_at, device, so, browser)"
+                . "VALUES (:id, :ip, :user_id, :created_at, :device, :so, :browser)");
         $stmt->bindParam(":id", $id, \PDO::PARAM_STR);
         $stmt->bindParam(":ip", $ip, \PDO::PARAM_STR);
         $stmt->bindParam(":user_id", $user_id, \PDO::PARAM_INT);
         $stmt->bindParam(":device", $device, \PDO::PARAM_STR);
         $stmt->bindParam(":so", $so, \PDO::PARAM_STR);
+        $stmt->bindParam(":created_at", $created_at, \PDO::PARAM_STR);
         $stmt->bindParam(":browser", $browser, \PDO::PARAM_STR);
         try {
             $stmt->execute();
         } catch (\Exception $exc) {
-            echo $exc->getMessage();         
+            echo $exc->getMessage();
         }
 
         return $this->pdo->lastInsertId();

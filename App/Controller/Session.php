@@ -5,6 +5,11 @@ namespace App\Controller;
 use App\Mvc\Controller;
 use App\Model\Session\SessionModel as ses;
 use App\Model\Session\SessionRepository as sesRep;
+use App\Model\User\UserModel as user;
+use \Thirday\Request\RequestFactory as request;
+use App\Model\User\UserRepository as userRep;
+use \App\Model\Session\LoginSession;
+use App\Model\Session\RegisterLocaleSession as SessaoLocal;
 use Filipac\Ip;
 
 /**
@@ -12,7 +17,7 @@ use Filipac\Ip;
  *
  * @author Ivan Alves da Silva
  */
-class Session extends \App\Mvc\Controller {
+class Session extends Controller {
 
     private $pdo;
     private $sessionId;
@@ -83,6 +88,8 @@ class Session extends \App\Mvc\Controller {
         $agente = $this->configAtualAgent();
         if ($agente->browsername === $session->getBrowser() && Ip::get() === $session->getIp()) {
             // Se o browser e o IP, além do ID da sessão forem o mesmo
+            //Deve comparar o tempo de sessão nesse caso 2Dias.
+            echo "Morrendo aqui.";
         } else {
             $this->sessionClose($session);
         }
@@ -90,11 +97,34 @@ class Session extends \App\Mvc\Controller {
 
     public function logOut() {
         $sesRep = new sesRep($this->pdo);
-        if ($sessaoAtual = $sesRep->getSessionById($this->sessionId)) {
-            $this->sessionClose($sessaoAtual);            
-        } else{
-             unset($_SESSION['user']);
+        if (!$sessaoAtual = $sesRep->getSessionById($this->sessionId)) {
+            unset($_SESSION['user']);
+        } else {
+            $this->sessionClose($sessaoAtual);
         }
+          $dir=DIR;            
+        header("Location:$dir");
+    }
+    
+    public function processaLogin(){
+        $post= new request('post');
+        $userForRegister= new user;
+        $userRegistered= new userRep($this->pdo);
+        $userForRegister->setEmail($post->captura('email'));
+        $userForRegister->setSenha($post->captura('senha'));
+        if(!$userInBd=$userRegistered->getUser($userForRegister->getEmail())){
+            echo 'Usuário NÃO existe';
+        }else{
+            $login=new LoginSession($userForRegister, $userInBd);            
+            if($login->logar()){
+               SessaoLocal::register($userInBd);
+               $this->register();
+            }else{
+                echo 'Senha não confere';
+            }
+        }
+            
+        
     }
 
     /**
@@ -102,7 +132,7 @@ class Session extends \App\Mvc\Controller {
      * após o procedimento
      */
     private function sessionClose(ses $session) {
-        $session->close(); //Falta desenvolver esse método em SessionModel
+        $session->close($this->pdo); //Falta desenvolver esse método em SessionModel
         unset($_SESSION['user']);
         session_regenerate_id();
     }

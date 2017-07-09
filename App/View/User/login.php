@@ -21,7 +21,7 @@
                     <h3> Já tenho uma conta</h3>
                 </div>
                 <div class="panel-body">
-                    <form method="POST" action="./?page=user&action=register">
+                    <form method="POST" action="./?page=session&action=processaLogin">
                         <div class="form-group">
                             <label class="control-label" for="email">Email</label>                   
                             <input type="email" class="form-control" name="email" value="" />

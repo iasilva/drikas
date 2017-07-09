@@ -19,7 +19,7 @@ if(isset($_GET['error'])){
      $msg->exibeMensagem(new \Thirday\Messages\ErrorMessage(), "Verifique os dados do formulário, aparentemente algum campo obrigatório não estava corretamente preenchido."
              );
 }
-echo session_id();
+
 ?>
 
 

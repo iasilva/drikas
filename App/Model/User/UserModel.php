@@ -146,5 +146,6 @@ class UserModel {
         $creation = new CreationUser();
         return $creation->save($this);
     }
+   
 
 }

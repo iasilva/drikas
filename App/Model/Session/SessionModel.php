@@ -1,6 +1,8 @@
 <?php
 namespace App\Model\Session;
 use App\Model\Session\RegisterSessionPdo as Register;
+use App\Model\Session\CloseSessionPdo;
+
 /**
  * Model da tabela session
  *
@@ -91,7 +93,10 @@ class SessionModel {
         $reg= new Register($pdo, $this);        
         return $reg->save();
     }
-
+     public function close(\PDO $pdo){
+        $sessaoPdo= new CloseSessionPdo($pdo);
+        $sessaoPdo->close($this);
+    }
 
 
 
