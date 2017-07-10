@@ -31,7 +31,7 @@ if(isset($_GET['error'])){
     </div>
 
     <div class="row cad-user" style="margin-bottom:120px;">
-        <form method="POST" action="./?page=user&action=insert" autocomplete="off">
+        <form method="POST" action="./?page=user&action=insert<?php echo $next=(isset($_GET['next']) && $_GET['next'] ==='pedido')?'&next=pedido':''?>" autocomplete="off">
             <div class="row">
 
                 <!--PAINEL Usuário-->

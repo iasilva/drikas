@@ -1,0 +1,6 @@
+{
+	"autoload":
+	{
+		"classmap": ["parseUserAgentString.php", "parseUserAgentString_without_bots.php"]
+	}
+}

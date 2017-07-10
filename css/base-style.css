@@ -125,6 +125,18 @@ a.cart-icon-pink:hover{text-decoration: none;}
     margin-left: 15px;
 }
 
+#information-frete{
+	min-height: 120px;
+	border : 2px rgba(61,58,58,1.00) solid;
+	margin: 24px 0;
+	width: 100%;
+	padding: 5px;
+		
+}
+#information-frete #truck{
+	max-width: 120px;
+}
+
 /** CADASTRO DE USUÁRIO */
 
 .cad-user{
@@ -141,7 +153,6 @@ a.cart-icon-pink:hover{text-decoration: none;}
     background: #9e3f81;
     color: #fff;
 }
-
 
 
 

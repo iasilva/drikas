@@ -2,6 +2,7 @@
 namespace App\Model\Session;
 use App\Model\Session\RegisterSessionPdo as Register;
 use App\Model\Session\CloseSessionPdo;
+use App\Model\Session\SessionUpdateUserPdo;
 
 /**
  * Model da tabela session
@@ -30,13 +31,18 @@ class SessionModel {
     function getUser_id() {
         return $this->user_id;
     }
-
+	/**
+	* Retorna a data de criação 
+	*@return DateTime 
+	*/
     function getCreated_at() {
-        return $this->created_at;
+        return new \DateTime($this->created_at, new \DateTimeZone('utc'));
+			
     }
 
     function getDeleted_at() {
-        return $this->deleted_at;
+		return new \DateTime($this->deleted_at, new \DateTimeZone('utc'));
+        
     }
 
     function setId($id) {
@@ -97,6 +103,10 @@ class SessionModel {
         $sessaoPdo= new CloseSessionPdo($pdo);
         $sessaoPdo->close($this);
     }
+	public function updateUser(\PDO $pdo){
+		$sessaoPdo= new SessionUpdateUserPdo($pdo);
+        $sessaoPdo->updateUser($this);
+	}
 
 
 
