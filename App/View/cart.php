@@ -97,10 +97,10 @@
 				<li>Pedidos até de R$ 49,99 - <strong>FRETE R$ 8,00 </strong> </li>
 			</ul> 
 		</article>
-		</div>
+			
+
 		
-
-
+		</div>
 
 	</div>
 </main>

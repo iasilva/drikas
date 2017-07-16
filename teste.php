@@ -81,7 +81,7 @@ $a=$session->getAllSessionsActiveByIdUser(2);
 var_dump($a);
  
  */
-
+/*
 $parser = new parseUserAgentStringClass(); // This creates a new instance of this class object.
 $parser->includeAndroidName = true;
 $parser->includeWindowsName = true;
@@ -91,4 +91,7 @@ $parser->treatProjectSpartanInternetExplorerLikeLegacyInternetExplorer = true;
 $strAgent= filter_input(INPUT_SERVER, 'HTTP_USER_AGENT');
 @$parser->parseUserAgentString($strAgent); 
 
-echo $parser->type;
+echo $parser->type;*/
+/*$now= new \DateTime();
+$now->setTimezone(new \DateTimeZone('utc'));
+echo $now->format('Y-m-d H:i:s');*/
