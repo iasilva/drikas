@@ -36,6 +36,7 @@ class CreationUser {
         $bairro = $this->user->getBairro();
         $birth=$this->user->getBirth()->format('Y/m/d');
         $municipio_id=$this->user->getMunicipio_id();
+        $cep=$this->user->getCep();
         $stmt = $this->pdo->prepare($this->prepareSql());
         $stmt->bindParam(":name", $name, \PDO::PARAM_STR);
         $stmt->bindParam(":cpf", $cpf, \PDO::PARAM_STR);
@@ -47,6 +48,7 @@ class CreationUser {
         $stmt->bindParam(":numero", $num, \PDO::PARAM_STR);
         $stmt->bindParam(":bairro", $bairro, \PDO::PARAM_STR);
         $stmt->bindParam(":birth", $birth, \PDO::PARAM_STR);
+        $stmt->bindParam(":cep", $cep, \PDO::PARAM_STR);
         $stmt->bindParam(":municipio_id",$municipio_id , \PDO::PARAM_INT);
         $stmt->execute();        
         $this->user->setId($this->pdo->lastInsertId());
@@ -55,9 +57,9 @@ class CreationUser {
     private function prepareSql() {
         return "INSERT INTO {$this->user->getTable()}"
                 . " (name, cpf, sexo, email, phone, senha, logradouro, numero,
-                    bairro, birth, municipio_id)"
+                    bairro, birth, municipio_id,cep)"
                 . " VALUES (:name,:cpf,:sexo,:email,:phone,:senha,:logradouro,
-                    :numero,:bairro,:birth,:municipio_id)";
+                    :numero,:bairro,:birth,:municipio_id,:cep)";
     }
 
 }

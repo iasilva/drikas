@@ -54,6 +54,7 @@ class User extends Controller {
         $newUser->setNumero($this->post->captura('numero'));
         $newUser->setBairro($this->post->captura('bairro'));
         $newUser->setMunicipio_id($this->post->captura('cidade'));
+        $newUser->setCep($this->post->captura('cep'));
         $valida = new \App\Model\User\ValidaUser;
         list($erros, $alerts) = $valida->validaAll($newUser);
         if ($erros) {

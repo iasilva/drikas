@@ -152,6 +152,11 @@ if(isset($_GET['error'])){
                                 </select>
                                 <span class="help-block"></span>
                             </div>
+                            <div class="form-group">
+                                <label  class="control-label" for="cep">CEP</label>
+                                <input type="text" class="form-control" name="cep" value="" required/>
+                                <span class="help-block"></span>
+                            </div>
 
 
                         </div>

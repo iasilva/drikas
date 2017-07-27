@@ -21,6 +21,7 @@ class UserModel {
     private $birth;
     private $updated_at;
     private $municipio_id;
+    private $cep;
     private $table = "user";
 
     function getId() {
@@ -78,6 +79,23 @@ class UserModel {
     function getPhone() {
         return $this->phone;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCep()
+    {
+        return $this->cep;
+    }
+
+    /**
+     * @param mixed $cep
+     */
+    public function setCep($cep)
+    {
+        $this->cep = $cep;
+    }
+
 
     function setPhone($phone) {
         $this->phone = $phone;

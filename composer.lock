@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f7c17c1ba3acf2445fb05e6486d9dc97",
+    "content-hash": "38c97a75620f8846af2208ed7f0fcd28",
     "packages": [
         {
             "name": "codeguy/upload",
@@ -85,6 +85,44 @@
             ],
             "description": "Get the IP in a quick way",
             "time": "2014-08-31T12:49:52+00:00"
+        },
+        {
+            "name": "pagseguro/pagseguro-php-sdk",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pagseguro/pagseguro-php-sdk.git",
+                "reference": "f2cb39ddd60dd4e5956d2ec7b9e29d91a402c7c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pagseguro/pagseguro-php-sdk/zipball/f2cb39ddd60dd4e5956d2ec7b9e29d91a402c7c1",
+                "reference": "f2cb39ddd60dd4e5956d2ec7b9e29d91a402c7c1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "lib-curl": "*",
+                "lib-openssl": "*",
+                "php": ">=5.4.27"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PagSeguro\\": "source/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache License 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "PagSeguro"
+                }
+            ],
+            "description": "Biblioteca de integração com o PagSeguro",
+            "time": "2017-06-28T14:55:43+00:00"
         },
         {
             "name": "phpclasses/parseuseragentstring",

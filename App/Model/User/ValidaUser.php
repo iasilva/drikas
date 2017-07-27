@@ -19,7 +19,7 @@ class ValidaUser {
         'name', 'cpf', 'sexo', 'email',
         'senha', 'logradouro', 'numero',
         'bairro', 'birth', 'municipio_id',
-        'phone'
+        'phone','cep'
     );
     //Mensagens de erros encontradas na validação, armazenados no array
     private $errors = [];
@@ -133,6 +133,13 @@ class ValidaUser {
 
     private function validaBairro($bairro) {
         $this->realValida('bairro', $bairro);
+    }
+    private function validaCep($cep) {
+        if(empty($cep) || $cep ==='' || (strlen($cep) < 9)){
+            $this->errors[]="Preencha com um CEP válido";
+        }else{
+            return true;
+        }
     }
 
     private function validaMunicipio_id($municipio_id) {

@@ -17,6 +17,16 @@ class OrderItemModel
     private $quantity_in_cartoon;
     private $product_id;
     private $order_id;
+    private $table = 'order_item';
+
+    /**
+     * @return string
+     */
+    public function getTable()
+    {
+        return $this->table;
+    }
+
 
     /**
      * @return mixed
@@ -112,6 +122,13 @@ class OrderItemModel
     public function setOrderId($order_id)
     {
         $this->order_id = $order_id;
+    }
+
+    public function save(\PDO $pdo)
+    {
+        $createItem= new CreateOrderItem($pdo);
+        $createItem->save($this);
+
     }
 
 

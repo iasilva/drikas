@@ -15,7 +15,7 @@ class OrderModel
     private $id;
     private $user_id;
     private $qtd;
-    private $price;
+
     private $payment_method_id;
     private $order_status_id;
     private $freight;
@@ -80,21 +80,6 @@ class OrderModel
         $this->qtd = $qtd;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * @param mixed $price
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-    }
 
     /**
      * @return mixed

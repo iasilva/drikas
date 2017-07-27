@@ -9,6 +9,10 @@
         <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="./css/base-style.css">       
+        <link rel="stylesheet" href="./css/base-style.css">
+        <?php if (isset($_GET['page']) && ($_GET['page'] === 'pedido')): ?><!--Inclui caso seja nas páginas de pedido-->
+        <link rel="stylesheet" href="./css/pedido.css">
+        <?php endif; ?><!--Finaliza if para página de pedidos-->
+
     </head>
     <body>

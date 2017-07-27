@@ -138,7 +138,10 @@ $(function () {
     /**
      * Máscara para o campo cpf;
      */
-    $("input[name='cpf']").mask("000.000.000-00");
+    $("input[name='cpf']").mask("000.000.000-00");/**
+     * Máscara para o campo cep;
+     */
+    $("input[name='cep']").mask("00000-000");
 
 
 
@@ -160,13 +163,13 @@ function getCidades(estado_id) {
 
 /*Verifica se o campo confirmaSenha é idêntico ao campo senha*/
 function confirmaSenha() {
-    senha = $("input[name='senha'").val();
-    confirmacao = $("input[name='confirmaSenha'").val();
-    form_group_pai = $("input[name='confirmaSenha'").parent();
+    senha = $("input[name='senha']").val();
+    confirmacao = $("input[name='confirmaSenha']").val();
+    form_group_pai = $("input[name='confirmaSenha']").parent();
     if (senha !== confirmacao) {
         $(form_group_pai).addClass('has-error').removeClass('has-success')
                 .children(".help-block").html('Senhas digitadas não conferem.');
-        $("input[name='confirmaSenha'").val('').focus();
+        $("input[name='confirmaSenha']").val('').focus();
         return false;
     } else {
         $(form_group_pai).addClass('has-success')

@@ -27,6 +27,14 @@ class MunicipioRepository extends iMunicipioRepository {
         return $stmt->fetch();
     }
 
+    public function getEstadoId($municipio_id) {
+        $stmt = $this->pdo->prepare("SELECT estado_id FROM $this->table WHERE id = :municipio_id");
+        $stmt->bindValue(":municipio_id", $municipio_id, \PDO::PARAM_INT);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Endereco\MunicipioModel');
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
     public function getMunicipioByName($municipio_name) {
         $stmt = $this->pdo->prepare("SELECT * FROM $this->table WHERE nome LIKE :nome ");
         $stmt->bindValue(":nome","%".$municipio_name."%", \PDO::PARAM_STR);
