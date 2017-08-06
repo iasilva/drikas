@@ -33,6 +33,7 @@ class Cart extends Controller {
         $this->product = $product;
 
         $this->cart = $cart;
+        var_dump($cart);
     }
 
     public function index(\App\Model\Image\IImageRepository $images) {

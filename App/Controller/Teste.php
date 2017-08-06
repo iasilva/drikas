@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Model\Shopping\CartSession;
 use Thirday\Request\RequestFactory;
 use Thirday\Valida\Validacao;
 use Thirday\Messages\Mensagem;
@@ -24,6 +25,13 @@ class Teste extends \App\Mvc\Controller {
         $this->get = new RequestFactory('get');
         $this->valida = new Validacao();
         $this->msg = new \Thirday\Messages\MensagemFactory();
+    }
+
+    public function testeItensInCart(){
+        $cart= new CartSession();
+        $itens=$cart->getCartItems();
+        var_dump($itens);
+        unset($_SESSION['cart']);
     }
 
     public function validaEmailAjax() {

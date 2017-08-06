@@ -7,7 +7,7 @@ class ValidaSenha extends iValida {
   
 
     public function __construct() {
-        locale_set_default("pt_BR");
+
     }
 
     public function efetivarValidacao($senha) {

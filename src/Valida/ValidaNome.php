@@ -11,7 +11,7 @@ namespace Thirday\Valida;
 class ValidaNome extends \Thirday\Valida\iValida {
 
     public function __construct() {
-        locale_set_default("pt_BR");        
+
     }
 
     public function efetivarValidacao($campo) {

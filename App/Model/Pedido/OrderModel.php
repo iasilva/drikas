@@ -18,10 +18,18 @@ class OrderModel
 
     private $payment_method_id;
     private $order_status_id;
+    /**
+     * @var String- Link para impressão do boleto ou pagamento via transferência online
+     */
+    private $payment_link;
     private $freight;
     private $total;
     private $created_at;
     private $updated_at;
+    /**
+     * @var String - Retorno que identifica uma transação no pagSeguro
+     */
+    private $code_transaction_in_pagseguro;
     private $table = 'order';
 
     /**
@@ -178,12 +186,45 @@ class OrderModel
     }
 
     /**
+     * @return String
+     */
+    public function getPaymentLink()
+    {
+        return $this->payment_link;
+    }
+
+    /**
+     * @param String $payment_link
+     */
+    public function setPaymentLink($payment_link)
+    {
+        $this->payment_link = $payment_link;
+    }
+
+    /**
+     * @return String
+     */
+    public function getCodeTransactionInPagseguro()
+    {
+        return $this->code_transaction_in_pagseguro;
+    }
+
+    /**
+     * @param String $code_transaction_in_pagseguro
+     */
+    public function setCodeTransactionInPagseguro($code_transaction_in_pagseguro)
+    {
+        $this->code_transaction_in_pagseguro = $code_transaction_in_pagseguro;
+    }
+
+
+    /**
      * Efetua o salvamento do objeto após o preenchimento dos campos
      * @param \PDO $pdo
      */
     public function save(\PDO $pdo){
         $create= new CreateOrder($pdo);
-        $create->save($this);
+       return $create->save($this);
     }
 
 

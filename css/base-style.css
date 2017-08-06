@@ -3,104 +3,115 @@
     Author     : Ivan Alves da Silva
 */
 
-
 /* CSS do Header */
 
-#principal-header{
+#principal-header {
     min-height: 112px;
     background: #fff;
 }
-#principal-header .row a:hover{
-    text-decoration: none;   
+
+#principal-header .row a:hover {
+    text-decoration: none;
 }
-#principal-header .row h1:hover{
-    color: #9e3f81; 
+
+#principal-header .row h1:hover {
+    color: #9e3f81;
 }
-#principal-header .row h1{
+
+#principal-header .row h1 {
     color: #b35796;
     font-family: "Lucida Handwriting";
 }
-#principal-header .row.menu ul li{
-    border-right:1px solid ; 
-}
-#principal-header .row ul li:last-child{
-    border-right:none; 
+
+#principal-header .row.menu ul li {
+    border-right: 1px solid;
 }
 
-#principal-header .row.menu-float-topo-right ul li{
-    border-right:1px solid ;  
+#principal-header .row ul li:last-child {
+    border-right: none;
 }
-#principal-header .row.menu-float-topo-right ul li a{
+
+#principal-header .row.menu-float-topo-right ul li {
+    border-right: 1px solid;
+}
+
+#principal-header .row.menu-float-topo-right ul li a {
     color: #999;
 }
-#principal-header .row.menu-float-topo-right ul li a:hover{
+
+#principal-header .row.menu-float-topo-right ul li a:hover {
     color: #333;
 }
+
 @media screen and (max-width: 600px) {
-    #principal-header .row.menu-float-topo-right{
+    #principal-header .row.menu-float-topo-right {
         margin-right: 20%;
     }
+
     #principal-header .row.menu {
         max-width: 94%;
         margin-left: 2%;
     }
-    main{
+
+    main {
         max-width: 98%;
     }
-    
+
 }
 
 /** PÁGINA HOME - PRINCIPAL*/
-main{
+main {
     margin-top: 24px
 }
-main header h4{
+
+main header h4 {
     padding: 3px;
     max-width: 210px;
 }
-#home{
 
+#home {
 
 }
 
-#home img{
+#home img {
     width: 100%;
 
 }
 
-#home div{
+#home div {
     margin-top: 36px;
 }
 
-
-
 /** PÁGINA DE PRODUTOS */
 
-#produtos{
+#produtos {
 
 }
 
-#produtos article{
+#produtos article {
     margin-top: 24px;
     color: #b35796;
 }
-#produtos article header{
+
+#produtos article header {
 
 }
-img.primary-home{
+
+img.primary-home {
     min-height: 190px;
     min-width: 130px;
     cursor: pointer;
 
 }
-.product-home{
+
+.product-home {
     cursor: pointer;
 }
 
 /** Carrinho de compras*/
-.cart-icon-pink{
-    color:#9e3f81;
-    
+.cart-icon-pink {
+    color: #9e3f81;
+
     display: block;
     width: 48px;
     height: 48px;
@@ -112,58 +123,58 @@ img.primary-home{
     opacity: .8;
     background: url(../images/layout/cartrosa.jpg) no-repeat;
 }
-.cart-icon-pink:hover{
+
+.cart-icon-pink:hover {
     color: grey;
     opacity: .9;
-   
+
 }
-a.cart-icon-pink:hover{text-decoration: none;}
-.cart-icon-pink span{
+
+a.cart-icon-pink:hover {
+    text-decoration: none;
+}
+
+.cart-icon-pink span {
     display: block;
     font-weight: bolder;
     margin-top: 18%;
     margin-left: 15px;
 }
 
-#information-frete{
-	min-height: 120px;
-	border : 2px rgba(61,58,58,1.00) solid;
-	margin: 24px 0;
-	width: 100%;
-	padding: 5px;
-		
+#information-frete {
+    min-height: 120px;
+    border: 2px rgba(61, 58, 58, 1.00) solid;
+    margin: 24px 0;
+    width: 100%;
+    padding: 5px;
+
 }
-#information-frete #truck{
-	max-width: 120px;
+
+#information-frete #truck {
+    max-width: 120px;
 }
 
 /** CADASTRO DE USUÁRIO */
 
-.cad-user{
+.cad-user {
     margin-top: 24px;
 }
 
 /* LOGIN */
 
-#login-page .panel.entrar-drikas{
+#login-page .panel.entrar-drikas {
     border-color: #9e3f81;
     opacity: 0.9;
 }
-#login-page .panel.entrar-drikas .panel-heading{
+
+#login-page .panel.entrar-drikas .panel-heading {
     background: #9e3f81;
     color: #fff;
 }
 
-
-
-
-
-
-
-
 /** FOOTER PRINCIPAL*/
 
-#principal-footer{
+#principal-footer {
     margin-top: 48px;
     background: #f2f0f0;
     border-top: 3px solid #939393;
@@ -171,103 +182,146 @@ a.cart-icon-pink:hover{text-decoration: none;}
     padding-top: 8px;
     z-index: -100;
 }
-#principal-footer a{
+
+#principal-footer a {
     color: #545454;
 }
-#principal-footer a:hover{
+
+#principal-footer a:hover {
     text-decoration: none;
     color: #333;
 }
 
-
-
-
-
-
-
-
 /** genérica*/
-.border-botton-rosa{
+.border-botton-rosa {
     border-bottom: 2px solid #dca3c6;
 
 }
 
 /** CSS DO CARRINHO DE COMPRAS*/
-.table>tbody>tr>td, .table>tfoot>tr>td{
+.table > tbody > tr > td, .table > tfoot > tr > td {
     vertical-align: middle;
 }
+
 @media screen and (max-width: 600px) {
-    table#cart tbody td .form-control{
-        width:20%;
+    table#cart tbody td .form-control {
+        width: 20%;
         display: inline !important;
     }
-    .actions .btn{
-        width:36%;
-        margin:1.5em 0;
+
+    .actions .btn {
+        width: 36%;
+        margin: 1.5em 0;
     }
 
-    .actions .btn-info{
-        float:left;
-    }
-    .actions .btn-danger{
-        float:right;
+    .actions .btn-info {
+        float: left;
     }
 
-    table#cart thead { display: none; }
-    table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
-    table#cart tbody tr td:first-child { background: #333; color: #fff; }
+    .actions .btn-danger {
+        float: right;
+    }
+
+    table#cart thead {
+        display: none;
+    }
+
+    table#cart tbody td {
+        display: block;
+        padding: .6rem;
+        min-width: 320px;
+    }
+
+    table#cart tbody tr td:first-child {
+        background: #333;
+        color: #fff;
+    }
+
     table#cart tbody td:before {
-        content: attr(data-th); font-weight: bold;
-        display: inline-block; width: 8rem;
+        content: attr(data-th);
+        font-weight: bold;
+        display: inline-block;
+        width: 8rem;
     }
 
+    table#cart tfoot td {
+        display: block;
+    }
 
-
-    table#cart tfoot td{display:block; }
-    table#cart tfoot td .btn{display:block;}
+    table#cart tfoot td .btn {
+        display: block;
+    }
 
 }
 
-#payment-method{
-    font-family: "Lucida Handwriting";
+/** PÁGINA DE PEDIDO*/
+#payment-method {
     color: #888;
 }
-#payment-method{
+
+#payment-method {
 
 }
-#payment-method header:first-child{
+
+#payment-method header:first-child {
     background: #5281e8;
     color: #FFF;
     margin-bottom: 24px;
 
 }
 
-#payment-method header h2{
+#payment-method header h2 {
     margin-left: 12px;
     margin-bottom: 0;
 
 }
 
-#payment-method header p{
+#payment-method header p {
     margin-top: 0;
     margin-left: 12px;
     color: #E4E4E4;
 }
 
-#heading-payment-method-choose{
+#heading-payment-method-choose {
     border: 1px solid #b35796;
     border-radius: 5px;
     max-width: 91%;
     margin-left: 18px;
 }
 
-#credit-card{
+#credit-card {
     margin-top: 24px;
     display: none;
 
 }
-#card-submit{
-    margin-top: 24px;
+
+#card-submit {
+    margin-top: 4em;
     display: none;
+    margin-bottom: 4em;
 }
 
+.individual-brand {
+    font-size: 0.8em;
+    margin-bottom: 24px;
+}
+
+.img-brand {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+
+}
+
+.radio-select-brand {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+.nameOfBrand{
+    margin-left: 4px;
+}
+#alert-card{
+    width: 70%;
+    display: none;
+}

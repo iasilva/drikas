@@ -2,11 +2,11 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="Thirday\" />
+      <sourceFolder url="file://$MODULE_DIR$/App" isTestSource="false" packagePrefix="App\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/codeguy/upload" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/filipac/ip" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/pagseguro/pagseguro-php-sdk" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpclasses/parseuseragentstring" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/simple-crud/simple-crud" />
     </content>
@@ -18,7 +18,6 @@
           <root url="file://$MODULE_DIR$/vendor/codeguy/upload" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/filipac/ip" />
-          <root url="file://$MODULE_DIR$/vendor/pagseguro/pagseguro-php-sdk" />
           <root url="file://$MODULE_DIR$/vendor/phpclasses/parseuseragentstring" />
           <root url="file://$MODULE_DIR$/vendor/simple-crud/simple-crud" />
         </CLASSES>
@@ -26,7 +25,6 @@
           <root url="file://$MODULE_DIR$/vendor/codeguy/upload" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/filipac/ip" />
-          <root url="file://$MODULE_DIR$/vendor/pagseguro/pagseguro-php-sdk" />
           <root url="file://$MODULE_DIR$/vendor/phpclasses/parseuseragentstring" />
           <root url="file://$MODULE_DIR$/vendor/simple-crud/simple-crud" />
         </SOURCES>

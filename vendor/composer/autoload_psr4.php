@@ -8,6 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'Thirday\\' => array($baseDir . '/src'),
     'SimpleCrud\\' => array($vendorDir . '/simple-crud/simple-crud/src'),
-    'PagSeguro\\' => array($vendorDir . '/pagseguro/pagseguro-php-sdk/source'),
     'App\\' => array($baseDir . '/App'),
 );

@@ -1,8 +1,15 @@
+
+<html>
+<head>
+<body>
+
 <?php
 
 session_start();
 
 require './vendor/autoload.php';
+
+
 /*
   //Chamada para validação de item individualmente
   $valida= new \App\Model\User\ValidaUser;
@@ -44,20 +51,20 @@ require './vendor/autoload.php';
   echo '<br>';
   unset($_SESSION['user']);
   var_dump($_SESSION);
- * 
+ *
  */
 /**
-  $user= new App\Model\User\UserModel;
-  $user->setEmail("ivan@alves.com");
-  $user->setSenha("ivan@alves.com");
-  $sess= new \App\Model\User\UserSession($user);
- * 
+ * $user= new App\Model\User\UserModel;
+ * $user->setEmail("ivan@alves.com");
+ * $user->setSenha("ivan@alves.com");
+ * $sess= new \App\Model\User\UserSession($user);
+ *
  */
 /* * Testando diferença de datas */
 
 /*
  $hoje = new \DateTime;
- 
+
 $_1900 = new \DateTime("1900-01-01");
 
 $dataNascimento = new \DateTime("1817-07-02");
@@ -79,7 +86,7 @@ $session= new \App\Model\Session\SessionRepository($b);
 
 $a=$session->getAllSessionsActiveByIdUser(2);
 var_dump($a);
- 
+
  */
 /*
 $parser = new parseUserAgentStringClass(); // This creates a new instance of this class object.
@@ -89,9 +96,59 @@ $parser->includeMacOSName = true;
 $parser->treatClonesAsTheRealThing = true;
 $parser->treatProjectSpartanInternetExplorerLikeLegacyInternetExplorer = true;
 $strAgent= filter_input(INPUT_SERVER, 'HTTP_USER_AGENT');
-@$parser->parseUserAgentString($strAgent); 
+@$parser->parseUserAgentString($strAgent);
 
 echo $parser->type;*/
 /*$now= new \DateTime();
 $now->setTimezone(new \DateTimeZone('utc'));
 echo $now->format('Y-m-d H:i:s');*/
+
+
+/*$teste = new Thirday\Pagseguro\Connection();
+$result = $teste->getSession();
+if ($result === 'Unauthorized') {
+    die("Processo de pagamento não autorizado!");
+}
+*/
+
+?>
+<script type="text/javascript" src="script/jquery/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="script/pagseguro.js"></script>
+
+
+<!--API Javascript-->
+<script type="text/javascript" src= "https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">
+    /* Produção-> "https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">*/
+</script>
+
+
+<!--Seta o Id da seção -  Deve ser criado com php -->
+<!--Recuperado com o método getSession() da classe Thirday\Pagseguro\Connection-->
+<script type="text/javascript">
+    PagSeguroDirectPayment.setSessionId('01f5be749b6c4c1faf37958ea0814611');
+    PagSeguroDirectPayment.getBrand({
+        cardBin: 411111,
+        success: function(response) {
+
+        },
+        error: function(response) {
+            console.log('Algo deu errado');
+        },
+        complete: function(response) {
+            console.log(response);
+        }
+    });
+</script>
+
+
+<button id="botao">Click</button>
+
+<ol>
+
+</ol>
+
+<input id="testeIN" type="text">
+
+
+</body>
+</head></html>

@@ -36,11 +36,13 @@ class CreateOrder
         $payment_method_id = $order->getPaymentMethodId();
         $order_status_id = $order->getOrderStatusId();
         $freight = $order->getFreight();
+        $payment_link= $order->getPaymentLink();
+        $code_in_pagSeguro= $order->getCodeTransactionInPagseguro();
         $total = $order->getTotal();
         $now = new \DateTime();
         $now->setTimezone(new \DateTimeZone('utc'));
         $created_at = $now->format('Y-m-d H:i:s');
-        return $this->insert($user_id, $qtd,$payment_method_id, $order_status_id, $freight, $total, $created_at);
+        return $this->insert($user_id, $payment_method_id, $order_status_id,$freight, $total, $created_at);
 
     }
 
@@ -55,27 +57,10 @@ class CreateOrder
      * @param $created_at
      * @return int - Id do pedido
      */
-    private function insert($user_id, $qtd, $payment_method_id, $order_status_id, $freight, $total, $created_at)
-    {
-        $stmt = $this->pdo->prepare("INSERT INTO $this->table (
-        user_id,
-        qtd,       
-        payment_method_id,
-        order_status_id, 
-        freight, 
-        total, 
-        created_at
-    ) VALUES (
-        :user_id,
-        :qtd,       
-        :payment_method_id,
-        :order_status_id, 
-        :freight, 
-        :total, 
-        :created_at
-    )");
+    private function insert($user_id, $payment_method_id, $order_status_id,$freight, $total, $created_at){
+        $sql="INSERT INTO drk.order (user_id, payment_method_id, order_status_id, freight, total, created_at) VALUES (:user_id, :payment_method_id, :order_status_id, :freight, :total, :created_at)";
+        $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(":user_id", $user_id, \PDO::PARAM_INT);
-        $stmt->bindParam(":qtd", $qtd, \PDO::PARAM_INT);
         $stmt->bindParam(":payment_method_id",$payment_method_id, \PDO::PARAM_INT);
         $stmt->bindParam(":order_status_id",$order_status_id, \PDO::PARAM_INT);
         $stmt->bindParam(":freight", $freight, \PDO::PARAM_STR);

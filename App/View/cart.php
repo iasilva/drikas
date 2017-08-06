@@ -85,6 +85,7 @@
 				</tfoot>
 			</table>
 		</div>
+
 		
 		<div class="col-lg-12" id="information-frete"><!--Informações do frete-->
 		<article class=" col-sm-6 col-md-2">

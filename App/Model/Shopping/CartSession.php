@@ -47,6 +47,12 @@ class CartSession extends ICart {
         return $this->items;
     }
 
+    public function clear(){
+        foreach ($this->items as $key => $valor){
+            $this->delete($key);
+        }
+    }
+
     public function getTotal() {
         $total = 0;
         foreach ($this->items as $item) {
@@ -54,6 +60,7 @@ class CartSession extends ICart {
         }
         return $total;
     }
+
 
     public function __destruct() {
         $_SESSION['cart'] = serialize($this->items);       

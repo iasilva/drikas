@@ -12,6 +12,7 @@ include_once HTML_DIR . DS . 'header.php';
 
     <!--Exibição de endereço para confirmação-->
     <div class="row">
+        <header><em><?php echo $h1 ?></em></header>
 
         <div class="col-md-5 col-md-offset-1" id="payment-method">
             <header>
@@ -20,6 +21,8 @@ include_once HTML_DIR . DS . 'header.php';
             </header>
 
             <div class="row">
+                <form method="post" action="./?page=pedido&action=processPayment">
+                    <input type="hidden" name="order-id" value="<?php echo $orderId ?>">
                 <header class="col-xs-12" id="heading-payment-method-choose">
                     <div class="col-xs-5">
                         <div class="radio">
@@ -38,8 +41,64 @@ include_once HTML_DIR . DS . 'header.php';
                         </div>
                     </div>
                 </header>
-                <form method="post" action="./">
+
                     <article class="col-xs-12" id="credit-card">
+                        <div class="alert alert-danger" id="alert-card">
+                            <strong>Atenção!</strong> Todos os campos são de preenchimento obrigatório.
+                        </div>
+
+                        <!--Inserção das bandeiras de cartão-->
+                        <div class="col-xs-12" id="bandeirasDisponíveis">
+
+
+                            <div class="col-xs-4 col-sm-3 individual-brand">
+                                <div class="col-xs-12 img-brand">
+                                    <label>
+                                        <div class="col-xs-12 img-brand">
+                                            <img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/42x20/visa.png" alt="">
+                                        </div>
+                                        <div class="col-xs-12 radio-select-brand">
+                                            <div class="checkbox">
+                                                <input type="radio" name="cardType" value="VISA"><span class="nameOfBrand"> Visa</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-sm-3 individual-brand">
+                                <div class="col-xs-12 img-brand">
+                                    <label>
+                                        <div class="col-xs-12 img-brand">
+                                            <img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/42x20/mastercard.png" alt="">
+                                        </div>
+                                        <div class="col-xs-12 radio-select-brand">
+                                            <div class="checkbox">
+                                                <input type="radio" name="cardType" value="MASTERCARD"><span class="nameOfBrand">Master</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-4 col-sm-3 individual-brand">
+                                <div class="col-xs-12 img-brand">
+                                    <label>
+                                        <div class="col-xs-12 img-brand">
+                                            <img src="https://stc.pagseguro.uol.com.br/public/img/payment-methods-flags/42x20/elo.png" alt="">
+                                        </div>
+                                        <div class="col-xs-12 radio-select-brand">
+                                            <div class="checkbox">
+                                                <input type="radio" name="cardType" value="ELO"><span class="nameOfBrand">ELO</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <!--Fim da inserção das bandeiras-->
 
 
                         <div class="col-xs-12">
@@ -52,7 +111,7 @@ include_once HTML_DIR . DS . 'header.php';
                         <div class="col-xs-9">
                             <div class="form-group">
                                 <label for="cardholder">Titular <em>(Idêntico ao cartão.)</em></label>
-                                <input type="text" name="cardholder" class="form-control" id="cardholder"
+                                <input type="text" name="card-holder" class="form-control" id="card-holder"
                                        title="Escreva idêntico ao nome no cartão">
 
                             </div>
@@ -76,7 +135,7 @@ include_once HTML_DIR . DS . 'header.php';
                         <div class="col-xs-4">
                             <div class="form-group">
                                 <label for="validade">Validade</label>
-                                <input type="text" name="cartao-validade" class="form-control" id="cartao-validade"
+                                <input type="text" name="card-validade" class="form-control" id="card-validade"
                                        title="Digite a validade do seu cartão" placeholder="MM/AAAA">
 
                             </div>
@@ -146,7 +205,7 @@ include_once HTML_DIR . DS . 'header.php';
                                         <select name="estado" id="estado" class="form-control">
                                             <option value="" selected>Selecione</option>
                                             <?php foreach ($estados as $estado) : ?>
-                                                <option value="<?php echo $estado->getId(); ?>"><?php echo $estado->getNome(); ?></option>
+                                                <option value="<?php echo $estado->getUf(); ?>"><?php echo $estado->getNome(); ?></option>
                                             <?php endforeach; ?>
                                         </select>
 
@@ -167,7 +226,7 @@ include_once HTML_DIR . DS . 'header.php';
                     </article>
                     <section id="card-submit" class="row">
                         <div class="col-xs-7 col-md-4 col-xs-offset-1">
-                            <button type="submit" class="btn btn-primary btn-lg">Pagar pedido</button>
+                            <button type="submit" id="form-payment-submit" class="btn btn-primary btn-lg">Pagar pedido</button>
                         </div>
                     </section>
 
@@ -176,32 +235,40 @@ include_once HTML_DIR . DS . 'header.php';
         </div> <!--Fim do col-md-5-->
 
         <div class="col-md-5 col-md-offset-1"> <!-- Informações do endereço para envio-->
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>Endereço para envio
-                        <!--<button class="btn"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>--> </h4>
-                </div>
-                <div class="panel-body">
-                    <table class="table">
-                        <tr>
-                            <th>Logradouro:</th>
-                            <td><?php echo $user->getLogradouro() . " Nº: " . $user->getNumero() ?></td>
-                        </tr>
-                        <tr>
-                            <th>Bairro:</th>
-                            <td><?php echo $user->getBairro() ?></td>
-                        </tr>
-                        <tr>
-                            <th>Cidade / Estado:</th>
-                            <td><?php echo $municipio->getNome() . ' / ' . $estado->getNome() ?></td>
-                        </tr>
-                        <tr>
-                            <th>CEP:</th>
-                            <td><?php echo $user->getCep() ?></td>
-                        </tr>
-                    </table>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Endereço para envio
+                            <!--<button class="btn"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>--> </h4>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <tr>
+                                <th>Logradouro:</th>
+                                <td><?php echo $user->getLogradouro() . " Nº: " . $user->getNumero() ?></td>
+                            </tr>
+                            <tr>
+                                <th>Bairro:</th>
+                                <td><?php echo $user->getBairro() ?></td>
+                            </tr>
+                            <tr>
+                                <th>Cidade / Estado:</th>
+                                <td><?php echo $municipio->getNome() . ' / ' . $estado->getNome() ?></td>
+                            </tr>
+                            <tr>
+                                <th>CEP:</th>
+                                <td><?php echo $user->getCep() ?></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                <p><strong>Valor total do pedido:</strong> <span
+                            class="label label-info"><?php echo 'R$ ' . number_format($cart, 2, ',', '.') ?></span>
+                </p>
+            </div>
+
         </div>
 
     </div>
@@ -209,6 +276,16 @@ include_once HTML_DIR . DS . 'header.php';
 </main>
 <?php require_once HTML_DIR . DS . 'footer.php'; ?> <!--Inclui o FOOTER - ainda básico e estático-->
 <script type="text/javascript" src="./script/pedido.js"></script>
+
+<!--API Javascript-->
+<script type="text/javascript"
+        src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">
+    /* Produção-> "https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">*/
+</script>
+<script type="text/javascript">
+    PagSeguroDirectPayment.setSessionId('01f5be749b6c4c1faf37958ea0814611');
+</script>
+<script type="text/javascript" src="./script/pagseguro.js"></script>
 <script type="text/javascript" src="./script/plugins/jquery.mask.min.js"></script>
 </body>
 </html>
