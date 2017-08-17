@@ -264,9 +264,23 @@ include_once HTML_DIR . DS . 'header.php';
                 </div>
             </div>
             <div class="col-md-12">
-                <p><strong>Valor total do pedido:</strong> <span
-                            class="label label-info"><?php echo 'R$ ' . number_format($cart, 2, ',', '.') ?></span>
-                </p>
+
+                <table>
+                    <tr>
+                        <th>Produtos:</th>
+                        <td class="price-in-cart"><?php echo 'R$ ' . number_format($cart, 2, ',', '.') ?></td>
+                    </tr><tr>
+                        <th>Frete:</th>
+                        <td class="price-in-cart"><?php echo 'R$ ' . number_format($frete, 2, ',', '.') ?></td>
+                    </tr><tr>
+                        <th >Total:</th>
+                        <?php $total = $cart + $frete; ?>
+                        <td class="price-in-cart"><?php echo 'R$ ' . number_format($total, 2, ',', '.') ?></td>
+                    </tr>
+                </table>
+
+
+
             </div>
 
         </div>

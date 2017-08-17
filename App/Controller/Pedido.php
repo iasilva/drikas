@@ -5,6 +5,7 @@ namespace App\ Controller;
 use App\Model\Endereco\MunicipioRepository;
 use App\Model\Pedido\OrderItemModel;
 use App\Model\Pedido\OrderModel;
+use App\Model\Pedido\OrderRepository;
 use App\Model\Pedido\PaymentMethodRepository;
 use App\Model\Product\ProductRepository;
 use App\Model\Shopping\CartItem;
@@ -18,11 +19,13 @@ class Pedido extends Controller
 {
 
     private $pdo;
+    private $cart;
 
     public function __construct($pdo)
     {
         parent::__construct();
         $this->pdo = $pdo;
+        $this->cart = CartSession::getCart();
     }
 
     /**
@@ -36,26 +39,26 @@ class Pedido extends Controller
         /*$pagMetd= new PaymentMethodRepository($this->pdo);*/
         $atualUser = $user->getUserById($_SESSION['user']['id']);
         $estados = $estado->getEstados();
+        $frete = new Frete();
         $municipioWithUser = $municipio->getMunicipioById($atualUser->getMunicipio_id());
-        $cart = new CartSession();
         //Verifica se trata-se de registro íntegro na sessão
         if ($this->hasProductInCart() && $this->isUser()) {
             $this->view->set('h1', "Pedido > Pagamento");
-            $this->view->set('cart', $cart->getTotal());
+            $this->view->set('cart', $this->cart->getTotal());
             $this->view->set('user', $atualUser);
+            $this->view->set('frete', $frete->getStandardFrete());
+
             $order_id = $this->saveOrder();
-            $this->saveOrderItens($order_id, $cart->getCartItems());
+            $this->saveOrderItens($order_id, $this->cart->getCartItems());
             $this->view->set('orderId', $order_id);
             /*$this->view->set('metodosDePagamento',$pagMetd->getMethods());*/
             $this->view->set('estados', $estados);
             $this->view->set('municipio', $municipioWithUser);
             $this->view->set('estado', $estado->getEstadoById($municipioWithUser->getEstado_id()));
             $this->view->setTitle("Escolha entre os melhores produtos");
-            $cart->clear();
-            unset($cart);
-
+            $this->cart->clear();
+            $this->forPageFinalOrder($order_id);
             $this->view->render('pedido/checkout_01');
-
 
 
         } else {
@@ -71,14 +74,14 @@ class Pedido extends Controller
     {
         $order = new OrderModel();
         $frete = new Frete();
-        $cart = new CartSession();
         $order->setUserId((int)$_SESSION['user']['id']);
         $order->setPaymentMethodId(1);//PAG SEGURO - Por enquanto o único
         $order->setOrderStatusId(1);// Nesse momento sempre será Aguarda Pagamento
         $order->setFreight($frete->getStandardFrete());
-        $order->setTotal($cart->getTotal());
-        $cart->__destruct();
-        return $order->save($this->pdo);
+        $order->setTotal($this->cart->getTotal());
+        if($this->cart->getTotal()>0){
+            return $order->save($this->pdo);
+        }
     }
 
     /**
@@ -105,8 +108,7 @@ class Pedido extends Controller
      */
     private function hasProductInCart()
     {
-        $cart = new CartSession();
-        if (count($cart->getCartItems()) < 1) {
+        if ((count($this->cart->getCartItems()) < 1) || ($this->cart->getTotal() === 0) ) {
             header('Location: ./');
         }
         return true;
@@ -128,6 +130,53 @@ class Pedido extends Controller
     public function processPayment()
     {
         var_dump($_POST);
+    }
+
+    /**
+     * Redireciona para página de informações do pedido
+     */
+    private function forPageFinalOrder($order_id = ''){
+        if($order_id !== ''){
+            header("Location: ./?page=pedido&action=finalOrder&orderId=$order_id");
+        }
+    }
+
+    /**
+     * Exibe a página com informações sobre o pedido.
+     */
+    public function finalOrder(){
+        if($this->isUser());
+        $this->view->set('h1', "Pedido processado");
+        $orderRep= new OrderRepository($this->pdo);
+        $atualOrder =$orderRep->getOrder($_GET['orderId']);
+        /**
+         * Verifica a existência do pedido no BD e se ele pertence ao usuário logado
+         */
+        if($atualOrder && $this->isOrderFromUser($_SESSION['user']['id'],$atualOrder)){
+            $this->view->set('order_id',$atualOrder->getId());
+            $this->view->set('page_title',"Pedido finalizado, faça o pagamento com segurança.");
+            $this->view->set('pedido', $atualOrder);
+            $this->view->render('pedido/checkout_temp');
+
+        }else{
+            echo "Pedido não encontrado no Banco de dados.
+            <br> Ou você não pode acessar esse pedido sem fazer login ";
+        }
+    }
+
+    /**
+     * Verifica se o pedido passado é do usuário
+     * @param $userId
+     * @param OrderModel $order
+     * @return bool
+     */
+    private function isOrderFromUser($userId,OrderModel $order){
+        if ($order->getUserId()===$userId){
+            return true;
+        }else{
+            return false;
+        }
+
     }
 
 }

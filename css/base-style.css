@@ -203,56 +203,7 @@ a.cart-icon-pink:hover {
     vertical-align: middle;
 }
 
-@media screen and (max-width: 600px) {
-    table#cart tbody td .form-control {
-        width: 20%;
-        display: inline !important;
-    }
 
-    .actions .btn {
-        width: 36%;
-        margin: 1.5em 0;
-    }
-
-    .actions .btn-info {
-        float: left;
-    }
-
-    .actions .btn-danger {
-        float: right;
-    }
-
-    table#cart thead {
-        display: none;
-    }
-
-    table#cart tbody td {
-        display: block;
-        padding: .6rem;
-        min-width: 320px;
-    }
-
-    table#cart tbody tr td:first-child {
-        background: #333;
-        color: #fff;
-    }
-
-    table#cart tbody td:before {
-        content: attr(data-th);
-        font-weight: bold;
-        display: inline-block;
-        width: 8rem;
-    }
-
-    table#cart tfoot td {
-        display: block;
-    }
-
-    table#cart tfoot td .btn {
-        display: block;
-    }
-
-}
 
 /** PÁGINA DE PEDIDO*/
 #payment-method {
@@ -318,10 +269,176 @@ a.cart-icon-pink:hover {
     padding: 0;
     cursor: pointer;
 }
-.nameOfBrand{
+
+.nameOfBrand {
     margin-left: 4px;
 }
-#alert-card{
+
+#alert-card {
     width: 70%;
     display: none;
 }
+
+.price-in-cart {
+    padding: 3px;
+    font-weight: bold;
+    background-color: #cccccc;
+    border: 1px dotted #DDD;
+}
+
+.price-in-cart:last-child {
+    background-color: #2b2b2b;
+    color: #FDFDFD;
+}
+
+.header_page_title {
+    background: url("../images/layout/bg-header-page-title.jpg") repeat-x;
+    height: 42px;
+    padding-left: 6px;
+    width: 100%;
+    font-size: 36px;
+    font-family: "Slabo 27px";
+    color: rgb(42, 86, 147);
+    line-height: 1.2;
+    text-align: left;
+    text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.28);
+    margin-bottom: 0;
+}
+
+#dados_pedido_final_order {
+    background: url("../images/layout/bg_dados_pedido.jpg") repeat-y;
+    height: 410px;
+    margin-top: 0;
+    padding-top: 0;
+    padding-top: 1em;
+}
+
+.painel_info_pedido {
+    background-color: rgb(217, 133, 190);
+    box-shadow: 0px 9px 7px 0px rgba(0, 0, 0, 0.35);
+    min-height: 220px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.label_pedido {
+    font-size: 46px;
+    font-family: "Slabo 27px";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+}
+
+.pedido_number {
+    font-size: 36px;
+    font-family: "Roboto Mono";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+}
+
+.OK_ {
+    font-size: 8em;
+    font-family: "Slabo 27px";
+    color: rgb(116, 28, 88);
+    line-height: 1.2;
+}
+
+.check-temp-frase {
+    font-size: 42px;
+    font-family: "Slabo 27px";
+    color: rgb(134, 82, 117);
+    line-height: 1.2;
+    text-align: left;
+}
+
+.frase-check-temp {
+    font-size: 16px;
+    font-family: "Slabo 27px";
+    color: rgb(134, 82, 117);
+    line-height: 1.2;
+    text-align: left;
+}
+
+.whats-temp, .whats-temp a {
+    margin-top: 72px;
+    font-size: 24px;
+    font-family: "Roboto Mono";
+    color: rgb(66, 66, 66);
+    line-height: 1.2;
+    text-align: left;
+}
+
+
+.links-temp {
+    font-size: 16px;
+    font-family: "Slabo 27px";
+    color: rgb(106, 158, 218);
+    line-height: 1.2;
+    text-align: left;
+    cursor: pointer;
+}
+.blok-links-temp{
+    margin-top: 92px;
+}
+
+@media screen and (max-width: 600px) {
+    table#cart tbody td .form-control {
+        width: 20%;
+        display: inline !important;
+    }
+
+    .actions .btn {
+        width: 36%;
+        margin: 1.5em 0;
+    }
+
+    .actions .btn-info {
+        float: left;
+    }
+
+    .actions .btn-danger {
+        float: right;
+    }
+
+    table#cart thead {
+        display: none;
+    }
+
+    table#cart tbody td {
+        display: block;
+        padding: .6rem;
+        min-width: 320px;
+    }
+
+    table#cart tbody tr td:first-child {
+        background: #333;
+        color: #fff;
+    }
+
+    table#cart tbody td:before {
+        content: attr(data-th);
+        font-weight: bold;
+        display: inline-block;
+        width: 8rem;
+    }
+
+    table#cart tfoot td {
+        display: block;
+    }
+
+    table#cart tfoot td .btn {
+        display: block;
+    }
+
+    .check-temp-frase {
+        display: none;
+    }
+    #dados_pedido_final_order{
+        height: auto;
+        padding-bottom: 1em;
+    }
+
+}
+
+
+
+

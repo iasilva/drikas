@@ -39,4 +39,4 @@ $produtoRep = new \App\Model\Product\ProductRepository($pdo);
 $imageRep= new \App\Model\Image\ImageRepository($pdo);
 
 /**Session cart*/
-$cart= new \App\Model\Shopping\CartSession();
+$cart= \App\Model\Shopping\CartSession::getCart();

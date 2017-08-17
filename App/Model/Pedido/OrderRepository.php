@@ -29,7 +29,11 @@ class OrderRepository extends iOrderRepository
      */
     public function getOrder($id)
     {
-        // TODO: Implement getOrder() method.
+        $stmt = $this->pdo->prepare("SELECT * FROM drk.order WHERE id = :id");
+        $stmt->bindValue(":id", $id, \PDO::PARAM_INT);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Pedido\OrderModel');
+        $stmt->execute();
+        return $stmt->fetch();
     }
 
     /**

@@ -7,53 +7,72 @@ namespace App\Model\Shopping;
  *
  * @author ivana
  */
-class CartSession extends ICart {
+class CartSession
+{
 
-    private $items = [];
+    private $items;
+    protected static $cart;
 
-    public function __construct() {
-        $this->restore();        
+    private function __construct()
+    {
+        $this->restore();
+        self::$cart = $this;
     }
 
-    private function restore() {
-        $this->items= isset($_SESSION['cart']) ? unserialize($_SESSION['cart']) : array();
+    public static function getCart(){
+        if(!self::$cart){
+            new CartSession();
+        }
+        return self::$cart;
     }
 
-    public function add(CartItem $item) {
+    private function restore()
+    {
+        $this->items = isset($_SESSION['cart']) ? unserialize($_SESSION['cart']) : array();
+    }
+
+    public function add(CartItem $item)
+    {
         $id = $item->getProduct()->getId();
         if (!$this->has($id)) {
             $this->items[$id] = $item;
         }
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         if ($this->has($id)) {
             unset($this->items[$id]);
         }
     }
 
-    public function update(CartItem $item) {
+    public function update(CartItem $item)
+    {
         $id = $item->getProduct()->getId();
         if ($this->has($id)) {
-           $this->items[$id] = $item;
+            $this->items[$id] = $item;
         }
     }
 
-    public function has($id) {
+    public function has($id)
+    {
         return isset($this->items[$id]);
     }
 
-    public function getCartItems() {
+    public function getCartItems()
+    {
         return $this->items;
     }
 
-    public function clear(){
-        foreach ($this->items as $key => $valor){
+    public function clear()
+    {
+        foreach ($this->items as $key => $valor) {
             $this->delete($key);
         }
     }
 
-    public function getTotal() {
+    public function getTotal()
+    {
         $total = 0;
         foreach ($this->items as $item) {
             $total += $item->getSubTotal();
@@ -62,8 +81,9 @@ class CartSession extends ICart {
     }
 
 
-    public function __destruct() {
-        $_SESSION['cart'] = serialize($this->items);       
+    public function __destruct()
+    {
+        $_SESSION['cart'] = serialize($this->items);
     }
 
 }

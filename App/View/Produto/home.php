@@ -3,8 +3,12 @@
 
 <main class="container" id="produtos">
     <div class="row">
-        <h3><?php print $h1; ?></h3>
-        <p>Visualização de todos produtos </p>
+        <header class="header-page">
+            <h4 class="bg-primary text-center"><?php print $h1; ?></h4>
+        </header>
+    </div>
+    <div class="row">
+
 
         <?php
         foreach ($products as $produto) {

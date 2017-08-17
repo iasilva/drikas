@@ -8,6 +8,7 @@
 
 namespace App\Controller;
 
+use App\Model\Shopping\CartSession;
 use App\Mvc\Controller;
 use App\Model\Product\IProductRepository;
 use App\Model\Shopping\ICart;
@@ -28,12 +29,11 @@ class Cart extends Controller {
     
     private $pricePelicula= array(2=>0.99,4=>1.79,10=>2.49);
 
-    public function __construct(IProductRepository $product, ICart $cart) {
+    public function __construct(IProductRepository $product, CartSession $cart) {
         parent::__construct();
         $this->product = $product;
+        $this->cart = CartSession::getCart();
 
-        $this->cart = $cart;
-        var_dump($cart);
     }
 
     public function index(\App\Model\Image\IImageRepository $images) {
