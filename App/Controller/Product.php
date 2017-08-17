@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Model\Category\ProductCategoryRepository;
+use App\Model\Tag\TagRepository;
 use App\Mvc\Controller;
 use App\Model\Product\ProductModel;
 use App\Model\Product\IProductRepository;
@@ -47,9 +48,11 @@ class Product extends Controller {
      * @param IImageRepository $images
      */
     public function index(IImageRepository $images) {
+        $tag= new TagRepository($this->pdo);
         $this->products = $this->product->getProducts();
         $this->configProductWithPrimaryImage($images);
         $this->view->set('h1',"Películas de unha Drika's");
+        $this->view->set('tags',$tag->getTags());
         $this->view->set('products', $this->products);
         $this->view->setTitle("Escolha entre os melhores produtos");
         $this->view->render('produto/home');

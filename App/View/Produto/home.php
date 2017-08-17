@@ -10,9 +10,10 @@
         <!--Navegação das categorias em desenvolvimento-->
 
         <aside class="nav text-center">
-            <?php for($i=0;$i<23;$i++): ?>
-            <span class="label label-drk">Primary</span>
-            <?php endfor;?>
+
+            <?php if(isset($tags)): foreach ($tags as $tag): ?>
+                <a href="#"><?php echo $tag->getName() ?></a>
+            <?php endforeach; endif;?>
         </aside>
 
         <!--Final da navegação das categorias-->
@@ -20,6 +21,17 @@
 
     </div>
     <div class="row">
+
+        <!--Dados experimentais para Nova Visualização-->
+
+
+
+
+
+
+
+        <!--Final dos novos dados inseridos-->
+
         <?php
         foreach ($products as $produto) {
             ?>

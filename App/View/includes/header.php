@@ -4,9 +4,9 @@
             <ul class="list-inline">
                 <?php if (isset($_SESSION['user'])): ?>
                     <?php $nome = explode(' ', $_SESSION['user']['name']) ?>
-                    <li><span class="glyphicon glyphicon-user">                             
-                        </span>&nbsp;&nbsp;<?php echo $nome[0] ?></li>
-                    <li><a href="./?page=my&action=requests">Meus pedidos</a></li>
+                    <li><a href="./?page=minha-conta"><span class="glyphicon glyphicon-user">
+                            </span>&nbsp;&nbsp;<?php echo $nome[0] ?></a></li>
+                    <li><a href="./?page=minha-conta&action=requests">Meus pedidos</a></li>
                     <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho">Finalizar compra</a></li>
                     <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho"><span
                                     class="glyphicon glyphicon-shopping-cart">

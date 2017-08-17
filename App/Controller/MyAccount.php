@@ -17,11 +17,37 @@ use App\Mvc\Controller;
 class MyAccount extends Controller
 {
     private $pdo;
+    private $userId;
+    private $userName;
+    private $userEmail;
 
     public function __construct($pdo)
     {
         parent::__construct();
         $this->pdo = $pdo;
+        if(!$this->verifySessionUser()){
+            header("Location:./?page=user&action=login");
+        }
     }
+
+    public function index(){
+        echo "<br><br>OK! Essa é sua conta";
+    }
+
+    private function verifySessionUser(){
+        if((isset($_SESSION['user']['id']))&&($user_id=$_SESSION['user']['id'])){
+            $this->userId=$user_id;
+            $this->userEmail=$_SESSION['user']['email'];
+            $this->userName=$_SESSION['user']['name'];
+            return true;
+
+        }else{
+            return false;
+        }
+    }
+
+
+
+
 
 }

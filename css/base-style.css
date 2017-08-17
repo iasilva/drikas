@@ -117,6 +117,18 @@ img.primary-home {
 }
 #produtos aside{
     padding: 1em;
+    max-height: 120px;
+    overflow: auto;
+}
+
+#produtos aside a{
+    margin-right:14px;
+    color: #BBB;
+    opacity: .6;
+    font-size: 1em;
+}
+#produtos aside a:hover{
+    opacity: 1;
 }
 
 
@@ -451,10 +463,8 @@ a.cart-icon-pink:hover {
 
 }
 
-.label-drk{
-    margin: 1em;
-    background-color: rgb(116, 28, 88);
-}
+
+
 
 
 
