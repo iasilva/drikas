@@ -25,7 +25,7 @@
 
     </div>
     <div class="row">
-        <a href="./"><h1 class="text-center ">Drika's</h1></a>
+        <h1 class="text-center logo-header"><a href="./">Drika's</a></h1>
     </div>
 
     <!--Elimina o menu caso esteja processando um pedido-->

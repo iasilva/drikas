@@ -31,5 +31,14 @@ class ProductRepository implements IProductRepository {
         $stmt->execute();
         return $stmt->fetch();
     }
+    public function getProductsByCategory($category_id) {
+        $stmt = $this->pdo->prepare("SELECT * from product,product_category_product WHERE 
+                                                product_category_product.product_category_id =:category_id
+                                                and product_category_product.product_id = product.id");
+        $stmt->bindValue(":category_id", $category_id, \PDO::PARAM_INT);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Product\ProductModel');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
 }

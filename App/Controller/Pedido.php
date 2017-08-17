@@ -160,7 +160,7 @@ class Pedido extends Controller
 
         }else{
             echo "Pedido não encontrado no Banco de dados.
-            <br> Ou você não pode acessar esse pedido sem fazer login ";
+            <br> Ou você não pode acessar esse pedido sem fazer login.";
         }
     }
 

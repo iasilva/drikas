@@ -46,6 +46,9 @@ switch ( $page ) {
 			case "index":
 				call_user_func_array( array( $product, $action ), array( $imageRep ) );
 				break;
+				case "categoryView":
+				call_user_func_array( array( $product, $action ), array( $imageRep ) );
+				break;
 			default:
 				call_user_func_array( array( $product, $action ), array() );
 				break;
@@ -84,7 +87,7 @@ switch ( $page ) {
 
 
 	default:
-		$home = new \App\Controller\Home();
+		$home = new\ App\ Controller\ Home();
 		call_user_func_array( array( $home, $action ), array() );
 		break;
 }

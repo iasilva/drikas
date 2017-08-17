@@ -4,24 +4,24 @@
 */
 
 /* CSS do Header */
-
+a,a:active,a:visited,a:hover{text-decoration: none;}
 #principal-header {
     min-height: 112px;
     background: #fff;
 }
-
-#principal-header .row a:hover {
-    text-decoration: none;
-}
-
-#principal-header .row h1:hover {
-    color: #9e3f81;
-}
-
-#principal-header .row h1 {
+#principal-header .row h1 a{
     color: #b35796;
     font-family: "Lucida Handwriting";
 }
+#principal-header .row h1 a:hover {
+    text-decoration: none;
+}
+
+#principal-header .row h1 a:hover {
+    color: #9e3f81;
+}
+
+
 
 #principal-header .row.menu ul li {
     border-right: 1px solid;
@@ -107,6 +107,18 @@ img.primary-home {
 .product-home {
     cursor: pointer;
 }
+
+#btn-view-plus{
+    padding: 6px;
+    font-size:2em;
+    font-family: "Slabo 27px";
+    cursor: pointer;
+    width: 100%;
+}
+#produtos aside{
+    padding: 1em;
+}
+
 
 /** Carrinho de compras*/
 .cart-icon-pink {
@@ -437,6 +449,11 @@ a.cart-icon-pink:hover {
         padding-bottom: 1em;
     }
 
+}
+
+.label-drk{
+    margin: 1em;
+    background-color: rgb(116, 28, 88);
 }
 
 
