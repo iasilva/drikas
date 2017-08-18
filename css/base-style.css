@@ -491,6 +491,25 @@ a.cart-icon-pink:hover {
     height: 260px;
 }
 
+.btn-menu-drk {
+    font-size: 24px;
+    font-family: "Slabo27px";
+    width: 100%;
+    height: 46px;
+    margin: 6px 0;
+    background-color: #bdd8fd;
+    color: #b35796;
+    line-height: 46px;
+    text-align: left;
+}
+
+.btn-menu-drk:hover {
+    background-color: rgb(116, 174, 251);
+    color: rgb(255, 212, 245);
+}
+
+
+
 
 
 

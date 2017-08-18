@@ -15,7 +15,16 @@
 
 <main class="container" style="margin: 0">
     <aside class="col-md-2"><!--Início da Barra de menu lateral-->
-        Barra de menu lateral
+        <a href="#">
+            <div class="btn-menu-drk">Meus pedidos</div>
+        </a>
+        <a href="#">
+            <div class="btn-menu-drk">Meus dados</div>
+        </a>
+        <a href="#">
+            <div class="btn-menu-drk">Atendimentos</div>
+        </a>
+
     </aside><!--Fim da Barra de menu lateral-->
     <!--Quadro que engloba o quadro com botões informativos e o mural informativo-->
     <div class="col-md-8 col-md-offset-1" id="quadro-exposicao-pricipal">
