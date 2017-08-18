@@ -6,7 +6,7 @@
             <address>
                 sac@peliculasdrikas.com.br<br>
                 (27) 9 9649 4935<br>
-                (27) &nbsp;&nbsp;&nbsp;3727 4534
+
             </address>
         </div>
         <div class="col-md-4">

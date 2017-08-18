@@ -463,6 +463,37 @@ a.cart-icon-pink:hover {
 
 }
 
+/** Página Minha conta*/
+.barra-top-notice-blue {
+    height: 42px;
+    background-color: rgb(128,170,226);
+}
+.barra-top-notice-blue .container{
+    padding: 0;
+    height: inherit;
+
+}
+.barra-top-notice-blue h1{
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 28px;
+    font-family: "Slabo 27px";
+    color: rgb(255, 255, 255);
+    line-height: 1.2;
+    text-align: left;
+}
+#quadro-botoes-informativos{
+    height: 260px;
+    background: url("../images/layout/bg-mural.jpg") repeat;
+}
+#quadro-mural-informativo{
+    background-color: #ffd0d1;
+    height: 260px;
+}
+
+
+
+
 
 
 

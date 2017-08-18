@@ -30,10 +30,23 @@ class MyAccount extends Controller
         }
     }
 
+    /**
+     * Método principal da minha conta - Exibe o básico dos usuários
+     */
     public function index(){
-        echo "<br><br>OK! Essa é sua conta";
+      $this->view->setTitle("Minha conta. verifique os detalhes do seu pedido. ");
+      $this->view->set("userId",$this->userId);
+      $this->view->set("userName",$this->userName);
+      $this->view->set("userEmail",$this->userEmail);
+      $this->view->render("User/MyAccount/index");
+
     }
 
+
+    /**
+     * Configura a o objeto com os dados do usuário logado e retorna false caso não haja usuário logado
+     * @return bool
+     */
     private function verifySessionUser(){
         if((isset($_SESSION['user']['id']))&&($user_id=$_SESSION['user']['id'])){
             $this->userId=$user_id;
