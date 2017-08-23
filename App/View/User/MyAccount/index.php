@@ -14,22 +14,22 @@
 
 
 <main class="container" style="margin: 0">
-    <aside class="col-md-2"><!--Início da Barra de menu lateral-->
-        <a href="#">
-            <div class="btn-menu-drk">Meus pedidos</div>
-        </a>
-        <a href="#">
-            <div class="btn-menu-drk">Meus dados</div>
-        </a>
-        <a href="#">
-            <div class="btn-menu-drk">Atendimentos</div>
-        </a>
+    <!--Incluir um aside col-md-3-->
+    <?php
+    require_once dirname(__FILE__).'/aside.php';
+    ?>
 
-    </aside><!--Fim da Barra de menu lateral-->
+
+
+
+
     <!--Quadro que engloba o quadro com botões informativos e o mural informativo-->
     <div class="col-md-8 col-md-offset-1" id="quadro-exposicao-pricipal">
         <div class="col-md-12" id="quadro-botoes-informativos">
-            quadro-botoes-informativos
+            <div class="col-md-4"><div class="btn-rounded btn-rounded-1"></div></div>
+            <div class="col-md-4"><div class="btn-rounded btn-rounded-2"></div></div>
+            <div class="col-md-4"><div class="btn-rounded btn-rounded-3"></div></div>
+
         </div>
         <div class="col-md-12" id="quadro-mural-informativo">
             quadro-mural-informativo

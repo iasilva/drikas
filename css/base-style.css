@@ -483,8 +483,9 @@ a.cart-icon-pink:hover {
     text-align: left;
 }
 #quadro-botoes-informativos{
-    height: 260px;
+    height: auto;
     background: url("../images/layout/bg-mural.jpg") repeat;
+    padding: 12px 0;
 }
 #quadro-mural-informativo{
     background-color: #ffd0d1;
@@ -492,21 +493,77 @@ a.cart-icon-pink:hover {
 }
 
 .btn-menu-drk {
-    font-size: 24px;
+    background-color:#FFF;
+    color: #b35796;
+    border: 2px solid rgb(116, 174, 251);
+    font-size: 1.3em;
     font-family: "Slabo27px";
     width: 100%;
     height: 46px;
     margin: 6px 0;
-    background-color: #bdd8fd;
-    color: #b35796;
     line-height: 46px;
     text-align: left;
+    background-repeat: no-repeat;
+    background-position: left 4px center;
 }
 
-.btn-menu-drk:hover {
-    background-color: rgb(116, 174, 251);
-    color: rgb(255, 212, 245);
+.btn-menu-drk:hover,.btn-menu-drk-active {
+    background-color: #bdd8fd;
+
 }
+
+
+.btn-menu-drk p{
+    margin-left: 40px;
+}
+.btn-meus-pedidos{
+    background-image: url("../images/layout/ic_meus_pedidos.png");
+}
+
+.btn-meus-dados{
+    background-image: url("../images/layout/ic_meus_dados.png");
+}
+
+.btn-atendimentos{
+    background-image: url("../images/layout/ic_mensagens.png");
+}
+
+
+/** Botões topo  */
+.btn-rounded {
+    border-width: 1px;
+    border-style: dotted;
+    border-radius: 50%;
+    width: 175px;
+    height: 175px;
+    margin: auto;
+
+
+}
+.btn-rounded-1{
+    border-color: rgb(169, 169, 169);
+    background-color: rgb(179, 87, 150);
+}
+.btn-rounded-2{
+    background-color: rgb(173, 112, 154);
+    border-color: rgb(169, 169, 169);
+
+}
+.btn-rounded-3{
+    background-color: rgb(163, 132, 153);
+}
+
+.Elipse_1_copiar_2 {
+    border-radius: 50%;
+
+    position: absolute;
+    left: 3926px;
+    top: 2168px;
+    width: 177px;
+    height: 177px;
+    z-index: 71;
+}
+
 
 
 
