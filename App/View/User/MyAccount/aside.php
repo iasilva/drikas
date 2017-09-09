@@ -1,5 +1,5 @@
 <aside class="col-md-3"><!--Início da Barra de menu lateral-->
-    <a href="#">
+    <a href="./?page=minha-conta&action=MyOrders">
         <div class="btn-menu-drk btn-meus-pedidos "><p class="text-center">Meus pedidos</p></div>
     </a>
     <a href="#">

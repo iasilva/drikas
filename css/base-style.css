@@ -55,19 +55,23 @@ a,a:active,a:visited,a:hover{text-decoration: none;}
 
     main {
         max-width: 98%;
+
     }
+
 
 }
 
 /** PÁGINA HOME - PRINCIPAL*/
 main {
-    margin-top: 24px
+    margin-top: 24px;
+    color: #878787;
 }
 
 main header h4 {
     padding: 3px;
     max-width: 210px;
 }
+
 
 #home {
 
@@ -564,10 +568,33 @@ a.cart-icon-pink:hover {
     z-index: 71;
 }
 
+table#table-meus-pedidos{
+    margin-top: 24px;
+}
+.img-in-itens-pedido{
+    max-height: 60px;
+}
+article#block-contact{
+    background: #999;
+    color: #dedede;
+    padding: 20px;
+}
+article#block-contact  input[type='text']{
+    background: #929292;
+    color: #dedede;
+}
+article#block-contact input[type='email']{
+    background: #929292;
+    color: #dedede;
+}
+article#block-contact textarea{
+    background: #929292;
+    color: #dedede;
+}
+article#block-contact label{
+    color: #ddd;
 
-
-
-
+}
 
 
 

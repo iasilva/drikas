@@ -63,10 +63,22 @@ switch ($page) {
     /*Casos as chamadas sejam relacionadas a conta do usuário*/
     case 'minha-conta':
         $minhaConta = new \App\Controller\MyAccount($pdo);
-        call_user_func_array(array($minhaConta, $action), array());
+        switch ($action){
+            case "orderDetail":
+                $get=new Thirday\Request\RequestFactory('get');
+                $order_id= $get->captura('orderId');
+                call_user_func_array(array($minhaConta, $action), array($order_id));
+                break;
+            default:
+                call_user_func_array(array($minhaConta, $action), array());
+                break;
+        }
+
         break;
-
-
+    case 'StaticController':
+        $static= new \App\Controller\StaticController();
+        call_user_func_array(array($static, $action), array());
+        break;
     case 'user':
         $user = new \App\Controller\User;
         switch ($action) {
