@@ -25,7 +25,7 @@ class OrderItemRepository extends iOrderItemRepository
      */
     public function getAllItemsInTheOrder($order_id)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM order_item WHERE order_id=:order_id ORDER BY description ASC");
+        $stmt = $this->pdo->prepare("SELECT * FROM order_item WHERE order_id=:order_id");
         $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Pedido\OrderItemModel');
         $stmt->bindValue(":order_id", $order_id, \PDO::PARAM_INT);
         $stmt->execute();

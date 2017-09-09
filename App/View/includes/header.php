@@ -6,7 +6,7 @@
                     <?php $nome = explode(' ', $_SESSION['user']['name']) ?>
                     <li><a href="./?page=minha-conta"><span class="glyphicon glyphicon-user">
                             </span>&nbsp;&nbsp;<?php echo $nome[0] ?></a></li>
-                    <li><a href="./?page=minha-conta&action=requests">Meus pedidos</a></li>
+                    <li><a href="./?page=minha-conta&action=MyOrders" title="Ver meus pedidos">Meus pedidos</a></li>
                     <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho">Finalizar compra</a></li>
                     <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho"><span
                                     class="glyphicon glyphicon-shopping-cart">
@@ -35,10 +35,10 @@
                 <ul class="list-inline text-primary">
                     <li><a href="#">Películas</a></li>
                     <li><a href="#">Joinhas</a></li>
-                    <li><a href="#">Parcerias</a></li>
+                    <li><a href="./?page=StaticController&action=parceria">Parcerias</a></li>
                     <li><a href="#">Atacado</a></li>
                     <li><a href="#">Ajuda</a></li>
-                    <li><a href="#">Fale conosco</a></li>
+                    <li><a href="./?page=StaticController&action=contato">Fale conosco</a></li>
                 </ul>
 
             </div>
