@@ -41,6 +41,9 @@ class MyAccount extends Controller
       $this->view->render("User/MyAccount/index");
 
     }
+    public function Requests(){
+            echo "Qual é macho";
+    }
 
 
     /**
