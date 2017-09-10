@@ -57,17 +57,45 @@ class Product extends Controller {
         $this->view->setTitle("Escolha entre os melhores produtos");
         $this->view->render('produto/home');
     }
+
+    /**
+     * Método utilizado para a exibição de produtos por categoria
+     * @param IImageRepository $images
+     */
     public function categoryView (IImageRepository $images) {
         if($categoryReturned= $this->verifyCategoryGet()){
             $this->products = $this->product->getProductsByCategory($categoryReturned->getId());
             $this->configProductWithPrimaryImage($images);
+            $tag= new TagRepository($this->pdo);
+            $this->view->set('tags',$tag->getTags());
             $this->view->set('h1',$categoryReturned->getName() . " - Drika's");
             $this->view->set('products', $this->products);
             $this->view->setTitle($categoryReturned->getName()." - Escolha entre os melhores produtos. ");
             $this->view->render('produto/home');
         }else{
-            echo "Categoria não identificada no Banco de Dados.";
+            $this->noProducts();
         }
+    }
+
+    /**
+     * Método utilizado para a exibição de produtos com base na tag
+     * @param IImageRepository $images
+     */
+    public function tagView (IImageRepository $images) {
+        $get= new RequestFactory('get');
+        $tag_name=$get->captura('name');
+        if($this->products=$this->product->getProductsByTagName($tag_name)){
+            $this->configProductWithPrimaryImage($images);
+            $tag= new TagRepository($this->pdo);
+            $this->view->set('tags',$tag->getTags());
+            $this->view->set('h1',$tag_name . " - Drika's");
+            $this->view->set('products', $this->products);
+            $this->view->setTitle($tag_name." - Escolha entre os melhores produtos. ");
+            $this->view->render('produto/home');
+        }else{
+            $this->noProducts();
+        }
+
 
     }
 
@@ -142,6 +170,15 @@ class Product extends Controller {
         }else{
             return 0;//false
         }
+    }
+
+    private function noProducts(){
+        $tag= new TagRepository($this->pdo);
+        $this->view->set('tags',$tag->getTags());
+        $this->view->setTitle("Não encontramos produtos relacionados a sua solicitação");
+        $this->view->set('h1',"Nenhum produto(´´)");
+        $this->view->render('produto/no-products');
+
     }
 
 }

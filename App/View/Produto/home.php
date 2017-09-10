@@ -12,7 +12,7 @@
         <aside class="nav text-center">
 
             <?php if(isset($tags)): foreach ($tags as $tag): ?>
-                <a href="#"><?php echo $tag->getName() ?></a>
+                <a href="./?page=product&action=tagView&name=<?php echo $tag->getName() ?>"><?php echo $tag->getName() ?></a>
             <?php endforeach; endif;?>
         </aside>
 

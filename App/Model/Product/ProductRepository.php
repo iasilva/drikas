@@ -41,4 +41,36 @@ class ProductRepository implements IProductRepository {
         return $stmt->fetchAll();
     }
 
+    /**
+     * Verificar os produtos relacionados a determinada tagId - Excluindo os produtos marcados como deletados
+     * @param $tag_id
+     * @return array
+     */
+    public function getProductsByTag($tag_id) {
+        $stmt = $this->pdo->prepare(
+            "select product.id,product.description,product.price,product.created_at, product.updated_at
+                        from product inner join tag inner join tag_product on tag_product.product_id = product.id and tag_product.tag_id = tag.id
+                         where tag.id = :tag_id and product.deleted=0 ORDER BY product.id DESC");
+        $stmt->bindValue(":tag_id", $tag_id, \PDO::PARAM_INT);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Product\ProductModel');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * Retorna os produtos pelo nome da tag, excluindo-se os produtos marcados como deletados
+     * @param $tag_name
+     */
+    public function getProductsByTagName($tag_name){
+        $stmt=$this->pdo->prepare(
+            "select product.id,product.description,product.price,product.created_at, product.updated_at
+                        from product inner join tag inner join tag_product on tag_product.product_id = product.id and tag_product.tag_id = tag.id
+                         where tag.name = :tag_name and product.deleted=0 ORDER BY product.id DESC"
+        );
+        $stmt->bindValue(":tag_name", $tag_name, \PDO::PARAM_STR);
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Product\ProductModel');
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
 }

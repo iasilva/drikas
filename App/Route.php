@@ -49,6 +49,9 @@ switch ($page) {
             case "categoryView":
                 call_user_func_array(array($product, $action), array($imageRep));
                 break;
+            case "tagView":
+                call_user_func_array(array($product, $action), array($imageRep));
+                break;
             default:
                 call_user_func_array(array($product, $action), array());
                 break;
