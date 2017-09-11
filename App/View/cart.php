@@ -1,10 +1,25 @@
 <?php include_once dirname(__FILE__) . '/includes/head.php'; ?>
 <?php include_once dirname(__FILE__) . '/includes/header.php'; ?>
+
+
+
+<div class="container-fluid barra-top-notice-blue">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="container">
+                <h1>Carrinho de compras  <span class="glyphicon glyphicon-shopping-cart" style="font-size: 16px; opacity: .3;"></span> </h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
 <!--Linha acima é necessária em todas as views para inclusão de qualquer include-->
 <main class="container">
 	<div class="row">
 		<div class="col-lg-12">
-			<h3>Carrinho de compras</h3>
+
 			<table id="cart" class="table table-hover table-condensed">
 				<thead>
 					<tr>

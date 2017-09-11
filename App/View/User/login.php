@@ -36,6 +36,7 @@
                 </div>
                 <div class="panel-body">
                     <form method="POST" action="./?page=session&action=processaLogin<?php echo $next=(isset($_GET['next']) && $_GET['next'] ==='pedido')?'&next=pedido':''?>">
+                        <input type="hidden" name="origem" value="<?php echo $_SERVER['HTTP_REFERER'] ?>">
                         <div class="form-group">
                             <label class="control-label" for="email" >Email</label>                   
                             <input type="email" title="Informe o email cadastrado" class="form-control" name="email" value="" required/>

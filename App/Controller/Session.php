@@ -136,7 +136,8 @@ class Session extends Controller
         } else {
             $this->sessionClose();
         }
-        header("Location:./ ");
+        $origem=$_SERVER['HTTP_REFERER'];
+        header("Location:$origem");
     }
 
     /**
@@ -159,8 +160,10 @@ class Session extends Controller
                 if (isset($_GET['next']) && $_GET['next'] === 'pedido') { //Verifica se o usuário está vindo de uma finalização de pedido
                     header("Location:./?page=pedido");
                 } else {
-                    if (isset($_SESSION['cart']) && $_SESSION['cart'] !== '' ) {
-                        header("Location:./?page=cart");
+                    if (isset($_POST['origem']) ) {
+                        $origem=$_POST['origem'];
+                        echo $origem;
+                        header("Location: $origem");
                     }else{
                         header("Location:./?page=product");
                     }

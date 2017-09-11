@@ -61,27 +61,34 @@ class MyAccount extends Controller
             $this->view->set("userName", $this->userName);
             $this->view->set("userEmail", $this->userEmail);
             $this->view->set("myOrders", $orders->getOrders($this->userId));
-
             $this->view->render("User/MyAccount/meus-pedidos");
-
         }
     }
 
+    /**
+     * Detalha um determinado pedido para o usuário
+     * @param $orderId
+     */
     public function orderDetail($orderId)
     {
         if ($this->verifySessionUser()) {//Verifica se o usuário existe
             $orders = new OrderRepository($this->pdo);
-            $order=$orders->getOrder($orderId);
-            $this->view->setTitle($this->userName." Visualize seu pedido ".$orderId);
-            $this->view->set("order",$order);
-            $this->view->set("itens",$this->configOrderForExibition($order));
-            $this->view->render('User/MyAccount/pedido-detalhe');
+            if($order=$orders->getOrder($orderId)){//Se pedido existe
+                if ($order->getUserId()===$this->userId){//Se pedido é do usuário logado
+                    $this->view->setTitle($this->userName." Visualize seu pedido ".$orderId);
+                    $this->view->set("order",$order);
+                    $this->view->set("itens",$this->configOrderForExibition($order));
+                    $this->view->render('User/MyAccount/pedido-detalhe');
+                }else{//Se pedido é de outro usuário
+                    header("location:./?page=minha-conta&action=MyOrders");
+                }
+            }else{//Se pedido não existe
+                header("location:./?page=minha-conta&action=MyOrders");
+            }
 
         }
     }
-    public function Requests(){
-            echo "Qual é macho";
-    }
+
 
 
     /**

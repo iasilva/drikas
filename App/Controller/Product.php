@@ -176,7 +176,7 @@ class Product extends Controller {
         $tag= new TagRepository($this->pdo);
         $this->view->set('tags',$tag->getTags());
         $this->view->setTitle("Não encontramos produtos relacionados a sua solicitação");
-        $this->view->set('h1',"Nenhum produto(´´)");
+        $this->view->set('h1',"Nenhum produto (^~^)");
         $this->view->render('produto/no-products');
 
     }

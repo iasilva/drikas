@@ -20,6 +20,10 @@ a,a:active,a:visited,a:hover{text-decoration: none;}
 #principal-header .row h1 a:hover {
     color: #9e3f81;
 }
+.menu-float-topo-right{
+    padding: 6px 3px;
+    line-height: 24px;
+}
 
 
 
@@ -32,7 +36,7 @@ a,a:active,a:visited,a:hover{text-decoration: none;}
 }
 
 #principal-header .row.menu-float-topo-right ul li {
-    border-right: 1px solid;
+    border-right: 1px solid #ddd;
 }
 
 #principal-header .row.menu-float-topo-right ul li a {

@@ -1,27 +1,53 @@
 <header class="container-fluid border-botton-rosa" id="principal-header">
     <div class="row menu-float-topo-right">
-        <div class="pull-right">
-            <ul class="list-inline">
-                <?php if (isset($_SESSION['user'])): ?>
-                    <?php $nome = explode(' ', $_SESSION['user']['name']) ?>
-                    <li><a href="./?page=minha-conta"><span class="glyphicon glyphicon-user">
+
+        <div class="col-md-7">
+            <div class="pull-right">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input class="form-control" name="produto_search" placeholder="Encontrar produto" title="Digite o código do produto ou uma palavra relacionada. cor| categoria | tag | Código">
+                        <button class="btn btn-sm"><span class="glyphicon glyphicon-search"></span> </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="col-md-5 " >
+            <div class="pull-right">
+                <ul class="list-inline">
+                    <?php if (isset($_SESSION['user'])): ?>
+                        <?php $nome = explode(' ', $_SESSION['user']['name']) ?>
+                        <li><a href="./?page=minha-conta"><span class="glyphicon glyphicon-user">
                             </span>&nbsp;&nbsp;<?php echo $nome[0] ?></a></li>
-                    <li><a href="./?page=minha-conta&action=MyOrders" title="Ver meus pedidos">Meus pedidos</a></li>
-                    <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho">Finalizar compra</a></li>
-                    <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho"><span
-                                    class="glyphicon glyphicon-shopping-cart">
+                        <li><a href="./?page=minha-conta&action=MyOrders" title="Ver meus pedidos">Meus pedidos</a></li>
+                        <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho">Finalizar compra</a></li>
+                        <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho"><span
+                                        class="glyphicon glyphicon-shopping-cart">
                             </span><span id="item-in-cart" class="badge"></span></a></li>
-                    <li><a href="./?page=session&action=logout">Sair</a></li>
-                <?php else: ?>
-                    <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho"><span
-                                    class="glyphicon glyphicon-shopping-cart">
+                        <li><a href="./?page=session&action=logout">Sair</a></li>
+                    <?php else: ?>
+                        <li><a href="./?page=cart" title="Finalizar compra - Ver o carrinho"><span
+                                        class="glyphicon glyphicon-shopping-cart">
                             </span><span id="item-in-cart" class="badge"></span></a></li>
-                    <li><a href="./?page=user&action=cadastro">Cadastrar</a></li>
-                    <li><a href="./?page=user&action=login">Entrar</a></li>
-                <?php endif; ?>
-            </ul>
+                        <li><a href="./?page=user&action=cadastro">Cadastrar</a></li>
+                        <li><a href="./?page=user&action=login">Entrar</a></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+
             <!--//Nessa linha deve entrar ícones das redes sociais-->
         </div>
+
+
+
+
+
+
+
+
+
 
     </div>
     <div class="row">
