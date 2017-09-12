@@ -1,5 +1,17 @@
 <?php
 
+if (!isset($_SESSION['user']['admin'])){ ?><!--Verificamos se o usuário é administrador, Caso não seja encerra o código e redireciona.-->
+    <script language= "JavaScript">
+        setTimeout("document.location = '../'",5000);
+    </script>
+<?php die("Você não tem permissão para estar aqui. Será redirecionado em 3 segundos");
+}
+
+
+
+
+
+
 /**
  * verifica a existência de uma variável GET com o nome de <em>page</em>
  * Essa variável define a classe a ser instanciada

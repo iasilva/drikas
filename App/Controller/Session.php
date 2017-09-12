@@ -162,7 +162,6 @@ class Session extends Controller
                 } else {
                     if (isset($_POST['origem']) ) {
                         $origem=$_POST['origem'];
-                        echo $origem;
                         header("Location: $origem");
                     }else{
                         header("Location:./?page=product");
