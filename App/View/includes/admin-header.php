@@ -7,8 +7,7 @@ $categoriasPrincipais = $cat->getCategories();
     <div class="row menu-float-topo-right">
         <div class="pull-right" >
             <ul class="list-inline">
-                <li><a href="#">Cadastrar</a></li>
-                <li><a href="#">Entrar</a></li>
+               <li style="opacity: .6"><span class="glyphicon glyphicon-user"></span> <?php echo $_SESSION['user']['name']; ?></li>
             </ul>
             <!--//Nessa linha deve entrar ícones das redes sociais--> 
         </div>

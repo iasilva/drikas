@@ -15,19 +15,19 @@
         <form class="form-horizontal">
             <div class="form-group col-md-8">
                 <label for="nome">Nome:</label>
-                <input class="form-control" name="nome" id="nome" type="text">
+                <input class="form-control" name="nome" id="nome" type="text" required>
             </div>
             <div class="form-group col-md-8">
                 <label for="email">Email:</label>
-                <input class="form-control" name="email" id="email" type="email">
+                <input class="form-control" name="email" id="email" type="email" required>
             </div>
             <div class="form-group col-md-8">
                 <label for="assunto">Assunto:</label>
-                <input class="form-control" name="assunto" id="assunto" type="text">
+                <input class="form-control" name="assunto" id="assunto" type="text" required>
             </div>
             <div class="form-group col-sm-12">
                 <label for="mensagem">Mensagem</label>
-                <textarea rows="7" class="form-control" name="mensagem" id="mensagem"></textarea>
+                <textarea rows="7" class="form-control" name="mensagem" id="mensagem" required></textarea>
             </div>
 
             <div class="form-group col-md-2 col-md-offset-10">
@@ -41,7 +41,7 @@
 <article class="col-md-6">
 
 
-    </article>
+</article>
 
 
 </main>
