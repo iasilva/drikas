@@ -58,7 +58,7 @@ class CreateOrder
      * @return int - Id do pedido
      */
     private function insert($user_id, $payment_method_id, $order_status_id,$freight, $total, $created_at){
-        $sql="INSERT INTO drk.order (user_id, payment_method_id, order_status_id, freight, total, created_at) VALUES (:user_id, :payment_method_id, :order_status_id, :freight, :total, :created_at)";
+        $sql="INSERT INTO saind604_drk.order (user_id, payment_method_id, order_status_id, freight, total, created_at) VALUES (:user_id, :payment_method_id, :order_status_id, :freight, :total, :created_at)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(":user_id", $user_id, \PDO::PARAM_INT);
         $stmt->bindParam(":payment_method_id",$payment_method_id, \PDO::PARAM_INT);

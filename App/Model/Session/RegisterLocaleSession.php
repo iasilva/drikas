@@ -18,7 +18,7 @@ class RegisterLocaleSession {
 
         
     }
-    private function isAdmin($id){
+    private static function isAdmin($id){
         $pdo= \Database::conexao();
         $stmt = $pdo->prepare("SELECT * FROM user_admin WHERE user_id = :id");
         $stmt->bindValue(":id", $id, \PDO::PARAM_INT);

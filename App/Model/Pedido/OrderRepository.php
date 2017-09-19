@@ -29,7 +29,7 @@ class OrderRepository extends iOrderRepository
      */
     public function getOrder($id)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM drk.order WHERE id = :id");
+        $stmt = $this->pdo->prepare("SELECT * FROM saind604_drk.order WHERE id = :id");
         $stmt->bindValue(":id", $id, \PDO::PARAM_INT);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Pedido\OrderModel');
         $stmt->execute();
@@ -42,7 +42,7 @@ class OrderRepository extends iOrderRepository
      */
     public function getOrders($user_id)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM drk.order WHERE user_id = :user_id ORDER BY id DESC");
+        $stmt = $this->pdo->prepare("SELECT * FROM saind604_drk.order WHERE user_id = :user_id ORDER BY id DESC");
         $stmt->bindValue(":user_id", $user_id, \PDO::PARAM_INT);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Pedido\OrderModel');
         $stmt->execute();
