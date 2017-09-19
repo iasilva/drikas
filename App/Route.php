@@ -56,7 +56,6 @@ switch ($page) {
                 call_user_func_array(array($product, $action), array());
                 break;
         }
-
         break;
     case 'teste':
         $teste = new \App\Controller\Teste;
@@ -106,6 +105,10 @@ switch ($page) {
     case 'pedido':
         $pedido = new App\Controller\Pedido($pdo);
         call_user_func_array(array($pedido, $action), array());
+        break;
+    case 'contact':
+        $contato = new App\Controller\Contact();
+        call_user_func_array(array($contato, $action), array());
         break;
 
 

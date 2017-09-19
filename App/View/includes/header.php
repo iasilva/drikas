@@ -3,9 +3,9 @@
 
         <div class="col-md-7">
             <div class="pull-right">
-                <form class="form-inline">
+                <form class="form-inline" method="get" action="./?page=search">
                     <div class="form-group">
-                        <input class="form-control" name="produto_search" placeholder="Encontrar produto" title="Digite o código do produto ou uma palavra relacionada. cor| categoria | tag | Código">
+                        <input class="form-control" name="q" placeholder="Encontrar produto" title="Digite o código do produto ou uma palavra relacionada. cor| categoria | tag | Código">
                         <button class="btn btn-sm"><span class="glyphicon glyphicon-search"></span> </button>
                     </div>
                 </form>
@@ -59,11 +59,12 @@
         <div class="row menu">
             <div class="text-center">
                 <ul class="list-inline text-primary">
-                    <li><a href="#">Películas</a></li>
-                    <li><a href="#">Joinhas</a></li>
+                    <li><a href="./">Página inicial</a></li>
+                   <!-- <li><a href="#">Películas</a></li>
+                    <li><a href="#">Joinhas</a></li>-->
                     <li><a href="./?page=StaticController&action=parceria">Parcerias</a></li>
-                    <li><a href="#">Atacado</a></li>
-                    <li><a href="#">Ajuda</a></li>
+                    <!--<li><a href="#">Atacado</a></li>-->
+                    <!--<li><a href="#">Ajuda</a></li>-->
                     <li><a href="./?page=StaticController&action=contato">Fale conosco</a></li>
                 </ul>
 

@@ -8,7 +8,7 @@
         <title><?php echo $page_title ?> Drika's a melhor loja de películas e joinhas de unhas</title>
         <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
-        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Mono|Slabo+27px" rel="stylesheet">
         <link rel="stylesheet" href="./css/base-style.css">
         <?php if (isset($_GET['page']) && ($_GET['page'] === 'pedido')): ?><!--Inclui caso seja nas páginas de pedido-->
