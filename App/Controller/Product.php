@@ -107,7 +107,7 @@ class Product extends Controller {
     public function cadastrar(iProductCategoryRepository $categories, $masterCat) {
         $this->view->setTitle("Formulário de cadastro de produtos");
         $this->view->set('categories', $categories->getSubCategories($masterCat));
-        $this->view->render('admin/form-cad-product');
+        $this->view->render('Admin/form-cad-product');
     }
     /**
      * Processa o formulário para a real criação de um produto

@@ -33,7 +33,7 @@ class Tag extends Controller {
      * @param type $tag
      * @param int $idProduct
      */
-    public function insert(string $tag, int $idProduct) {
+    public function insert($tag,$idProduct) {
         $tagModel = new TagModel;
         $relacion = new TagWithProduct;
         $tagRepos = new TagRepository($this->pdo);
@@ -52,12 +52,12 @@ class Tag extends Controller {
      * @param int $idTag
      * @param int $idProd
      */
-    public function relationshipWithProduct(int $idTag, int $idProd) {
+    public function relationshipWithProduct($idTag,$idProd) {
 //        Método providencia a criação das tags inexistentes e as relaciona com 
 //        o produto, se a tag já existir ele apenas relaciona com o produto;
     }
 
-    private function separeTags(string $tag) {
+    private function separeTags($tag) {
         $delimiter = array(' ', ',', ',,', '-', ';');
         $tags = $tag;
         foreach ($delimiter as $valor) {

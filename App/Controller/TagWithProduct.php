@@ -15,7 +15,7 @@ class TagWithProduct extends Controller {
         parent::__construct();
     }
 
-    public function create(int $product_id, int $id_tag) {
+    public function create($product_id,$id_tag) {
         $prodTag= new Prodtag;
         $prodTag->setProduct_id($product_id);
         $prodTag->setTag_id($id_tag);
