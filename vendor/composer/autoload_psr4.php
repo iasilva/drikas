@@ -8,5 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Thirday\\' => array($baseDir . '/src'),
     'SimpleCrud\\' => array($vendorDir . '/simple-crud/simple-crud/src'),
+    'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'App\\' => array($baseDir . '/App'),
 );

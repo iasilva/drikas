@@ -55,7 +55,7 @@ class Product extends Controller {
         $this->view->set('tags',$tag->getTags());
         $this->view->set('products', $this->products);
         $this->view->setTitle("Escolha entre os melhores produtos");
-        $this->view->render('produto/home');
+        $this->view->render('Produto/home');
     }
 
     /**
@@ -71,7 +71,7 @@ class Product extends Controller {
             $this->view->set('h1',$categoryReturned->getName() . " - Drika's");
             $this->view->set('products', $this->products);
             $this->view->setTitle($categoryReturned->getName()." - Escolha entre os melhores produtos. ");
-            $this->view->render('produto/home');
+            $this->view->render('Produto/home');
         }else{
             $this->noProducts();
         }
@@ -91,7 +91,7 @@ class Product extends Controller {
             $this->view->set('h1',$tag_name . " - Drika's");
             $this->view->set('products', $this->products);
             $this->view->setTitle($tag_name." - Escolha entre os melhores produtos. ");
-            $this->view->render('produto/home');
+            $this->view->render('Produto/home');
         }else{
             $this->noProducts();
         }
@@ -128,8 +128,8 @@ class Product extends Controller {
         $imgModel->save($pdo);
         $category->relationshipWithProduct($idProduto, $rq->captura("categories"));
         $tag->insert($rq->captura('tags'), $idProduto);
-        header("Location: ./?page=product&action=cadastrar&success");
-        
+        header("Location: ./?page=product&action=cadastrar&success&id=$idProduto");
+
     }
 
     /**
@@ -138,7 +138,7 @@ class Product extends Controller {
      */
     private function configProductWithPrimaryImage(IImageRepository $images) {
         
-        foreach ($this->products as $key => $product) {            
+        foreach ($this->products as $key => $product) {
             $imagens = $images->getPrimaryImage($product->getId());
             $this->products[$key]->setImages($imagens);
         }
@@ -175,7 +175,7 @@ class Product extends Controller {
         $this->view->set('tags',$tag->getTags());
         $this->view->setTitle("Não encontramos produtos relacionados a sua solicitação");
         $this->view->set('h1',"Nenhum produto (^~^)");
-        $this->view->render('produto/no-products');
+        $this->view->render('Produto/no-products');
 
     }
 

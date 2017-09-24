@@ -58,7 +58,7 @@ class Pedido extends Controller
             $this->view->setTitle("Escolha entre os melhores produtos");
             $this->cart->clear();
             $this->forPageFinalOrder($order_id);
-            $this->view->render('pedido/checkout_01');
+            $this->view->render('Pedido/checkout_01');
 
 
         } else {
@@ -156,7 +156,7 @@ class Pedido extends Controller
             $this->view->set('order_id',$atualOrder->getId());
             $this->view->set('page_title',"Pedido finalizado, faça o pagamento com segurança.");
             $this->view->set('pedido', $atualOrder);
-            $this->view->render('pedido/checkout_temp');
+            $this->view->render('Pedido/checkout_temp');
 
         }else{
             echo "Pedido não encontrado no Banco de dados.

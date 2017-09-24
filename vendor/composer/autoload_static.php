@@ -19,6 +19,10 @@ class ComposerStaticInit42542e0d72ae0c4eb6c374473573bbde
         array (
             'SimpleCrud\\' => 11,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -33,6 +37,10 @@ class ComposerStaticInit42542e0d72ae0c4eb6c374473573bbde
         'SimpleCrud\\' => 
         array (
             0 => __DIR__ . '/..' . '/simple-crud/simple-crud/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
         'App\\' => 
         array (

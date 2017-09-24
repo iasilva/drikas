@@ -46,6 +46,6 @@ class CreationProduct implements ICreationProduct {
         $stmt->bindParam(":created_at", $this->created_at, \PDO::PARAM_STR);
         $stmt->execute();
         $this->id= $this->pdo->lastInsertId();
-    }    
+    }
 
 }

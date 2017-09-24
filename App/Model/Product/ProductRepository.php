@@ -18,14 +18,14 @@ class ProductRepository implements IProductRepository {
     }
 
     public function getProducts() {
-        $stmt = $this->pdo->prepare("SELECT * FROM product ORDER BY id DESC");
+        $stmt = $this->pdo->prepare("SELECT * FROM product WHERE deleted = 0 ORDER BY id DESC");
         $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Product\ProductModel');
         $stmt->execute();
         return $stmt->fetchAll();
     }
 
     public function getProduct($id) {
-        $stmt = $this->pdo->prepare("SELECT * FROM product WHERE id = :id");
+        $stmt = $this->pdo->prepare("SELECT * FROM product WHERE id = :id AND deleted = 0");
         $stmt->bindValue(":id", $id, \PDO::PARAM_INT);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Product\ProductModel');
         $stmt->execute();
@@ -34,7 +34,7 @@ class ProductRepository implements IProductRepository {
     public function getProductsByCategory($category_id) {
         $stmt = $this->pdo->prepare("SELECT * from product,product_category_product WHERE 
                                                 product_category_product.product_category_id =:category_id
-                                                and product_category_product.product_id = product.id");
+                                                and product_category_product.product_id = product.id AND deleted = 0");
         $stmt->bindValue(":category_id", $category_id, \PDO::PARAM_INT);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Product\ProductModel');
         $stmt->execute();

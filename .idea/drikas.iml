@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/filipac/ip" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/phpclasses/parseuseragentstring" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/simple-crud/simple-crud" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -19,6 +20,7 @@
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/filipac/ip" />
           <root url="file://$MODULE_DIR$/vendor/phpclasses/parseuseragentstring" />
+          <root url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
           <root url="file://$MODULE_DIR$/vendor/simple-crud/simple-crud" />
         </CLASSES>
         <SOURCES>
@@ -26,6 +28,7 @@
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/filipac/ip" />
           <root url="file://$MODULE_DIR$/vendor/phpclasses/parseuseragentstring" />
+          <root url="file://$MODULE_DIR$/vendor/phpmailer/phpmailer" />
           <root url="file://$MODULE_DIR$/vendor/simple-crud/simple-crud" />
         </SOURCES>
       </library>

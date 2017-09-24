@@ -17,7 +17,7 @@
             $msg = new Thirday\Messages\MensagemFactory;
 
             if (isset($_GET['success'])) {
-                $msg->exibeMensagem(new Thirday\Messages\SuccessMessage(), " Cadastro realizado com sucesso ");
+                $msg->exibeMensagem(new Thirday\Messages\SuccessMessage(), " Cadastro realizado com sucesso. - cód: ".$_GET['id']);
             }
             ?>
             <form enctype="multipart/form-data" method="POST" action="./?page=product&action=insert">
