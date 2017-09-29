@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controller;
+use App\Model\Pedido\OrderRepository;
+use App\Model\User\UserRepository;
 use App\Mvc\Controller;
 
 /**
@@ -9,7 +11,13 @@ use App\Mvc\Controller;
  * @author ivana
  */
 class Home extends \App\Mvc\Controller{
-    
+    private $pdo;
+    public function __construct(\PDO $pdo)
+    {
+        $this->pdo=$pdo;
+        parent::__construct();
+    }
+
     public function index() {
         $this->view->render('home');
     }
@@ -18,7 +26,13 @@ class Home extends \App\Mvc\Controller{
      * @param \App\Model\Category\iProductCategoryRepository $categories
      */
     public function admin(){
-         $this->view->setTitle("Página administrativa -");         
+        $recentOrders= new OrderRepository($this->pdo);
+        $user= new UserRepository($this->pdo);
+        $this->view->set('orders',$recentOrders->getRecentOrders());
+
+
+
+        $this->view->setTitle("Página administrativa -");
          $this->view->render('Admin/home');
     }
 }

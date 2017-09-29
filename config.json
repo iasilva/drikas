@@ -1,11 +1,5 @@
 {
-    "Homem": {
-        "amor": "adrieli",
-        "carro": "i30",
-        "preferências": {
-            "sexo": "masculino",
-            "Comida": "parmesão"
-        },
-        "corrida": "Fórmula1"
+    "database": {
+        "name":"drk"
     }
 }

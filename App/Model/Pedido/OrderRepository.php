@@ -12,6 +12,7 @@ namespace App\Model\Pedido;
 class OrderRepository extends iOrderRepository
 {
     private $pdo;
+    private $databaseName;
 
     /**
      * OrderRepository constructor.
@@ -20,6 +21,8 @@ class OrderRepository extends iOrderRepository
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
+        $config= json_decode(file_get_contents(DIR.'/config.json'));
+        $this->databaseName=$config->database->name;
     }
 
 
@@ -29,7 +32,7 @@ class OrderRepository extends iOrderRepository
      */
     public function getOrder($id)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM saind604_drk.order WHERE id = :id");
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->databaseName}.order WHERE id = :id");
         $stmt->bindValue(":id", $id, \PDO::PARAM_INT);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Pedido\OrderModel');
         $stmt->execute();
@@ -42,12 +45,13 @@ class OrderRepository extends iOrderRepository
      */
     public function getOrders($user_id)
     {
-        $stmt = $this->pdo->prepare("SELECT * FROM 'order' WHERE user_id = :user_id ORDER BY id DESC");
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->databaseName}.order WHERE user_id = :user_id ORDER BY id DESC");
         $stmt->bindValue(":user_id", $user_id, \PDO::PARAM_INT);
         $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Pedido\OrderModel');
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
 
     /**
      * Relaciona todos os períodos dentro de um determinado período.
@@ -58,5 +62,12 @@ class OrderRepository extends iOrderRepository
     public function getOrdersByPeriod(\DateTime $inicio, \DateTime $fim, $user = '')
     {
         // TODO: Implement getOrdersByPeriod() method.
+    }
+
+    public function getRecentOrders(){
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->databaseName}.order ORDER BY id DESC LIMIT 10");
+        $stmt->setFetchMode(\PDO::FETCH_CLASS, '\App\Model\Pedido\OrderModel');
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
 }

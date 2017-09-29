@@ -113,7 +113,7 @@ switch ($page) {
 
 
     default:
-        $home = new \App\Controller\Home();
+        $home = new \App\Controller\Home($pdo);
         call_user_func_array(array($home, $action), array());
         break;
 }
